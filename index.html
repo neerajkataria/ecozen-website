@@ -216,7 +216,7 @@ body {
 }
 
 .nav__logo { display: flex; text-decoration: none; }
-.nav__logo-img { height: 52px; width: auto; display: block; }
+.nav__logo-img { height: 64px; width: auto; display: block; }
 
 .nav__links { display: flex; align-items: center; gap: var(--sp-4); list-style: none; }
 .nav__item { position: static; list-style: none; }
@@ -272,9 +272,9 @@ body {
   z-index: 98; /* below nav z-index:100 so nav stays on top */
 }
 .nav__item.active .mega {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
 }
 .mega__inner { max-width: var(--max-w); margin: 0 auto; }
 
@@ -422,8 +422,130 @@ body {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MISSION
+   CAMPAIGN SLIDER
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.campaigns {
+  position: relative;
+  background: var(--clr-black);
+  overflow: hidden;
+}
+.campaigns__inner { position: relative; }
+.campaigns__track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.campaign-slide {
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: var(--sp-10) var(--sp-6);
+}
+.campaign-slide__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.campaign-slide__content {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.campaign-slide__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--r-xs);
+  width: fit-content;
+  backdrop-filter: blur(8px);
+}
+.campaign-slide__heading {
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.campaign-slide__sub {
+  font-size: var(--type-body);
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+.campaign-slide__visual {
+  position: absolute;
+  right: var(--sp-12);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  height: 260px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.campaign-slide__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.4));
+}
+/* Dots */
+.campaigns__dots {
+  position: absolute;
+  bottom: var(--sp-3);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--sp-1);
+  z-index: 3;
+}
+.campaigns__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  border: none; cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+.campaigns__dot.active {
+  background: var(--clr-white);
+  width: 24px;
+  border-radius: var(--r-pill);
+}
+/* Arrows */
+.campaigns__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 3;
+  transition: background 0.2s;
+  backdrop-filter: blur(8px);
+}
+.campaigns__arrow:hover { background: rgba(255,255,255,0.2); }
+.campaigns__arrow--prev { left: var(--sp-3); }
+.campaigns__arrow--next { right: var(--sp-3); }
 .mission {
   padding: var(--section-pad) var(--sp-3);
   background: linear-gradient(180deg, #eaf5e2 0%, var(--clr-white) 100%);
@@ -1587,7 +1709,67 @@ body {
   </div>
 </section>
 
-<!-- MISSION -->
+<!-- CAMPAIGN SLIDER -->
+<section class="campaigns">
+  <div class="campaigns__inner">
+    <div class="campaigns__track" id="campaignTrack">
+
+      <!-- Campaign 1 — Active offer -->
+      <div class="campaign-slide">
+        <div class="campaign-slide__bg" style="background: linear-gradient(135deg, #006037 0%, #0a2e1a 100%)"></div>
+        <div class="campaign-slide__content">
+          <span class="campaign-slide__tag">⚡ Limited Time</span>
+          <h3 class="campaign-slide__heading">Get 20% OFF on<br>ecozen Smart AC</h3>
+          <p class="campaign-slide__sub">Offer valid till 30th May. T&amp;C apply.</p>
+          <a href="#" class="btn btn--secondary">Buy Now →</a>
+        </div>
+        <div class="campaign-slide__visual">
+          <img src="https://framerusercontent.com/images/HQo0shYCaFQr4ftH355yY4MzHQ.png?scale-down-to=512" alt="Smart AC">
+        </div>
+      </div>
+
+      <!-- Campaign 2 — Government scheme -->
+      <div class="campaign-slide">
+        <div class="campaign-slide__bg" style="background: linear-gradient(135deg, #1a3a2a 0%, #0d1f14 100%)"></div>
+        <div class="campaign-slide__content">
+          <span class="campaign-slide__tag">🏛️ PM Kusum Yojana</span>
+          <h3 class="campaign-slide__heading">Solar Pump Subsidy<br>Up to 90% Off</h3>
+          <p class="campaign-slide__sub">Check your eligibility for government solar subsidy today.</p>
+          <a href="#" class="btn btn--primary">Check Eligibility →</a>
+        </div>
+        <div class="campaign-slide__visual">
+          <img src="https://framerusercontent.com/images/TJvWP7idgY36XfhdKtVqdlB2t9s.png?scale-down-to=512" alt="ecotron">
+        </div>
+      </div>
+
+      <!-- Campaign 3 — Season -->
+      <div class="campaign-slide">
+        <div class="campaign-slide__bg" style="background: linear-gradient(135deg, #0a2a3a 0%, #061520 100%)"></div>
+        <div class="campaign-slide__content">
+          <span class="campaign-slide__tag">☀️ Summer Ready</span>
+          <h3 class="campaign-slide__heading">Stay Cool.<br>Pay Nothing to Grid.</h3>
+          <p class="campaign-slide__sub">ecozen True Solar AC — cools even during power cuts.</p>
+          <a href="#" class="btn btn--primary">Explore Solar AC →</a>
+        </div>
+        <div class="campaign-slide__visual">
+          <img src="https://framerusercontent.com/images/UI5C0avLzgcVcBtQARfb0413SM.png?scale-down-to=512" alt="Solar AC">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dots -->
+    <div class="campaigns__dots" id="campaignDots">
+      <button class="campaigns__dot active" data-idx="0"></button>
+      <button class="campaigns__dot" data-idx="1"></button>
+      <button class="campaigns__dot" data-idx="2"></button>
+    </div>
+
+    <!-- Arrows -->
+    <button class="campaigns__arrow campaigns__arrow--prev" id="campPrev">‹</button>
+    <button class="campaigns__arrow campaigns__arrow--next" id="campNext">›</button>
+  </div>
+</section>
 <section class="mission">
   <div class="mission__inner">
     <span class="eyebrow">We just don't build Products &amp; Tech</span>
@@ -1737,8 +1919,8 @@ body {
       </div>
       <div class="bento__cell bento__cell--stat2">
         <div class="bento__content" style="justify-content:center;align-items:flex-start;">
-          <div class="bento__stat"><span class="bento__stat-accent">552</span>K+</div>
-          <div class="bento__stat-label">Lives Impacted</div>
+          <div class="bento__stat"><span class="bento__stat-accent">20</span>+</div>
+          <div class="bento__stat-label">Patents & IP Filed</div>
         </div>
       </div>
 
@@ -2076,54 +2258,52 @@ body {
     prev.addEventListener('click', () => track.scrollBy({ left: -w(), behavior: 'smooth' }));
   }
 
-  // Mega menu — HOVER (global standard, not click)
-  const items = document.querySelectorAll('.nav__item');
-  const megaMenus = document.querySelectorAll('.mega');
-  let closeTimer = null;
+  // Mega menu — HOVER
+  const navItems = document.querySelectorAll('.nav__item');
+  let megaTimer = null;
 
-  function setMegaTop() {
-    // Always use actual rendered position of nav bottom
-    const navEl = document.querySelector('.nav');
-    if (!navEl) return;
-    const bottom = navEl.getBoundingClientRect().bottom;
-    megaMenus.forEach(m => {
-      m.style.top = bottom + 'px';
+  function openMega(item) {
+    clearTimeout(megaTimer);
+    navItems.forEach(i => {
+      const m = i.querySelector('.mega');
+      if (m) { m.style.opacity='0'; m.style.visibility='hidden'; m.style.transform='translateY(-8px)'; }
+      i.classList.remove('active');
     });
-  }
-
-  function openMenu(item) {
-    clearTimeout(closeTimer);
-    setMegaTop();
-    items.forEach(i => i.classList.remove('active'));
+    const mega = item.querySelector('.mega');
+    if (!mega) return;
+    const navEl = document.querySelector('.nav');
+    mega.style.top = navEl.getBoundingClientRect().bottom + 'px';
+    mega.style.opacity = '1';
+    mega.style.visibility = 'visible';
+    mega.style.transform = 'translateY(0)';
     item.classList.add('active');
     document.querySelector('.nav-wrapper').classList.add('menu-open');
   }
 
-  function closeAll() {
-    closeTimer = setTimeout(() => {
-      items.forEach(i => i.classList.remove('active'));
+  function closeMega() {
+    megaTimer = setTimeout(() => {
+      navItems.forEach(i => {
+        const m = i.querySelector('.mega');
+        if (m) { m.style.opacity='0'; m.style.visibility='hidden'; m.style.transform='translateY(-8px)'; }
+        i.classList.remove('active');
+      });
       const nw = document.querySelector('.nav-wrapper');
       if (nw) nw.classList.remove('menu-open');
-    }, 120);
+    }, 150);
   }
 
-  items.forEach(item => {
-    const trigger = item.querySelector('.nav__trigger');
+  navItems.forEach(item => {
     const mega = item.querySelector('.mega');
-    if (!trigger) return;
-    item.addEventListener('mouseenter', () => openMenu(item));
-    item.addEventListener('mouseleave', closeAll);
+    item.addEventListener('mouseenter', () => openMega(item));
+    item.addEventListener('mouseleave', closeMega);
     if (mega) {
-      mega.addEventListener('mouseenter', () => clearTimeout(closeTimer));
-      mega.addEventListener('mouseleave', closeAll);
+      mega.addEventListener('mouseenter', () => clearTimeout(megaTimer));
+      mega.addEventListener('mouseleave', closeMega);
     }
   });
 
-  document.addEventListener('click', () => {
-    clearTimeout(closeTimer);
-    items.forEach(i => i.classList.remove('active'));
-    const nw = document.querySelector('.nav-wrapper');
-    if (nw) nw.classList.remove('menu-open');
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav__item')) closeMega();
   });
 
   // Cookie banner
@@ -2141,7 +2321,27 @@ body {
     cookieBanner.classList.add('hidden');
   });
 
-  // Voices carousel
+  // Campaign slider
+  const campTrack = document.getElementById('campaignTrack');
+  const campDots = document.querySelectorAll('.campaigns__dot');
+  const campSlides = document.querySelectorAll('.campaign-slide');
+  let campIdx = 0;
+  let campAuto;
+
+  function goToCamp(idx) {
+    campIdx = (idx + campSlides.length) % campSlides.length;
+    campTrack.style.transform = `translateX(-${campIdx * 100}%)`;
+    campDots.forEach((d, i) => d.classList.toggle('active', i === campIdx));
+  }
+
+  document.getElementById('campPrev')?.addEventListener('click', () => { clearInterval(campAuto); goToCamp(campIdx - 1); startAuto(); });
+  document.getElementById('campNext')?.addEventListener('click', () => { clearInterval(campAuto); goToCamp(campIdx + 1); startAuto(); });
+  campDots.forEach(dot => dot.addEventListener('click', () => { clearInterval(campAuto); goToCamp(+dot.dataset.idx); startAuto(); }));
+
+  function startAuto() { campAuto = setInterval(() => goToCamp(campIdx + 1), 5000); }
+  startAuto();
+
+
   const voicesPeople = [
     {
       quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
@@ -2150,9 +2350,9 @@ body {
       photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
     },
     {
-      quote: "Working on real problems that impact millions of farmers — that's what makes every day meaningful here.",
-      name: "[ Name ]",
-      role: "[ Role ], ecozen",
+      quote: "Working on real problems that impact millions of farmers — that's what makes every day truly meaningful here.",
+      name: "Riddhi",
+      role: "Recruitment Specialist, ecozen",
       photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
     },
     {
