@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecozen — Power the Shift</title>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Brand Colors */
+    --clr-green:       #6BA546;
+    --clr-green-dark:  #006037;
+    --clr-cyan:        #16CDFF;
+    --clr-yellow:      #FDBA17;
+    --clr-black:       #0D1117;
+    --clr-white:       #FFFFFF;
+    --clr-gray-light:  #F5F7F2;
+    --clr-gray-mid:    #E8EDE3;
+    --clr-text-muted:  #6B7A5E;
+
+    /* Spacing Scale — no magic numbers */
+    --space-4:   4px;
+    --space-8:   8px;
+    --space-12:  12px;
+    --space-16:  16px;
+    --space-24:  24px;
+    --space-32:  32px;
+    --space-48:  48px;
+    --space-64:  64px;
+    --space-80:  80px;
+    --space-96:  96px;
+
+    /* Typography Scale */
+    --text-xs:   12px;
+    --text-sm:   14px;
+    --text-base: 16px;
+    --text-md:   18px;
+    --text-lg:   24px;
+    --text-xl:   32px;
+    --text-2xl:  48px;
+    --text-3xl:  64px;
+    --text-4xl:  80px;
+
+    /* Radius */
+    --radius-sm:  8px;
+    --radius-md:  16px;
+    --radius-lg:  24px;
+    --radius-pill: 100px;
+
+    /* Container */
+    --container: 1200px;
+  }
+
+  body {
+    font-family: 'Mukta', sans-serif;
+    background: var(--clr-white);
+    color: var(--clr-black);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── ANNOUNCEMENT BAR ─── */
+  .announcement {
+    background: var(--clr-green);
+    color: var(--clr-white);
+    text-align: center;
+    padding: var(--space-8) var(--space-16);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .announcement a {
+    color: var(--clr-yellow);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  /* ─── NAV ─── */
+  .nav-wrapper {
+    padding: var(--space-12) var(--space-24);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--clr-white);
+    border: 1px solid var(--clr-gray-mid);
+    border-radius: var(--radius-md);
+    padding: var(--space-12) var(--space-32);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+
+  /* Logo */
+  .nav__logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-decoration: none;
+  }
+  .nav__logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+
+  /* Nav links */
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-32);
+    list-style: none;
+  }
+  .nav__links a {
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--clr-black);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    transition: color 0.2s ease;
+  }
+  .nav__links a:hover { color: var(--clr-green); }
+  .nav__links .nav__chevron {
+    font-size: 10px;
+    color: var(--clr-text-muted);
+  }
+
+  .nav__phone {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--clr-black);
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: var(--space-80);
+    overflow: hidden;
+    background: #0a1a0f;
+  }
+
+  /* Full bleed background */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 50% 30%, rgba(107,165,70,0.15) 0%, transparent 60%),
+      linear-gradient(180deg, #0a1a0f 0%, #0f2a14 40%, #0a1a0f 100%);
+    z-index: 0;
+  }
+
+  /* Video placeholder */
+  .hero__video-wrap {
+    position: absolute;
+    top: var(--space-48);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52%;
+    max-width: 680px;
+    aspect-ratio: 16/9;
+    background: #0d1f10;
+    border: 1px solid rgba(107,165,70,0.2);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .hero__video-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a1a0f, #1a3a1f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+  .hero__play-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid rgba(107,165,70,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .hero__play-btn:hover {
+    background: rgba(107,165,70,0.15);
+    border-color: var(--clr-green);
+  }
+  .hero__play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 18px;
+    border-color: transparent transparent transparent rgba(107,165,70,0.8);
+    margin-left: 4px;
+  }
+  .hero__video-label {
+    font-size: var(--text-xs);
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Hero content */
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 860px;
+    padding: 0 var(--space-24);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero__title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--clr-white);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: var(--space-16);
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .hero__subtitle {
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--clr-green);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.4s forwards;
+  }
+
+  /* Gradient overlay at bottom of hero */
+  .hero__fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, #0a1a0f, transparent);
+    z-index: 1;
+  }
+
+  /* ─── TICKER ─── */
+  .ticker {
+    background: var(--clr-green);
+    padding: var(--space-12) 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker__track {
+    display: inline-flex;
+    animation: ticker 24s linear infinite;
+  }
+  .ticker__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-16);
+    padding: 0 var(--space-48);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clr-white);
+  }
+  .ticker__arrow {
+    font-weight: 900;
+    font-size: 16px;
+    opacity: 0.8;
+  }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ─── MISSION SECTION ─── */
+  .mission {
+    padding: var(--space-80) var(--space-24);
+    background: linear-gradient(180deg, #e8f5e2 0%, var(--clr-white) 100%);
+    text-align: center;
+  }
+  .mission__container {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .mission__eyebrow {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--clr-text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-16);
+  }
+  .mission__heading {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--clr-green);
+    line-height: 1.25;
+    max-width: 640px;
+    margin: 0 auto var(--space-48);
+  }
+
+  /* ─── PRODUCTS LABEL ─── */
+  .products-label {
+    padding: var(--space-12) var(--space-24) 0;
+    text-align: center;
+    background: var(--clr-white);
+  }
+  .products-label__eyebrow {
+    font-size: var(--text-sm);
+    color: var(--clr-text-muted);
+    font-weight: 500;
+    margin-bottom: var(--space-8);
+  }
+  .products-label__heading {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--clr-green);
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement">
+  Get 20% OFF on Ecozen Smart AC. Offer Valid till 30th May. T&amp;C* &nbsp;·&nbsp;
+  <a href="#">Buy Now &rsaquo;</a>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="#" class="nav__logo">
+      <img 
+        src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" 
+        alt="Ecozen — Power the Shift" 
+        class="nav__logo-img"
+      >
+    </a>
+
+    <ul class="nav__links">
+      <li><a href="#">Products <span class="nav__chevron">▾</span></a></li>
+      <li><a href="#">Technology <span class="nav__chevron">▾</span></a></li>
+      <li><a href="#">Resources <span class="nav__chevron">▾</span></a></li>
+      <li><a href="#">More <span class="nav__chevron">▾</span></a></li>
+    </ul>
+
+    <div class="nav__phone">
+      📞 1800 121 7515
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg"></div>
+
+  <div class="hero__video-wrap">
+    <div class="hero__video-inner">
+      <div class="hero__play-btn">
+        <div class="hero__play-icon"></div>
+      </div>
+      <div class="hero__video-label">[ Hero Video ]</div>
+    </div>
+  </div>
+
+  <div class="hero__fade"></div>
+
+  <div class="hero__content">
+    <h1 class="hero__title">
+      Smart Solar Solutions for<br>your Energy Independence
+    </h1>
+    <p class="hero__subtitle">Founded by IIT Kharagpur Alumni</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+    <span class="ticker__item">POWER THE SHIFT <span class="ticker__arrow">&rsaquo;&rsaquo;</span></span>
+  </div>
+</div>
+
+<!-- MISSION SECTION -->
+<section class="mission">
+  <div class="mission__container">
+    <p class="mission__eyebrow">We just don't build Products &amp; Tech</p>
+    <h2 class="mission__heading">
+      We're building the World's Leading<br>
+      Platform for Decentralized Solar Innovation
+    </h2>
+  </div>
+</section>
+
+<!-- PRODUCTS LABEL -->
+<div class="products-label">
+  <p class="products-label__eyebrow">Explore ecozen's</p>
+  <h2 class="products-label__heading">Smart Solar Solutions</h2>
+</div>
+
+</body>
+</html>
