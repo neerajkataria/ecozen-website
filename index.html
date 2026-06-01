@@ -252,85 +252,45 @@ body {
 }
 .nav__phone-btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MEGA MENU — sits below nav pill
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ━━━━ MEGA MENU ━━━━ */
 .mega {
+  display: none;
   position: fixed;
   left: 0; right: 0;
-  top: 0; /* overridden by JS to nav bottom */
-  background: var(--clr-white);
-  border-radius: 0 0 var(--r-xl) var(--r-xl);
-  border: 1px solid var(--clr-gray-200);
+  top: 80px;
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+  border: 1px solid #E8EDE3;
   border-top: none;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
-  padding: var(--sp-5) var(--sp-6) var(--sp-5);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
-  z-index: 98; /* below nav z-index:100 so nav stays on top */
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  padding: 32px 48px 32px;
+  z-index: 99999;
 }
-.nav__item.active .mega {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
-}
-.mega__inner { max-width: var(--max-w); margin: 0 auto; }
-
+.mega.is-open { display: block; }
+.mega__inner { max-width: 1200px; margin: 0 auto; }
+.mega__section-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
 .mega__grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 12px; }
-.mega__grid--3 { grid-template-columns: repeat(3,1fr); gap: var(--sp-4); }
-
-.mega__card {
-  display: flex; flex-direction: column; gap: 6px;
-  text-decoration: none; padding: var(--sp-1);
-  border-radius: var(--r-md); transition: background 0.18s;
-}
-.mega__card:hover { background: var(--clr-gray-100); }
-.mega__card:hover .mega__name { color: var(--clr-green); }
-.mega__img-wrap {
-  width: 100%; aspect-ratio: 1;
-  background: var(--clr-gray-100); border-radius: var(--r-sm);
-  display: flex; align-items: center; justify-content: center;
-  padding: var(--sp-1); margin-bottom: 2px;
-}
-.mega__card:hover .mega__img-wrap { background: var(--clr-gray-200); }
+.mega__grid--3 { grid-template-columns: repeat(3,1fr); gap: 32px; }
+.mega__card { display: flex; flex-direction: column; gap: 6px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__card:hover { background: #F5F7F2; }
+.mega__card:hover .mega__name { color: #6BA546; }
+.mega__img-wrap { width: 100%; aspect-ratio: 1; background: #F5F7F2; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 8px; }
+.mega__card:hover .mega__img-wrap { background: #E8EDE3; }
 .mega__img-wrap img { width: 100%; height: 100%; object-fit: contain; }
-.mega__name {
-  font-size: 13px; font-weight: var(--fw-semi); color: var(--clr-black);
-  letter-spacing: -0.01em; transition: color 0.18s;
-}
-.mega__sub { font-size: 11px; color: var(--clr-muted); }
-
-.mega__tech-card {
-  display: flex; flex-direction: column; gap: 12px;
-  text-decoration: none; padding: var(--sp-1);
-  border-radius: var(--r-md); transition: background 0.18s;
-}
-.mega__tech-card:hover { background: var(--clr-gray-100); }
-.mega__tech-card:hover .mega__tech-name { color: var(--clr-green); }
-.mega__tech-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--r-sm); }
-.mega__tech-name { font-size: 15px; font-weight: var(--fw-semi); color: var(--clr-black); transition: color 0.18s; }
-.mega__tech-desc { font-size: 13px; color: var(--clr-muted); line-height: 1.5; }
-
-.mega__cols { display: flex; gap: var(--sp-6); }
+.mega__name { font-size: 13px; font-weight: 600; color: #0D1117; letter-spacing: -0.01em; transition: color 0.18s; }
+.mega__sub { font-size: 11px; color: #6B7A5E; }
+.mega__tech-card { display: flex; flex-direction: column; gap: 12px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__tech-card:hover { background: #F5F7F2; }
+.mega__tech-card:hover .mega__tech-name { color: #6BA546; }
+.mega__tech-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
+.mega__tech-name { font-size: 15px; font-weight: 600; color: #0D1117; transition: color 0.18s; }
+.mega__tech-desc { font-size: 13px; color: #6B7A5E; line-height: 1.5; }
+.mega__cols { display: flex; gap: 48px; }
 .mega__col-group { display: flex; flex-direction: column; gap: 2px; }
-.mega__col-label {
-  font-size: var(--type-label); font-weight: var(--fw-semi);
-  color: var(--clr-muted); letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: var(--sp-1);
-}
-.mega__link {
-  font-size: 15px; font-weight: var(--fw-medium); color: var(--clr-black);
-  text-decoration: none; padding: var(--sp-1); border-radius: var(--r-xs);
-  display: block; transition: background 0.18s, color 0.18s;
-}
-.mega__link:hover { background: var(--clr-gray-100); color: var(--clr-green); }
-.mega__section-label {
-  font-size: var(--type-label); font-weight: var(--fw-semi);
-  color: var(--clr-muted); letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: var(--sp-2);
-}
+.mega__col-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.mega__link { font-size: 15px; font-weight: 500; color: #0D1117; text-decoration: none; padding: 8px; border-radius: 6px; display: block; transition: background 0.18s, color 0.18s; }
+.mega__link:hover { background: #F5F7F2; color: #6BA546; }
+.nav-wrapper.menu-open .nav { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    HERO
@@ -424,140 +384,83 @@ body {
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    CAMPAIGN SLIDER
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.campaigns {
-  position: relative;
-  background: var(--clr-black);
-  overflow: hidden;
-}
-.campaigns__inner { position: relative; }
-.campaigns__track {
+.camp-section { width: 100%; line-height: 0; }
+.camp-wrap { position: relative; overflow: hidden; width: 100%; }
+.camp-track {
   display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
   will-change: transform;
 }
-.campaign-slide {
-  flex-shrink: 0;
-  width: 100%;
-  min-height: 280px;
-  position: relative;
-  display: flex;
-  align-items: center;
+.camp-slide { flex-shrink: 0; width: 100%; }
+.camp-slide img { width: 100%; height: auto; display: block; }
+.camp-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.35); color: white;
+  border: none; width: 48px; height: 48px;
+  border-radius: 50%; font-size: 26px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 5; transition: background 0.2s;
+  backdrop-filter: blur(6px);
+}
+.camp-arrow:hover { background: rgba(0,0,0,0.6); }
+.camp-arrow--prev { left: 20px; }
+.camp-arrow--next { right: 20px; }
+.camp-dots {
+  position: absolute; bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 5;
+}
+.camp-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  border: none; cursor: pointer; padding: 0;
+  transition: all 0.2s ease;
+}
+.camp-dot.active {
+  background: white;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.mission {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(180deg, #eaf5e2 0%, var(--clr-white) 100%);
   overflow: hidden;
-  padding: var(--sp-10) var(--sp-6);
 }
-.campaign-slide__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+.mission__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
 }
-.campaign-slide__content {
-  position: relative;
-  z-index: 2;
-  max-width: 520px;
+.mission__image-col { position: relative; }
+.mission__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-xl);
+  display: block;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+}
+.mission__copy-col {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
+  gap: var(--sp-4);
 }
-.campaign-slide__tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.9);
-  font-size: var(--type-label);
-  font-weight: var(--fw-semi);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: var(--r-xs);
-  width: fit-content;
-  backdrop-filter: blur(8px);
-}
-.campaign-slide__heading {
-  font-size: clamp(26px, 3.5vw, 44px);
-  font-weight: var(--fw-bold);
-  color: var(--clr-white);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
-.campaign-slide__sub {
-  font-size: var(--type-body);
-  color: rgba(255,255,255,0.6);
-  line-height: 1.5;
-}
-.campaign-slide__visual {
-  position: absolute;
-  right: var(--sp-12);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 320px;
-  height: 260px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.campaign-slide__visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.4));
-}
-/* Dots */
-.campaigns__dots {
-  position: absolute;
-  bottom: var(--sp-3);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: var(--sp-1);
-  z-index: 3;
-}
-.campaigns__dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.3);
-  border: none; cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0;
-}
-.campaigns__dot.active {
-  background: var(--clr-white);
-  width: 24px;
-  border-radius: var(--r-pill);
-}
-/* Arrows */
-.campaigns__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  font-size: 22px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  z-index: 3;
-  transition: background 0.2s;
-  backdrop-filter: blur(8px);
-}
-.campaigns__arrow:hover { background: rgba(255,255,255,0.2); }
-.campaigns__arrow--prev { left: var(--sp-3); }
-.campaigns__arrow--next { right: var(--sp-3); }
-.mission {
-  padding: var(--section-pad) var(--sp-3);
-  background: linear-gradient(180deg, #eaf5e2 0%, var(--clr-white) 100%);
-  text-align: center;
-}
-.mission__inner { max-width: 800px; margin: 0 auto; }
 .mission__heading {
   font-size: var(--type-h2);
   font-weight: var(--fw-bold);
   color: var(--clr-black);
-  line-height: 1.2; letter-spacing: -0.02em;
-  margin-top: var(--sp-2);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.mission__body {
+  font-size: var(--type-body-lg);
+  color: var(--clr-muted);
+  line-height: 1.6;
+  font-weight: var(--fw-regular);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1710,73 +1613,48 @@ body {
 </section>
 
 <!-- CAMPAIGN SLIDER -->
-<section class="campaigns">
-  <div class="campaigns__inner">
-    <div class="campaigns__track" id="campaignTrack">
-
-      <!-- Campaign 1 — Active offer -->
-      <div class="campaign-slide">
-        <div class="campaign-slide__bg" style="background: linear-gradient(135deg, #006037 0%, #0a2e1a 100%)"></div>
-        <div class="campaign-slide__content">
-          <span class="campaign-slide__tag">⚡ Limited Time</span>
-          <h3 class="campaign-slide__heading">Get 20% OFF on<br>ecozen Smart AC</h3>
-          <p class="campaign-slide__sub">Offer valid till 30th May. T&amp;C apply.</p>
-          <a href="#" class="btn btn--secondary">Buy Now →</a>
-        </div>
-        <div class="campaign-slide__visual">
-          <img src="https://framerusercontent.com/images/HQo0shYCaFQr4ftH355yY4MzHQ.png?scale-down-to=512" alt="Smart AC">
-        </div>
+<section class="camp-section">
+  <div class="camp-wrap">
+    <div class="camp-track" id="campTrack">
+      <div class="camp-slide">
+        <img src="https://framerusercontent.com/images/Q19k1pOqsDDb9q6GqpT1kJ1V1gE.webp?width=1914&height=870" alt="Campaign 1">
       </div>
-
-      <!-- Campaign 2 — Government scheme -->
-      <div class="campaign-slide">
-        <div class="campaign-slide__bg" style="background: linear-gradient(135deg, #1a3a2a 0%, #0d1f14 100%)"></div>
-        <div class="campaign-slide__content">
-          <span class="campaign-slide__tag">🏛️ PM Kusum Yojana</span>
-          <h3 class="campaign-slide__heading">Solar Pump Subsidy<br>Up to 90% Off</h3>
-          <p class="campaign-slide__sub">Check your eligibility for government solar subsidy today.</p>
-          <a href="#" class="btn btn--primary">Check Eligibility →</a>
-        </div>
-        <div class="campaign-slide__visual">
-          <img src="https://framerusercontent.com/images/TJvWP7idgY36XfhdKtVqdlB2t9s.png?scale-down-to=512" alt="ecotron">
-        </div>
+      <div class="camp-slide">
+        <img src="https://framerusercontent.com/images/Q19k1pOqsDDb9q6GqpT1kJ1V1gE.webp?width=1914&height=870" alt="Campaign 2">
       </div>
-
-      <!-- Campaign 3 — Season -->
-      <div class="campaign-slide">
-        <div class="campaign-slide__bg" style="background: linear-gradient(135deg, #0a2a3a 0%, #061520 100%)"></div>
-        <div class="campaign-slide__content">
-          <span class="campaign-slide__tag">☀️ Summer Ready</span>
-          <h3 class="campaign-slide__heading">Stay Cool.<br>Pay Nothing to Grid.</h3>
-          <p class="campaign-slide__sub">ecozen True Solar AC — cools even during power cuts.</p>
-          <a href="#" class="btn btn--primary">Explore Solar AC →</a>
-        </div>
-        <div class="campaign-slide__visual">
-          <img src="https://framerusercontent.com/images/UI5C0avLzgcVcBtQARfb0413SM.png?scale-down-to=512" alt="Solar AC">
-        </div>
+      <div class="camp-slide">
+        <img src="https://framerusercontent.com/images/Q19k1pOqsDDb9q6GqpT1kJ1V1gE.webp?width=1914&height=870" alt="Campaign 3">
       </div>
-
     </div>
-
-    <!-- Dots -->
-    <div class="campaigns__dots" id="campaignDots">
-      <button class="campaigns__dot active" data-idx="0"></button>
-      <button class="campaigns__dot" data-idx="1"></button>
-      <button class="campaigns__dot" data-idx="2"></button>
+    <button class="camp-arrow camp-arrow--prev" id="campPrev">&#8249;</button>
+    <button class="camp-arrow camp-arrow--next" id="campNext">&#8250;</button>
+    <div class="camp-dots">
+      <button class="camp-dot active" data-i="0"></button>
+      <button class="camp-dot" data-i="1"></button>
+      <button class="camp-dot" data-i="2"></button>
     </div>
-
-    <!-- Arrows -->
-    <button class="campaigns__arrow campaigns__arrow--prev" id="campPrev">‹</button>
-    <button class="campaigns__arrow campaigns__arrow--next" id="campNext">›</button>
   </div>
 </section>
 <section class="mission">
   <div class="mission__inner">
-    <span class="eyebrow">We just don't build Products &amp; Tech</span>
-    <h2 class="mission__heading">
-      We're building the World's Leading Platform for
-      <span class="accent-gradient"> Decentralized Solar Innovation</span>
-    </h2>
+    <div class="mission__image-col">
+      <img
+        class="mission__image"
+        src="https://framerusercontent.com/images/aC2Fjw3eI1gIvJKpVTv91uYxgOQ.png?width=1704&height=923"
+        alt="Decentralized Solar Innovation"
+      >
+    </div>
+    <div class="mission__copy-col">
+      <span class="eyebrow">We just don't build Products &amp; Tech</span>
+      <h2 class="mission__heading">
+        We're building the World's Leading Platform for
+        <span class="accent-gradient">Decentralized Solar Innovation</span>
+      </h2>
+      <p class="mission__body">
+        From AI-powered solar pumps to patented ice-core cold storage — ecozen is engineering the infrastructure for a decentralized, solar-first India.
+      </p>
+      <a href="#" class="btn btn--primary">Learn our story →</a>
+    </div>
   </div>
 </section>
 
@@ -2214,127 +2092,126 @@ body {
 </div>
 
 <script>
-  // Cookie banner
-  const cookieBanner = document.getElementById('cookieBanner');
-  const cookieAccept = document.getElementById('cookieAccept');
-  const cookieReject = document.getElementById('cookieReject');
-  if (cookieBanner) {
-    // Show only if not already decided
-    if (!localStorage.getItem('ecozen_cookie_consent')) {
-      setTimeout(() => cookieBanner.classList.remove('hidden'), 1500);
-    } else {
-      cookieBanner.classList.add('hidden');
-    }
-    cookieAccept.addEventListener('click', () => {
-      localStorage.setItem('ecozen_cookie_consent', 'accepted');
-      cookieBanner.classList.add('hidden');
-    });
-    cookieReject.addEventListener('click', () => {
-      localStorage.setItem('ecozen_cookie_consent', 'rejected');
-      cookieBanner.classList.add('hidden');
-    });
-  }
-  const filters = document.querySelectorAll('.blogs__filter');
-  const cards = document.querySelectorAll('.blog-card');
-  filters.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filters.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cat = btn.dataset.filter;
-      cards.forEach(card => {
-        const show = cat === 'all' || card.dataset.cat === cat;
-        card.style.display = show ? 'flex' : 'none';
+  // ── MEGA MENU ──
+  (function() {
+    function setup() {
+      var items = document.querySelectorAll('.nav__item');
+      if (!items.length) { setTimeout(setup, 50); return; }
+      var t = null;
+      function show(item) {
+        clearTimeout(t);
+        document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+        document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        var mega = item.querySelector('.mega');
+        if (!mega) return;
+        var nav = document.querySelector('.nav');
+        if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+        mega.classList.add('is-open');
+        item.classList.add('active');
+      }
+      function hide() {
+        t = setTimeout(function() {
+          document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+          document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        }, 150);
+      }
+      items.forEach(function(item) {
+        var mega = item.querySelector('.mega');
+        item.addEventListener('mouseenter', function() { show(item); });
+        item.addEventListener('mouseleave', hide);
+        if (mega) {
+          mega.addEventListener('mouseenter', function() { clearTimeout(t); });
+          mega.addEventListener('mouseleave', hide);
+        }
       });
-    });
-  });
-
-  // Carousel
-  const track = document.getElementById('carouselTrack');
-  const prev = document.getElementById('prevBtn');
-  const next = document.getElementById('nextBtn');
-  if (track && prev && next) {
-    const w = () => track.querySelector('.product-card').offsetWidth + 24;
-    next.addEventListener('click', () => track.scrollBy({ left: w(), behavior: 'smooth' }));
-    prev.addEventListener('click', () => track.scrollBy({ left: -w(), behavior: 'smooth' }));
-  }
-
-  // Mega menu — HOVER
-  const navItems = document.querySelectorAll('.nav__item');
-  let megaTimer = null;
-
-  function openMega(item) {
-    clearTimeout(megaTimer);
-    navItems.forEach(i => {
-      const m = i.querySelector('.mega');
-      if (m) { m.style.opacity='0'; m.style.visibility='hidden'; m.style.transform='translateY(-8px)'; }
-      i.classList.remove('active');
-    });
-    const mega = item.querySelector('.mega');
-    if (!mega) return;
-    const navEl = document.querySelector('.nav');
-    mega.style.top = navEl.getBoundingClientRect().bottom + 'px';
-    mega.style.opacity = '1';
-    mega.style.visibility = 'visible';
-    mega.style.transform = 'translateY(0)';
-    item.classList.add('active');
-    document.querySelector('.nav-wrapper').classList.add('menu-open');
-  }
-
-  function closeMega() {
-    megaTimer = setTimeout(() => {
-      navItems.forEach(i => {
-        const m = i.querySelector('.mega');
-        if (m) { m.style.opacity='0'; m.style.visibility='hidden'; m.style.transform='translateY(-8px)'; }
-        i.classList.remove('active');
-      });
-      const nw = document.querySelector('.nav-wrapper');
-      if (nw) nw.classList.remove('menu-open');
-    }, 150);
-  }
-
-  navItems.forEach(item => {
-    const mega = item.querySelector('.mega');
-    item.addEventListener('mouseenter', () => openMega(item));
-    item.addEventListener('mouseleave', closeMega);
-    if (mega) {
-      mega.addEventListener('mouseenter', () => clearTimeout(megaTimer));
-      mega.addEventListener('mouseleave', closeMega);
     }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else { setup(); }
+  })();
+
+  // ── PEOPLE SLIDER ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var people = [
+      {
+        quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
+        name: "Yash",
+        role: "Senior Analyst, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "Working on real problems that impact millions of farmers — that makes every day here truly meaningful.",
+        name: "Riddhi",
+        role: "Recruitment Specialist, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "ecozen gives you the rare opportunity to build deep tech that truly shifts how India consumes energy.",
+        name: "[ Name ]",
+        role: "[ Role ], ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      }
+    ];
+    var idx = 0;
+    var qEl = document.getElementById('voicesQuote');
+    var nEl = document.getElementById('voicesName');
+    var rEl = document.getElementById('voicesRole');
+    var pEl = document.getElementById('voicesPhoto');
+    function go(i) {
+      idx = (i + people.length) % people.length;
+      var p = people[idx];
+      [qEl, nEl, pEl].forEach(function(el) { if(el) el.style.opacity = '0'; });
+      setTimeout(function() {
+        if (qEl) qEl.textContent = p.quote;
+        if (nEl) nEl.textContent = p.name;
+        if (rEl) rEl.textContent = p.role;
+        if (pEl) pEl.src = p.photo;
+        [qEl, nEl, pEl].forEach(function(el) { if(el) el.style.opacity = '1'; });
+      }, 200);
+    }
+    [qEl, nEl, pEl].forEach(function(el) {
+      if (el) el.style.transition = 'opacity 0.2s ease';
+    });
+    var prev = document.getElementById('voicesPrev');
+    var next = document.getElementById('voicesNext');
+    if (prev) prev.addEventListener('click', function() { go(idx - 1); });
+    if (next) next.addEventListener('click', function() { go(idx + 1); });
   });
 
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.nav__item')) closeMega();
+  // ── CAMPAIGN SLIDER ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var track = document.getElementById('campTrack');
+    var dots = document.querySelectorAll('.camp-dot');
+    var slides = document.querySelectorAll('.camp-slide');
+    if (!track || !slides.length) return;
+    var cur = 0;
+    var auto;
+    function go(i) {
+      cur = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, j) { d.classList.toggle('active', j === cur); });
+    }
+    var p = document.getElementById('campPrev');
+    var n = document.getElementById('campNext');
+    if (p) p.addEventListener('click', function() { clearInterval(auto); go(cur-1); startAuto(); });
+    if (n) n.addEventListener('click', function() { clearInterval(auto); go(cur+1); startAuto(); });
+    dots.forEach(function(d) {
+      d.addEventListener('click', function() { clearInterval(auto); go(+d.dataset.i); startAuto(); });
+    });
+    function startAuto() { auto = setInterval(function() { go(cur+1); }, 5000); }
+    startAuto();
   });
 
-  // Cookie banner
-  const cookieBanner = document.getElementById('cookieBanner');
-  // Check if already responded (use versioned key so it resets on redesign)
-  if (localStorage.getItem('ecozen_cookie_v2')) {
-    cookieBanner.classList.add('hidden');
-  }
-  document.getElementById('cookieAccept').addEventListener('click', () => {
-    localStorage.setItem('ecozen_cookie_v2', 'accepted');
-    cookieBanner.classList.add('hidden');
-  });
-  document.getElementById('cookieReject').addEventListener('click', () => {
-    localStorage.setItem('ecozen_cookie_v2', 'rejected');
-    cookieBanner.classList.add('hidden');
-  });
+  // Cookie — simple display none, versioned key
+  (function() {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    if (localStorage.getItem('ez_cookie_v4')) { banner.style.display = 'none'; return; }
+    document.getElementById('cookieAccept')?.addEventListener('click', () => { localStorage.setItem('ez_cookie_v4','y'); banner.style.display='none'; });
+    document.getElementById('cookieReject')?.addEventListener('click', () => { localStorage.setItem('ez_cookie_v4','n'); banner.style.display='none'; });
+  })();
 
-  // Campaign slider
-  const campTrack = document.getElementById('campaignTrack');
-  const campDots = document.querySelectorAll('.campaigns__dot');
-  const campSlides = document.querySelectorAll('.campaign-slide');
-  let campIdx = 0;
-  let campAuto;
-
-  function goToCamp(idx) {
-    campIdx = (idx + campSlides.length) % campSlides.length;
-    campTrack.style.transform = `translateX(-${campIdx * 100}%)`;
-    campDots.forEach((d, i) => d.classList.toggle('active', i === campIdx));
-  }
-
-  document.getElementById('campPrev')?.addEventListener('click', () => { clearInterval(campAuto); goToCamp(campIdx - 1); startAuto(); });
+  // Campaign banner — static image, no JS needed });
   document.getElementById('campNext')?.addEventListener('click', () => { clearInterval(campAuto); goToCamp(campIdx + 1); startAuto(); });
   campDots.forEach(dot => dot.addEventListener('click', () => { clearInterval(campAuto); goToCamp(+dot.dataset.idx); startAuto(); }));
 
@@ -2394,6 +2271,45 @@ body {
     voicesIdx = (voicesIdx - 1 + voicesPeople.length) % voicesPeople.length;
     updateVoices(voicesIdx);
   });
+
+  // Mega menu — HOVER
+  (function() {
+    var navItems = document.querySelectorAll('.nav__item');
+    var timer = null;
+    function openMega(item) {
+      clearTimeout(timer);
+      document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('is-open'); });
+      navItems.forEach(function(i){ i.classList.remove('active'); });
+      var mega = item.querySelector('.mega');
+      if (!mega) return;
+      var nav = document.querySelector('.nav');
+      if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+      mega.classList.add('is-open');
+      item.classList.add('active');
+      var nw = document.querySelector('.nav-wrapper');
+      if (nw) nw.classList.add('menu-open');
+    }
+    function closeMega() {
+      timer = setTimeout(function() {
+        document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('is-open'); });
+        navItems.forEach(function(i){ i.classList.remove('active'); });
+        var nw = document.querySelector('.nav-wrapper');
+        if (nw) nw.classList.remove('menu-open');
+      }, 150);
+    }
+    navItems.forEach(function(item) {
+      var mega = item.querySelector('.mega');
+      item.addEventListener('mouseenter', function(){ openMega(item); });
+      item.addEventListener('mouseleave', closeMega);
+      if (mega) {
+        mega.addEventListener('mouseenter', function(){ clearTimeout(timer); });
+        mega.addEventListener('mouseleave', closeMega);
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav__item')) closeMega();
+    });
+  })();
 
   // Nav scroll — announcement is in normal flow, nav fixed below it
   const nav = document.querySelector('.nav-wrapper');
