@@ -1,0 +1,2632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooftop Solar — ecozen</title>
+<meta name="description" content="ecozen Rooftop Solar — India's most trusted solar installer. PM Surya Ghar empaneled vendor. Up to ₹78,000 subsidy. 4L+ installations. Free site survey.">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS — single source of truth
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  /* Colors */
+  --clr-green:      #6BA546;
+  --clr-green-dark: #006037;
+  --clr-cyan:       #16CDFF;
+  --clr-yellow:     #FDBA17;
+  --clr-black:      #0D1117;
+  --clr-white:      #FFFFFF;
+  --clr-gray-100:   #F5F7F2;
+  --clr-gray-200:   #E8EDE3;
+  --clr-gray-400:   #999999;
+  --clr-muted:      #6B7A5E;
+
+  /* Typography — fluid scale */
+  --type-display: clamp(48px, 6vw, 72px);   /* Hero only */
+  --type-h1:      clamp(36px, 5vw, 56px);   /* Page titles */
+  --type-h2:      clamp(22px, 3vw, 36px);   /* Section headings */
+  --type-h3:      clamp(18px, 2vw, 24px);   /* Card titles */
+  --type-body-lg: 18px;                      /* Lead text */
+  --type-body:    16px;                      /* General */
+  --type-body-sm: 14px;                      /* Descriptions */
+  --type-label:   12px;                      /* Eyebrows, tags */
+
+  /* Font weights */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  /* Spacing — 8px grid */
+  --sp-1:  8px;
+  --sp-2:  16px;
+  --sp-3:  24px;
+  --sp-4:  32px;
+  --sp-5:  40px;
+  --sp-6:  48px;
+  --sp-8:  64px;
+  --sp-10: 80px;
+  --sp-12: 96px;
+
+  /* Section rhythm */
+  --section-pad: var(--sp-10);
+
+  /* Radius — Apple hierarchy */
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   20px;
+  --r-xl:   28px;
+  --r-pill: 980px;
+
+  /* Container */
+  --max-w: 1200px;
+}
+
+body {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  background: var(--clr-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   GLOBAL REUSABLE PATTERNS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Section label / eyebrow — used consistently everywhere */
+.eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  color: var(--clr-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
+/* Section heading — H2 level */
+.section-heading {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Green accent word in headings */
+.accent-green { color: var(--clr-green); }
+
+/* Gradient text — used sparingly */
+.accent-gradient {
+  background: linear-gradient(90deg, var(--clr-green), var(--clr-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Container */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BUTTONS — global system
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 10px var(--sp-3);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  box-shadow: 0 2px 12px rgba(107,165,70,0.25);
+}
+.btn--primary:hover {
+  background: var(--clr-green-dark);
+  box-shadow: 0 4px 20px rgba(107,165,70,0.35);
+}
+.btn--secondary {
+  background: var(--clr-yellow);
+  color: var(--clr-black);
+}
+.btn--secondary:hover { filter: brightness(0.96); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--clr-green);
+  border: 1.5px solid var(--clr-green);
+}
+.btn--ghost:hover { background: var(--clr-green); color: var(--clr-white); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ANNOUNCEMENT BAR
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.announcement {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  text-align: center;
+  padding: 9px var(--sp-2);
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 102;
+}
+.announcement a {
+  color: var(--clr-yellow);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  margin-left: 4px;
+}
+.announcement a:hover { text-decoration: underline; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAV
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.nav-wrapper {
+  position: fixed;
+  left: 0; right: 0;
+  z-index: 100;
+  transition: top 0.1s linear;
+  padding: 12px var(--sp-3) 0;
+}
+.nav {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: var(--r-md);
+  padding: 12px var(--sp-4);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: background 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 2;
+}
+.nav-wrapper.scrolled .nav {
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.nav__logo { display: flex; text-decoration: none; }
+.nav__logo-img { height: 64px; width: auto; display: block; }
+
+.nav__links { display: flex; align-items: center; gap: var(--sp-4); list-style: none; }
+.nav__item { position: static; list-style: none; }
+
+.nav__trigger {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  font-weight: var(--fw-medium);
+  color: var(--clr-black);
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer; background: none; border: none; padding: 0;
+  transition: color 0.2s;
+}
+.nav__trigger:hover,
+.nav__item:hover .nav__trigger { color: var(--clr-green); }
+
+.nav__chevron {
+  font-size: 10px; color: var(--clr-muted);
+  transition: transform 0.2s; display: inline-block;
+}
+.nav__item:hover .nav__chevron { transform: rotate(180deg); }
+
+.nav__phone-btn {
+  display: flex; align-items: center; gap: var(--sp-1);
+  background: var(--clr-yellow); color: var(--clr-black);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body); font-weight: var(--fw-bold);
+  padding: 10px 20px; border-radius: var(--r-pill);
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: -0.01em; white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(253,186,23,0.3);
+}
+.nav__phone-btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+/* ━━━━ MEGA MENU ━━━━ */
+.mega {
+  display: none;
+  position: fixed;
+  left: 0; right: 0;
+  top: 80px;
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+  border: 1px solid #E8EDE3;
+  border-top: none;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  padding: 32px 48px 32px;
+  z-index: 99999;
+}
+.mega.is-open { display: block; }
+.mega__inner { max-width: 1200px; margin: 0 auto; }
+.mega__section-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.mega__grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 12px; }
+.mega__grid--3 { grid-template-columns: repeat(3,1fr); gap: 32px; }
+.mega__card { display: flex; flex-direction: column; gap: 6px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__card:hover { background: #F5F7F2; }
+.mega__card:hover .mega__name { color: #6BA546; }
+.mega__img-wrap { width: 100%; aspect-ratio: 1; background: #F5F7F2; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 8px; }
+.mega__card:hover .mega__img-wrap { background: #E8EDE3; }
+.mega__img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+.mega__name { font-size: 13px; font-weight: 600; color: #0D1117; letter-spacing: -0.01em; transition: color 0.18s; }
+.mega__sub { font-size: 11px; color: #6B7A5E; }
+.mega__tech-card { display: flex; flex-direction: column; gap: 12px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__tech-card:hover { background: #F5F7F2; }
+.mega__tech-card:hover .mega__tech-name { color: #6BA546; }
+.mega__tech-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
+.mega__tech-name { font-size: 15px; font-weight: 600; color: #0D1117; transition: color 0.18s; }
+.mega__tech-desc { font-size: 13px; color: #6B7A5E; line-height: 1.5; }
+.mega__cols { display: flex; gap: 48px; }
+.mega__col-group { display: flex; flex-direction: column; gap: 2px; }
+.mega__col-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.mega__link { font-size: 15px; font-weight: 500; color: #0D1117; text-decoration: none; padding: 8px; border-radius: 6px; display: block; transition: background 0.18s, color 0.18s; }
+.mega__link:hover { background: #F5F7F2; color: #6BA546; }
+.nav-wrapper.menu-open .nav { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: var(--sp-10);
+  background: #0a1a0f;
+}
+/* Video fills full hero — behind everything */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  /* Contain video — doesn't bleed into nav or ticker */
+  display: block;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+.hero__fade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 240px;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+  z-index: 2;
+}
+.hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 820px;
+  padding: 0 var(--sp-3);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero__title {
+  font-size: var(--type-h1);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: var(--sp-2);
+  opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards;
+}
+.hero__subtitle {
+  font-size: var(--type-body-lg);
+  font-weight: var(--fw-medium);
+  color: var(--clr-green);
+  opacity: 0; animation: fadeUp 0.6s ease 0.4s forwards;
+}
+
+/* Ticker inside hero — sits at bottom of hero above fold */
+.hero__ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  border-radius: 0;
+}
+.ticker {
+  width: 100%; overflow: hidden;
+  background: linear-gradient(90deg, var(--clr-green), var(--clr-cyan));
+  padding: 12px 0;
+}
+.ticker__track {
+  display: flex; width: max-content;
+  animation: ticker 28s linear infinite;
+  will-change: transform;
+}
+.ticker__img { height: 22px; width: auto; margin-right: var(--sp-6); display: block; flex-shrink: 0; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CAMPAIGN SLIDER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.camp-section { width: 100%; line-height: 0; }
+.camp-wrap { position: relative; overflow: hidden; width: 100%; }
+.camp-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+.camp-slide { flex-shrink: 0; width: 100%; }
+.camp-slide img { width: 100%; height: auto; display: block; }
+.camp-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.35); color: white;
+  border: none; width: 48px; height: 48px;
+  border-radius: 50%; font-size: 26px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 5; transition: background 0.2s;
+  backdrop-filter: blur(6px);
+}
+.camp-arrow:hover { background: rgba(0,0,0,0.6); }
+.camp-arrow--prev { left: 20px; }
+.camp-arrow--next { right: 20px; }
+.camp-dots {
+  position: absolute; bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 5;
+}
+.camp-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  border: none; cursor: pointer; padding: 0;
+  transition: all 0.2s ease;
+}
+.camp-dot.active {
+  background: white;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.mission {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(180deg, #eaf5e2 0%, var(--clr-white) 100%);
+  overflow: hidden;
+}
+.mission__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+}
+.mission__image-col { position: relative; }
+.mission__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-xl);
+  display: block;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+}
+.mission__copy-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.mission__heading {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.mission__body {
+  font-size: var(--type-body-lg);
+  color: var(--clr-muted);
+  line-height: 1.6;
+  font-weight: var(--fw-regular);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PRODUCTS CAROUSEL
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.products {
+  padding: var(--section-pad) 0;
+  background: var(--clr-gray-100);
+}
+.products__header {
+  text-align: center;
+  padding: 0 var(--sp-6);
+  margin-bottom: var(--sp-6);
+}
+
+/* Featured 3 — bigger, 3 col */
+.products__featured {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+
+/* More products — 4 col smaller */
+.products__more {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-3);
+}
+
+/* Featured card — taller visual */
+.product-card--featured .product-card__visual {
+  aspect-ratio: 3/2.5;
+}
+.product-card--featured .product-card__name {
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+/* Carousel kept for scroll fallback */
+.carousel { position: relative; }
+.carousel__track {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-6) var(--sp-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+
+/* Product card — Apple floating style */
+.product-card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--clr-white);
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+}
+
+/* Image area — colored bg, floating product */
+.product-card__visual {
+  aspect-ratio: 4/3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  padding: var(--sp-3);
+}
+
+/* Each product gets its own bg color */
+.product-card:nth-child(1) .product-card__visual { background: #EDF4E7; }
+.product-card:nth-child(2) .product-card__visual { background: #E8F4FA; }
+.product-card:nth-child(3) .product-card__visual { background: #F0F7EE; }
+.product-card:nth-child(4) .product-card__visual { background: #EAF3F8; }
+.product-card:nth-child(5) .product-card__visual { background: #F5F0FA; }
+.product-card:nth-child(6) .product-card__visual { background: #FFF8E8; }
+.product-card:nth-child(7) .product-card__visual { background: #EDF4E7; }
+
+/* Floating product image */
+.product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.35s ease;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+  display: block;
+}
+.product-card:hover .product-card__img {
+  transform: scale(1.04) translateY(-3px);
+}
+
+/* Subtle radial glow behind product */
+.product-card__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 60%, rgba(107,165,70,0.12) 0%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Text area */
+.product-card__body {
+  background: var(--clr-white);
+  padding: var(--sp-3) var(--sp-3) var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  border: 1px solid var(--clr-gray-200);
+  border-top: none;
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  flex: 1;
+}
+.product-card__tag {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.product-card__name {
+  font-size: var(--type-h3);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.product-card__desc {
+  font-size: var(--type-body-sm);
+  color: var(--clr-gray-400);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  margin-bottom: var(--sp-2);
+}
+/* Ghost CTA — subtle, not competing with image */
+.product-card__cta {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+.product-card:hover .product-card__cta { gap: 8px; }
+
+.carousel-btn {
+  position: absolute; top: 42%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: var(--clr-black);
+  border: 1px solid var(--clr-gray-200);
+  font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+.carousel-btn:hover {
+  background: var(--clr-white);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.carousel-btn--prev { left: var(--sp-2); }
+.carousel-btn--next { right: var(--sp-2); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TECHNOLOGY BENTO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tech {
+  padding: var(--section-pad) 0;
+  background: var(--clr-black);
+}
+.tech__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.tech__header { margin-bottom: var(--sp-6); }
+.tech__header .section-heading { color: var(--clr-white); }
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: var(--sp-2);
+}
+
+/* Bento cell base */
+.bento__cell {
+  background: #141a14;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.2s;
+}
+.bento__cell:hover { border-color: rgba(107,165,70,0.3); }
+
+/* Grid placements */
+.bento__cell--ai      { grid-column: span 5; grid-row: span 2; min-height: 320px; }
+.bento__cell--motor   { grid-column: span 4; grid-row: span 1; min-height: 150px; }
+.bento__cell--thermal { grid-column: span 3; grid-row: span 1; min-height: 150px; }
+.bento__cell--stat1   { grid-column: span 4; grid-row: span 1; min-height: 150px; }
+.bento__cell--stat2   { grid-column: span 3; grid-row: span 1; min-height: 150px; }
+
+.bento__img {
+  width: 100%; height: 100%;
+  object-fit: cover; position: absolute; inset: 0;
+  opacity: 0.5; transition: opacity 0.3s;
+}
+.bento__cell:hover .bento__img { opacity: 0.65; }
+
+.bento__content {
+  position: relative; z-index: 2;
+  padding: var(--sp-3);
+  display: flex; flex-direction: column;
+  justify-content: flex-end; height: 100%;
+}
+.bento__cell--ai .bento__content { justify-content: flex-end; min-height: 320px; }
+
+.bento__tag {
+  font-size: var(--type-label); font-weight: var(--fw-semi);
+  color: var(--clr-green); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: var(--sp-1);
+  display: block;
+}
+.bento__title {
+  font-size: var(--type-h3); font-weight: var(--fw-semi);
+  color: var(--clr-white); line-height: 1.2;
+  letter-spacing: -0.01em; margin-bottom: 6px;
+}
+.bento__desc {
+  font-size: var(--type-body-sm); color: rgba(255,255,255,0.55);
+  line-height: 1.5; font-weight: var(--fw-regular);
+}
+
+/* Stat cells */
+.bento__stat {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: var(--fw-black);
+  color: var(--clr-white);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: 6px;
+}
+.bento__stat-accent { color: var(--clr-green); }
+.bento__stat-label {
+  font-size: var(--type-body-sm); color: rgba(255,255,255,0.5);
+  font-weight: var(--fw-regular);
+}
+
+/* Legal entities in footer */
+.footer__legal {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: var(--sp-4) var(--sp-6);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.footer__legal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.footer__legal-entity { display: flex; flex-direction: column; gap: 6px; }
+.footer__legal-entity + .footer__legal-entity {
+  border-left: 1px solid rgba(255,255,255,0.08);
+  padding-left: var(--sp-4);
+}
+.footer__legal-name {
+  font-size: var(--type-label);
+  font-weight: var(--fw-bold);
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.footer__legal-detail {
+  font-size: var(--type-label);
+  color: rgba(255,255,255,0.3);
+  line-height: 1.6;
+}
+.footer__legal-detail strong {
+  color: rgba(255,255,255,0.45);
+  font-weight: var(--fw-semi);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COOKIE CONSENT BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.cookie-banner__icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.cookie-banner__content { flex: 1; }
+.cookie-banner__title {
+  font-size: var(--type-body);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  margin-bottom: 4px;
+}
+.cookie-banner__text {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  line-height: 1.5;
+}
+.cookie-banner__text a {
+  color: var(--clr-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cookie-banner__actions {
+  display: flex;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+.cookie-btn {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.cookie-btn--reject {
+  background: transparent;
+  color: var(--clr-muted);
+  border: 1.5px solid var(--clr-gray-200);
+}
+.cookie-btn--reject:hover { border-color: var(--clr-black); color: var(--clr-black); }
+.cookie-btn--accept {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  box-shadow: 0 2px 12px rgba(107,165,70,0.3);
+}
+.cookie-btn--accept:hover { background: var(--clr-green-dark); }
+.fraud-alert {
+  background: #FFF8E6;
+  border-top: 1px solid #F5E4B0;
+  border-bottom: 1px solid #F5E4B0;
+  padding: var(--sp-3) var(--sp-6);
+}
+.fraud-alert__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+}
+.fraud-alert__icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.fraud-alert__text {
+  font-size: var(--type-body-sm);
+  color: #7A5C00;
+  line-height: 1.6;
+  font-weight: var(--fw-regular);
+}
+.fraud-alert__text strong {
+  font-weight: var(--fw-semi);
+  color: #5C4400;
+}
+.fraud-alert__link {
+  color: #7A5C00;
+  font-weight: var(--fw-semi);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-left: var(--sp-1);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.fraud-alert__link:hover { color: #5C4400; }
+.lead-form {
+  background: var(--clr-green-dark);
+  padding: var(--section-pad) 0;
+}
+.lead-form__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--sp-8);
+  align-items: center;
+}
+.lead-form__sub {
+  font-size: var(--type-body);
+  color: rgba(255,255,255,0.6);
+  margin-top: var(--sp-2);
+}
+.lead-form__card {
+  background: var(--clr-white);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.lead-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+.lead-form__field { display: flex; flex-direction: column; gap: var(--sp-1); }
+.lead-form__label {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+}
+.lead-form__input,
+.lead-form__select {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  background: var(--clr-gray-100);
+  border: 1.5px solid var(--clr-gray-200);
+  border-radius: var(--r-sm);
+  padding: 10px var(--sp-2);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.lead-form__input:focus,
+.lead-form__select:focus { border-color: var(--clr-green); }
+.lead-form__input::placeholder { color: var(--clr-muted); }
+.lead-form__submit { width: 100%; justify-content: center; padding: 14px; font-size: var(--type-body); }
+.lead-form__note { font-size: var(--type-label); color: var(--clr-muted); text-align: center; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COOKIE BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 300px;
+  background: #1a1a1a;
+  color: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  box-sizing: border-box;
+}
+.cookie-banner.hidden {
+  transform: translateY(calc(100% + 24px));
+  opacity: 0;
+  pointer-events: none;
+}
+.cookie-banner__emoji { font-size: 24px; flex-shrink: 0; }
+.cookie-banner__text {
+  font-size: var(--type-body-sm);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  flex: 1;
+}
+.cookie-banner__text strong {
+  color: var(--clr-white);
+  font-weight: var(--fw-semi);
+}
+.cookie-banner__text a {
+  color: var(--clr-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cookie-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  justify-content: flex-end;
+}
+.cookie-btn {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.cookie-btn--accept {
+  background: var(--clr-green);
+  color: var(--clr-white);
+}
+.cookie-btn--accept:hover { background: var(--clr-green-dark); }
+.cookie-btn--reject {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+}
+.cookie-btn--reject:hover {
+  background: rgba(255,255,255,0.14);
+  color: var(--clr-white);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CAMPAIGN SLOT — toggleable
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.campaign {
+  display: none; /* hidden by default — show when campaign is active */
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21/6; /* wide cinematic banner */
+  overflow: hidden;
+  background: var(--clr-green-dark);
+}
+.campaign.active { display: block; }
+.campaign__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.campaign__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,60,30,0.7) 0%, transparent 60%);
+}
+.campaign__content {
+  position: absolute;
+  left: var(--sp-12);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 480px;
+}
+.campaign__tag {
+  display: inline-block;
+  background: var(--clr-yellow);
+  color: var(--clr-black);
+  font-size: var(--type-label);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--r-xs);
+  margin-bottom: var(--sp-2);
+}
+.campaign__heading {
+  font-size: clamp(20px, 3vw, 36px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-3);
+}
+.campaign__close {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-3);
+  background: rgba(0,0,0,0.3);
+  border: none;
+  color: rgba(255,255,255,0.7);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 3;
+}
+.campaign__close:hover { background: rgba(0,0,0,0.5); color: white; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VOICES — full width editorial
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.voices {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(135deg, #e8f5f0 0%, #f0f9f5 40%, #e3f4f8 100%);
+  overflow: hidden;
+}
+.voices__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  text-align: center;
+}
+.voices__header { margin-bottom: var(--sp-8); }
+.voices__header .eyebrow { color: var(--clr-muted); }
+.voices__header .section-heading { color: var(--clr-green); }
+
+/* Shubham original — quote left, photo right */
+.voices__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+  min-height: 380px;
+  text-align: left;
+}
+
+.voices__card {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-4);
+  position: relative;
+}
+.voices__card--featured { display: contents; }
+
+/* Subtle glow */
+.voices__card::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(107,165,70,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Featured card spans full height */
+.voices__card--featured {
+  grid-row: span 2;
+  justify-content: flex-end;
+}
+.voices__card--featured .voices__quote {
+  font-size: clamp(20px, 2.5vw, 28px);
+}
+.voices__card--featured::before {
+  width: 320px; height: 320px;
+  top: -100px; right: -100px;
+}
+
+/* Featured has photo as background */
+.voices__photo-large {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--r-xl);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  margin: 0 auto;
+  display: block;
+}
+
+.voices__quote-mark {
+  font-size: 56px;
+  line-height: 0.8;
+  font-weight: var(--fw-black);
+  color: var(--clr-green);
+  opacity: 0.4;
+  font-family: Georgia, serif;
+  margin-bottom: var(--sp-2);
+}
+.voices__card--featured .voices__quote-mark { opacity: 0.6; }
+
+.voices__quote {
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: var(--fw-medium);
+  color: var(--clr-black);
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.voices__person {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-top: var(--sp-4);
+  margin-top: var(--sp-2);
+}
+.voices__photo {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--clr-gray-200);
+}
+.voices__photo--placeholder {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--clr-green), var(--clr-cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--type-body-lg); font-weight: var(--fw-bold);
+  color: var(--clr-white); flex-shrink: 0;
+}
+.voices__name {
+  font-size: var(--type-body);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  line-height: 1.2;
+}
+.voices__role {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  font-weight: var(--fw-regular);
+}
+/* Nav arrows */
+.voices__nav {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+}
+.voices__nav-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 18px; color: var(--clr-black);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.voices__nav-btn:hover {
+  background: var(--clr-green);
+  color: white;
+  border-color: var(--clr-green);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BLOGS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.blogs {
+  padding: var(--section-pad) 0;
+  background: var(--clr-white);
+}
+.blogs__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+.blogs__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--sp-4);
+}
+.blogs__view-all {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+  padding-bottom: 4px;
+}
+.blogs__view-all:hover { gap: 8px; }
+
+/* Filter tabs */
+.blogs__filters {
+  display: flex;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+}
+.blogs__filter {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-muted);
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  border-radius: var(--r-pill);
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.blogs__filter:hover {
+  border-color: var(--clr-green);
+  color: var(--clr-green);
+}
+.blogs__filter.active {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  border-color: var(--clr-green);
+}
+
+.blogs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.blog-card__img-wrap { overflow: hidden; flex-shrink: 0; }
+.blog-card__img {
+  width: 100%; aspect-ratio: 16/9;
+  object-fit: cover;
+  background: var(--clr-gray-100);
+  transition: transform 0.35s ease;
+  display: block;
+}
+.blog-card:hover .blog-card__img { transform: scale(1.04); }
+
+.blog-card__body {
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  flex: 1;
+}
+
+/* Category pill — color coded */
+.blog-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--r-xs);
+  padding: 4px 8px;
+  width: fit-content;
+}
+.blog-cat--press    { background: #EEF2FF; color: #4F6FDB; }
+.blog-cat--solar    { background: #EDF7E6; color: #4A8A2E; }
+.blog-cat--farmer   { background: #FFF7E6; color: #B07A10; }
+.blog-cat--tech     { background: #EAF5FA; color: #1A7FA0; }
+.blog-cat--policy   { background: #E6F4EE; color: #006037; }
+.blog-cat--company  { background: #FFF0F0; color: #C04040; }
+
+.blog-card__title {
+  font-size: var(--type-body-lg);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-top: 2px;
+}
+.blog-card__excerpt {
+  font-size: var(--type-body-sm);
+  color: var(--clr-gray-400);
+  line-height: 1.5;
+  flex: 1;
+}
+.blog-card__cta {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--sp-2);
+  transition: gap 0.2s ease;
+}
+.blog-card:hover .blog-card__cta { gap: 8px; }
+.stats {
+  background: var(--clr-gray-100);
+  padding: var(--sp-10) 0;
+}
+.stats__inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: var(--sp-3);
+}
+.stat {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  padding: var(--sp-5) var(--sp-3);
+  background: var(--clr-white);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--clr-gray-200);
+}
+.stat__number {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: var(--fw-black);
+  color: var(--clr-black);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: var(--sp-1);
+}
+/* Only ONE green number — most impactful stat */
+.stat:first-child .stat__number { color: var(--clr-green); }
+.stat__label {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.footer { background: #0a0f0a; color: rgba(255,255,255,0.65); }
+
+.footer__top {
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer__logo { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; }
+.footer__tagline { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+.footer__tagline span { font-style: normal; }
+
+.footer__main {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: var(--sp-6);
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  gap: var(--sp-6);
+}
+.footer__col-head {
+  font-size: var(--type-label); font-weight: var(--fw-bold);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); margin-bottom: 20px;
+}
+.footer__col-head--green { color: var(--clr-green); }
+.footer__col-head--cyan  { color: var(--clr-cyan); }
+.footer__links { display: flex; flex-direction: column; gap: 2px; }
+.footer__link {
+  font-size: 15px; font-weight: var(--fw-regular);
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  padding: 5px 0; transition: color 0.18s;
+}
+.footer__link:hover { color: var(--clr-white); }
+.footer__toll-label {
+  font-size: var(--type-label); font-weight: var(--fw-medium);
+  color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: var(--sp-1);
+}
+.footer__toll-number { font-size: 22px; font-weight: var(--fw-bold); color: var(--clr-white); letter-spacing: -0.02em; }
+
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--sp-3) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+}
+.footer__newsletter-label { font-size: var(--type-body-sm); font-weight: var(--fw-semi); color: rgba(255,255,255,0.6); margin-bottom: var(--sp-2); }
+.footer__newsletter-form { display: flex; gap: var(--sp-1); }
+.footer__newsletter-input {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-body-sm);
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-pill); color: var(--clr-white);
+  padding: 9px var(--sp-2); outline: none; width: 200px;
+  transition: border-color 0.2s;
+}
+.footer__newsletter-input::placeholder { color: rgba(255,255,255,0.25); }
+.footer__newsletter-input:focus { border-color: var(--clr-green); }
+.footer__newsletter-btn {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-label);
+  font-weight: var(--fw-bold); background: var(--clr-green); color: var(--clr-white);
+  border: none; border-radius: var(--r-pill); padding: 9px var(--sp-2);
+  cursor: pointer; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s;
+}
+.footer__newsletter-btn:hover { background: var(--clr-green-dark); }
+
+.footer__socials { display: flex; gap: var(--sp-2); }
+.footer__social {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; font-weight: var(--fw-semi);
+  transition: border-color 0.2s, color 0.2s;
+}
+.footer__social:hover { border-color: var(--clr-green); color: var(--clr-green); }
+
+.footer__scroll-top {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-label);
+  font-weight: var(--fw-semi); letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); cursor: pointer; background: none; border: none;
+  display: flex; align-items: center; gap: var(--sp-1); transition: color 0.2s;
+}
+.footer__scroll-top:hover { color: var(--clr-white); }
+
+.footer__copy {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: var(--sp-2) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer__copy-text { font-size: var(--type-label); color: rgba(255,255,255,0.2); }
+.footer__copy-brand { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ROOFTOP HERO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-hero {
+  position: relative; width: 100%; min-height: 100vh;
+  display: flex; align-items: center; justify-content: flex-end;
+  overflow: hidden;
+}
+.rt-hero__bg {
+  position: absolute; inset: 0;
+  background: url('https://framerusercontent.com/images/Is3mj3m2EKedt8Oupj4ObUsinyY.png?scale-down-to=2048') center/cover no-repeat;
+  z-index: 0;
+}
+.rt-hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 30%, rgba(0,0,0,0.5) 58%, rgba(0,0,0,0.72) 100%);
+  z-index: 1;
+}
+.rt-hero__content {
+  position: relative; z-index: 2;
+  width: 46%; margin-right: 5%; padding-top: 80px;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.rt-hero__badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(253,186,23,0.15); border: 1px solid rgba(253,186,23,0.4);
+  color: var(--clr-yellow); font-size: var(--type-label); font-weight: var(--fw-semi);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: var(--r-pill); width: fit-content; margin-bottom: var(--sp-2);
+}
+.rt-hero__heading {
+  font-size: clamp(44px, 5.5vw, 72px); font-weight: var(--fw-bold);
+  color: var(--clr-white); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 12px;
+}
+.rt-hero__heading span { color: var(--clr-green); }
+.rt-hero__sub {
+  font-size: clamp(16px, 1.6vw, 20px); font-weight: var(--fw-semi);
+  color: var(--clr-white); margin-bottom: var(--sp-2);
+}
+.rt-hero__desc {
+  font-size: var(--type-body); color: rgba(255,255,255,0.72);
+  line-height: 1.6; margin-bottom: var(--sp-4); max-width: 480px;
+}
+.rt-hero__actions { display: flex; gap: var(--sp-2); margin-bottom: var(--sp-4); flex-wrap: wrap; }
+.rt-hero__usps { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+.rt-hero__usp {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--r-pill); padding: 8px 16px;
+  font-size: var(--type-body-sm); font-weight: var(--fw-semi); color: var(--clr-white);
+}
+.rt-hero__usp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--clr-green); flex-shrink: 0; }
+
+/* TICKER */
+.ticker-wrap { position: relative; height: 46px; overflow: hidden; line-height: 0; }
+.ticker-bg { position: absolute; inset: 0; background: linear-gradient(90deg, var(--clr-green-dark) 0%, var(--clr-green) 100%); }
+.ticker-track { display: flex; align-items: center; height: 46px; position: relative; z-index: 1; width: max-content; animation: ticker-scroll 24s linear infinite; }
+.ticker-img { height: 22px; width: auto; margin-right: 40px; flex-shrink: 0; filter: brightness(0) invert(1); }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PMSGY BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-pmsgy {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(135deg, var(--clr-green-dark) 0%, #004d2c 100%);
+}
+.rt-pmsgy__inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6);
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--sp-8); align-items: center;
+}
+.rt-pmsgy__tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(253,186,23,0.2); border: 1px solid rgba(253,186,23,0.4);
+  color: var(--clr-yellow); font-size: var(--type-label); font-weight: var(--fw-semi);
+  padding: 6px 16px; border-radius: var(--r-pill); width: fit-content; margin-bottom: var(--sp-2);
+}
+.rt-pmsgy__heading {
+  font-size: clamp(28px,3.5vw,48px); font-weight: var(--fw-bold);
+  color: var(--clr-white); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--sp-2);
+}
+.rt-pmsgy__heading span { color: var(--clr-yellow); }
+.rt-pmsgy__desc { font-size: var(--type-body-lg); color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: var(--sp-5); }
+.rt-pmsgy__subsidies { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); margin-bottom: var(--sp-4); }
+.rt-pmsgy__subsidy {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-md); padding: var(--sp-3);
+}
+.rt-pmsgy__subsidy-amt { font-size: clamp(28px,3vw,40px); font-weight: var(--fw-black); color: var(--clr-yellow); line-height: 1; }
+.rt-pmsgy__subsidy-label { font-size: var(--type-body-sm); color: rgba(255,255,255,0.6); margin-top: 4px; }
+.rt-pmsgy__img { width: 100%; border-radius: var(--r-xl); display: block; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   WHY ECOZEN — 3 cards
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-why { padding: var(--section-pad) 0; background: var(--clr-white); }
+.rt-why__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.rt-why__header { text-align: center; margin-bottom: var(--sp-6); }
+.rt-why__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--sp-3); }
+.rt-why-card {
+  background: var(--clr-gray-100); border-radius: var(--r-xl);
+  padding: var(--sp-6) var(--sp-5);
+  display: flex; flex-direction: column; gap: var(--sp-2);
+}
+.rt-why-card__icon { width: 52px; height: 52px; }
+.rt-why-card__title { font-size: clamp(18px,2vw,24px); font-weight: var(--fw-bold); color: var(--clr-black); line-height: 1.2; }
+.rt-why-card__desc { font-size: var(--type-body-sm); color: var(--clr-muted); line-height: 1.6; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RECOMMEND — Roof Size / Usage / Needs
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-recommend { padding: var(--section-pad) 0; background: var(--clr-gray-100); }
+.rt-recommend__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.rt-recommend__header { text-align: center; margin-bottom: var(--sp-6); }
+.rt-recommend__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--sp-3); }
+.rt-rec-card {
+  border-radius: var(--r-xl); overflow: hidden;
+  min-height: 280px; position: relative;
+  background-size: cover; background-position: center;
+}
+.rt-rec-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.8) 100%);
+}
+.rt-rec-card__body {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  z-index: 2; padding: var(--sp-4);
+}
+.rt-rec-card__title { font-size: clamp(20px,2vw,28px); font-weight: var(--fw-bold); color: var(--clr-white); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FULL SOLAR KIT
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-kit { padding: var(--section-pad) 0; background: var(--clr-white); }
+.rt-kit__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); align-items: start; }
+.rt-kit__heading { font-size: var(--type-h2); font-weight: var(--fw-bold); color: var(--clr-green); margin-bottom: var(--sp-4); }
+.rt-kit__items { display: flex; flex-direction: column; gap: 0; }
+.rt-kit__item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0; border-bottom: 1px solid var(--clr-gray-200);
+  font-size: clamp(18px,2vw,24px); font-weight: var(--fw-medium); color: var(--clr-black);
+  cursor: pointer; transition: color 0.2s;
+}
+.rt-kit__item.active { color: var(--clr-green); }
+.rt-kit__item-num { font-size: var(--type-body-sm); color: var(--clr-muted); }
+.rt-kit__images { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); }
+.rt-kit__img { width: 100%; border-radius: var(--r-md); display: block; aspect-ratio: 4/3; object-fit: cover; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PROCESS — 4 steps
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-process { padding: var(--section-pad) 0; background: var(--clr-white); }
+.rt-process__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.rt-process__header { text-align: center; margin-bottom: var(--sp-6); }
+.rt-process__grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--sp-3); }
+.rt-step-card { display: flex; flex-direction: column; gap: var(--sp-2); }
+.rt-step-card__img { width: 100%; border-radius: var(--r-xl); display: block; aspect-ratio: 3/4; object-fit: cover; margin-bottom: var(--sp-2); }
+.rt-step-card__num { font-size: var(--type-label); color: var(--clr-muted); letter-spacing: 0.1em; }
+.rt-step-card__title { font-size: var(--type-body); color: var(--clr-black); line-height: 1.4; }
+.rt-step-card__title strong { font-weight: var(--fw-bold); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   STRUCTURE — Heavy Duty
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-structure { padding: var(--section-pad) 0; background: var(--clr-gray-100); }
+.rt-structure__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--sp-3); }
+.rt-struct-card {
+  background: var(--clr-white); border-radius: var(--r-xl);
+  padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2);
+}
+.rt-struct-card__img { width: 100%; border-radius: var(--r-md); display: block; margin-bottom: var(--sp-2); }
+.rt-struct-card__title { font-size: clamp(18px,2vw,26px); font-weight: var(--fw-bold); color: var(--clr-black); line-height: 1.3; }
+.rt-struct-card__highlights { display: flex; gap: var(--sp-2); flex-wrap: wrap; margin-top: var(--sp-2); }
+.rt-struct-highlight {
+  font-size: 12px; font-weight: var(--fw-semi); color: var(--clr-green-dark);
+  background: rgba(107,165,70,0.1); border-radius: var(--r-pill);
+  padding: 4px 12px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COMPARISON TABLE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-compare { padding: var(--section-pad) 0; background: var(--clr-white); }
+.rt-compare__inner { max-width: 900px; margin: 0 auto; padding: 0 var(--sp-6); }
+.rt-compare__header { text-align: center; margin-bottom: var(--sp-6); }
+.rt-compare__table { width: 100%; border-collapse: collapse; border-radius: var(--r-xl); overflow: hidden; box-shadow: 0 4px 40px rgba(0,0,0,0.06); }
+.rt-compare__table thead tr { background: var(--clr-gray-100); }
+.rt-compare__table thead th { padding: 20px 24px; font-size: var(--type-body); font-weight: var(--fw-bold); color: var(--clr-black); text-align: left; }
+.rt-compare__table thead th:last-child { background: var(--clr-green); color: var(--clr-white); }
+.rt-compare__table tbody tr { border-bottom: 1px solid var(--clr-gray-200); }
+.rt-compare__table tbody tr:last-child { border-bottom: none; }
+.rt-compare__table tbody td { padding: 18px 24px; font-size: var(--type-body-sm); color: var(--clr-black); vertical-align: middle; }
+.rt-compare__table tbody td:last-child { color: var(--clr-green); font-weight: var(--fw-semi); }
+.rt-compare__table tbody td:nth-child(2) { color: var(--clr-muted); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   WARRANTY / CARE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-warranty { padding: var(--section-pad) 0; background: var(--clr-green-dark); }
+.rt-warranty__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.rt-warranty__header { text-align: center; margin-bottom: var(--sp-6); }
+.rt-warranty__heading { font-size: var(--type-h2); font-weight: var(--fw-bold); color: var(--clr-white); }
+.rt-warranty__heading span { color: var(--clr-yellow); }
+.rt-warranty__grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--sp-3); }
+.rt-warranty-card {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-xl); padding: var(--sp-5);
+  text-align: center;
+}
+.rt-warranty-card__img { width: 80px; height: 80px; object-fit: contain; margin: 0 auto var(--sp-3); display: block; }
+.rt-warranty-card__product { font-size: var(--type-body-sm); color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.rt-warranty-card__years { font-size: clamp(32px,4vw,52px); font-weight: var(--fw-black); color: var(--clr-yellow); line-height: 1; }
+.rt-warranty-card__label { font-size: var(--type-body-sm); color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   STATS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-stats { padding: var(--section-pad) 0; background: var(--clr-white); }
+.rt-stats__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+.rt-stat { border-left: 1px solid var(--clr-gray-200); padding: 0 var(--sp-5); }
+.rt-stat:first-child { border-left: none; }
+.rt-stat__num { font-size: clamp(40px,5vw,64px); font-weight: var(--fw-regular); color: var(--clr-green); letter-spacing: -2.5px; line-height: 1; margin-bottom: 8px; }
+.rt-stat__label { font-size: 20px; color: var(--clr-muted); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FAQ
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rt-faq { padding: 100px var(--sp-6); background: var(--clr-gray-100); }
+.rt-faq__inner { max-width: 800px; margin: 0 auto; }
+.rt-faq__heading { font-size: clamp(36px,4vw,52px); font-weight: var(--fw-medium); text-align: center; letter-spacing: -1px; color: #424242; margin-bottom: var(--sp-6); }
+.rt-faq__item { border-radius: 12px; box-shadow: 0 4px 6px 4px rgba(180,156,197,.08); background: rgba(255,255,255,.5); margin-bottom: var(--sp-2); }
+.rt-faq__q { display: flex; justify-content: space-between; align-items: center; padding: 28px 32px; cursor: pointer; font-size: 18px; font-weight: var(--fw-medium); color: #424242; gap: var(--sp-3); }
+.rt-faq__icon { font-size: 18px; color: var(--clr-green-dark); flex-shrink: 0; transition: transform 0.2s; }
+.rt-faq__item.open .rt-faq__icon { transform: rotate(45deg); }
+.rt-faq__a { display: none; padding: 0 32px 28px; font-size: var(--type-body); color: rgba(0,0,0,.8); line-height: 1.7; }
+.rt-faq__item.open .rt-faq__a { display: block; }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  Get 20% OFF on Ecozen Smart AC. Offer Valid till 30th May. T&amp;C*
+  <a href="#">Buy Now &rsaquo;</a>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="#" class="nav__logo">
+      <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="nav__logo-img">
+    </a>
+    <ul class="nav__links">
+      <li class="nav__item">
+        <button class="nav__trigger">Products <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Products</div>
+            <div class="mega__grid">
+              <a href="ecotron.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/ho1yoHUhEznXalDBkGUGEcn3w.png?scale-down-to=512" alt="Ecotron"></div><div class="mega__name">Ecotron</div><div class="mega__sub">Solar Pump Controller Set</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UpCjHunNdpYxz5EHMBB63oRNq6w.png?scale-down-to=512" alt="Smart Rooftop"></div><div class="mega__name">Smart Rooftop</div><div class="mega__sub">Solar Rooftop System</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UI5C0avLzgcVcBtQARfb0413SM.png?scale-down-to=512" alt="Solar AC"></div><div class="mega__name">Solar AC</div><div class="mega__sub">True Solar AC</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HQo0shYCaFQr4ftH355yY4MzHQ.png?scale-down-to=512" alt="Smart AC"></div><div class="mega__name">Smart AC</div><div class="mega__sub">Solar Compatible AC</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HhdZoSO9Ks6NhkyIJgvRO4FNCc.png?scale-down-to=512" alt="Ecofrost"></div><div class="mega__name">Ecofrost</div><div class="mega__sub">Solar Cold Room</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/1y9A85gop6sykfhXhLwi0EU4.png?scale-down-to=512" alt="Ecofreeze"></div><div class="mega__name">Ecofreeze</div><div class="mega__sub">Solar &amp; Grid Freezer</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/rouKjd27Ia6UNiOXetYTrX1T4.png?scale-down-to=512" alt="Atta Chakki"></div><div class="mega__name">Atta Chakki</div><div class="mega__sub">Solar Powered</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Technology <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Technology</div>
+            <div class="mega__grid mega__grid--3">
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/SlgjaFXiZTm2VLRSN0f3PeJbU.png" alt="AI"><div class="mega__tech-name">AI Solutions</div><div class="mega__tech-desc">Open a world of possibilities with our AI Solutions</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jVGWDfpkNuQuf0CGzeykQbt48.png" alt="Motor"><div class="mega__tech-name">Motor Control</div><div class="mega__tech-desc">Efficiently Controls BLDC, PMSM, SYNRM &amp; Other Motors</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jXWGMjOBo5Ew7idmSO5F2hTMXCA.png" alt="Thermal"><div class="mega__tech-name">Thermal Energy Storage</div><div class="mega__tech-desc">ecozen's Patented Ice-core Technology</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Resources <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Learn</div>
+                <a href="#" class="mega__link">Ecozen Blogs</a>
+                <a href="#" class="mega__link">News</a>
+                <a href="#" class="mega__link">Case Studies</a>
+                <a href="#" class="mega__link">Documents</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">More <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Company</div>
+                <a href="#" class="mega__link">About Us</a>
+                <a href="#" class="mega__link">Careers</a>
+              </div>
+              <div class="mega__col-group">
+                <div class="mega__col-label">Contact</div>
+                <a href="#" class="mega__link">Find Certified Dealer</a>
+                <a href="#" class="mega__link">Find Experience Centre</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <a href="tel:18001217515" class="nav__phone-btn">📞 1800 121 7515</a>
+  </nav>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <span class="cookie-banner__emoji">🍪</span>
+  <p class="cookie-banner__text">
+    <strong>We use cookies</strong> to improve your experience and analyse site traffic.
+    By continuing, you agree to our <a href="#">Privacy Policy</a>.
+  </p>
+  <div class="cookie-banner__actions">
+    <button class="cookie-btn cookie-btn--reject" id="cookieReject">Reject All</button>
+    <button class="cookie-btn cookie-btn--accept" id="cookieAccept">Accept All</button>
+  </div>
+</div>
+
+<!-- CAMPAIGN SLOT — set class="campaign active" to show -->
+<div class="campaign" id="campaignSlot">
+  <img class="campaign__img" src="" alt="Campaign">
+  <div class="campaign__overlay"></div>
+  <div class="campaign__content">
+    <span class="campaign__tag">⚡ Limited Time</span>
+    <h2 class="campaign__heading">Campaign Heading Goes Here</h2>
+    <a href="#" class="btn btn--primary">Learn More →</a>
+  </div>
+  <button class="campaign__close" onclick="document.getElementById('campaignSlot').classList.remove('active')">✕</button>
+</div>
+
+
+<!-- HERO -->
+<section class="rt-hero">
+  <div class="rt-hero__bg"></div>
+  <div class="rt-hero__overlay"></div>
+  <div class="rt-hero__content">
+    <div class="rt-hero__badge">☀️ PM Surya Ghar Empaneled</div>
+    <h1 class="rt-hero__heading">Rooftop<br><span>Solar.</span><br>Done Right.</h1>
+    <p class="rt-hero__sub">Save up to ₹78,000 in subsidy. Start saving from Day 1.</p>
+    <p class="rt-hero__desc">ecozen is a PM Surya Ghar empaneled vendor with 4 Lakh+ installations across India. Quality components, certified dealers, end-to-end support.</p>
+    <div class="rt-hero__actions">
+      <a href="#lead" class="btn btn--primary">Get Free Consultation</a>
+      <a href="#process" class="btn btn--ghost">See How It Works</a>
+    </div>
+    <div class="rt-hero__usps">
+      <div class="rt-hero__usp"><div class="rt-hero__usp-dot"></div>₹78,000 Subsidy</div>
+      <div class="rt-hero__usp"><div class="rt-hero__usp-dot"></div>Free Site Survey</div>
+      <div class="rt-hero__usp"><div class="rt-hero__usp-dot"></div>4.9★ on Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-bg"></div>
+  <div class="ticker-track">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+  </div>
+</div>
+
+<!-- PMSGY BANNER -->
+<section class="rt-pmsgy">
+  <div class="rt-pmsgy__inner">
+    <div>
+      <div class="rt-pmsgy__tag">🏛️ Government Scheme</div>
+      <h2 class="rt-pmsgy__heading">PM Surya Ghar<br><span>Muft Bijli Yojana</span></h2>
+      <p class="rt-pmsgy__desc">ecozen is an empaneled vendor under PMSGY — helping homeowners adopt solar seamlessly with government subsidy support.</p>
+      <div class="rt-pmsgy__subsidies">
+        <div class="rt-pmsgy__subsidy">
+          <div class="rt-pmsgy__subsidy-amt">₹78,000</div>
+          <div class="rt-pmsgy__subsidy-label">Max central subsidy (3kW)</div>
+        </div>
+        <div class="rt-pmsgy__subsidy">
+          <div class="rt-pmsgy__subsidy-amt">60%</div>
+          <div class="rt-pmsgy__subsidy-label">Subsidy on systems up to 2kW</div>
+        </div>
+        <div class="rt-pmsgy__subsidy">
+          <div class="rt-pmsgy__subsidy-amt">300</div>
+          <div class="rt-pmsgy__subsidy-label">Free units every month</div>
+        </div>
+        <div class="rt-pmsgy__subsidy">
+          <div class="rt-pmsgy__subsidy-amt">Direct</div>
+          <div class="rt-pmsgy__subsidy-label">Bank transfer after install</div>
+        </div>
+      </div>
+      <a href="#lead" class="btn btn--secondary">Check Your Eligibility</a>
+    </div>
+    <img class="rt-pmsgy__img"
+      src="https://framerusercontent.com/images/eB1QPcLsJqenEHsdXqMWeCfDyg0.png?scale-down-to=1024"
+      alt="PM Surya Ghar Yojana">
+  </div>
+</section>
+
+<!-- WHY ECOZEN -->
+<section class="rt-why">
+  <div class="rt-why__inner">
+    <div class="rt-why__header">
+      <span class="eyebrow">We Bring You</span>
+      <h2 class="section-heading">Best In <span class="accent-green">Solar</span></h2>
+    </div>
+    <div class="rt-why__grid">
+      <div class="rt-why-card">
+        <img class="rt-why-card__icon" src="https://framerusercontent.com/images/A38o1cljM2RaJxNc7G0Uq2TQg.png" alt="">
+        <div class="rt-why-card__title">Quality Components</div>
+        <div class="rt-why-card__desc">We help you choose from the most trusted & top solar panel and inverter brands from India — no compromise on quality.</div>
+      </div>
+      <div class="rt-why-card">
+        <img class="rt-why-card__icon" src="https://framerusercontent.com/images/2Pe2LVxNxDMwgGhkaMSwJb0Nx9k.png" alt="">
+        <div class="rt-why-card__title">Service Network</div>
+        <div class="rt-why-card__desc">With a wide service network and experience of 4 Lakh+ solar installations, we ensure seamless installation across India.</div>
+      </div>
+      <div class="rt-why-card">
+        <img class="rt-why-card__icon" src="https://framerusercontent.com/images/YumAa9LmHANLqWHsCpfr6b2AzaQ.png" alt="">
+        <div class="rt-why-card__title">Ecozen Care Protection</div>
+        <div class="rt-why-card__desc">With Ecozen certified dealers, you get assured service warranty and care plans — beyond just installation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WE RECOMMEND SOLAR BASED ON -->
+<section class="rt-recommend">
+  <div class="rt-recommend__inner">
+    <div class="rt-recommend__header">
+      <span class="eyebrow">Personalized for You</span>
+      <h2 class="section-heading">We Recommend Solar<br><span class="accent-green">Based on</span></h2>
+    </div>
+    <div class="rt-recommend__grid">
+      <div class="rt-rec-card" style="background-image:url('https://framerusercontent.com/images/I9vG0WwRt0cB4X4FHZ2noSBaDcg.jpg?scale-down-to=1024')">
+        <div class="rt-rec-card__body">
+          <div class="rt-rec-card__title">Your Roof Size</div>
+        </div>
+      </div>
+      <div class="rt-rec-card" style="background-image:url('https://framerusercontent.com/images/hJBvQKdlyQbfrKgmfh3YYCU8GQ.png?scale-down-to=1024')">
+        <div class="rt-rec-card__body">
+          <div class="rt-rec-card__title">Your Electricity Usage</div>
+        </div>
+      </div>
+      <div class="rt-rec-card" style="background-image:url('https://framerusercontent.com/images/Is3mj3m2EKedt8Oupj4ObUsinyY.png?scale-down-to=1024')">
+        <div class="rt-rec-card__body">
+          <div class="rt-rec-card__title">Your Future Needs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL SOLAR KIT -->
+<section class="rt-kit">
+  <div class="rt-kit__inner">
+    <div>
+      <span class="eyebrow">What's in the Kit</span>
+      <h2 class="rt-kit__heading">Full Solar Kit</h2>
+      <div class="rt-kit__items">
+        <div class="rt-kit__item active">
+          <span>Solar Panels</span>
+          <span class="rt-kit__item-num">01</span>
+        </div>
+        <div class="rt-kit__item">
+          <span>On-Grid Inverter</span>
+          <span class="rt-kit__item-num">02</span>
+        </div>
+        <div class="rt-kit__item">
+          <span>Solar Structure</span>
+          <span class="rt-kit__item-num">03</span>
+        </div>
+      </div>
+    </div>
+    <div class="rt-kit__images">
+      <img class="rt-kit__img"
+        src="https://framerusercontent.com/images/DcZUY7L9Qv59s3eiGBpcfJsgc.png?scale-down-to=1024"
+        alt="Solar Panel">
+      <img class="rt-kit__img"
+        src="https://framerusercontent.com/images/aopHvH7dqL5JthZX5zD808k86tM.png?scale-down-to=512"
+        alt="On-Grid Inverter">
+      <img class="rt-kit__img" style="grid-column:span 2"
+        src="https://framerusercontent.com/images/P2LNBQkAEyCVYb488zPYrxP2LVM.png?scale-down-to=1024"
+        alt="Solar Structure">
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="rt-process" id="process">
+  <div class="rt-process__inner">
+    <div class="rt-process__header">
+      <span class="eyebrow">We'll Guide You, Hassle-Free</span>
+      <h2 class="section-heading">Easy Process,<br><span class="accent-green">Complete Support</span></h2>
+    </div>
+    <div class="rt-process__grid">
+      <div class="rt-step-card">
+        <img class="rt-step-card__img"
+          src="https://framerusercontent.com/images/3YFN5SO38075Hf9sT7XAgDaDQh0.png?scale-down-to=512"
+          alt="Step 1">
+        <div class="rt-step-card__num">STEP 1</div>
+        <div class="rt-step-card__title">Pay <strong>₹3000</strong> (refundable) to book your system</div>
+      </div>
+      <div class="rt-step-card">
+        <img class="rt-step-card__img"
+          src="https://framerusercontent.com/images/xCTL68mXTtiV40OA8xfTI5XA5I.png?scale-down-to=512"
+          alt="Step 2">
+        <div class="rt-step-card__num">STEP 2</div>
+        <div class="rt-step-card__title">Get support to <strong>register on PM Surya Ghar Portal</strong></div>
+      </div>
+      <div class="rt-step-card">
+        <img class="rt-step-card__img"
+          src="https://framerusercontent.com/images/2CcEvO2ZKfOvRnDkIdp1dNbOA.png?scale-down-to=512"
+          alt="Step 3">
+        <div class="rt-step-card__num">STEP 3</div>
+        <div class="rt-step-card__title"><strong>Free site survey</strong> &amp; consultation</div>
+      </div>
+      <div class="rt-step-card">
+        <img class="rt-step-card__img"
+          src="https://framerusercontent.com/images/jdS8UYu58powGGGAh68hHyJxc.png?scale-down-to=512"
+          alt="Step 4">
+        <div class="rt-step-card__num">STEP 4</div>
+        <div class="rt-step-card__title">End-to-end support until <strong>installation</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE — Heavy Duty -->
+<section class="rt-structure">
+  <div style="max-width:var(--max-w);margin:0 auto;padding:0 var(--sp-6);text-align:center;margin-bottom:var(--sp-6)">
+    <span class="eyebrow">Built to Last</span>
+    <h2 class="section-heading">Heavy duty <span class="accent-green">rust-proof</span> structure</h2>
+  </div>
+  <div class="rt-structure__inner">
+    <div class="rt-struct-card">
+      <img class="rt-struct-card__img"
+        src="https://framerusercontent.com/images/EtQaCNxdlLLwl8HlAjqjpEFSiU.png?scale-down-to=512"
+        alt="Hot Dip Galvanized">
+      <div class="rt-struct-card__title">Hot Dip Galvanized Steel</div>
+      <p style="font-size:var(--type-body-sm);color:var(--clr-muted)">25+ year life. No rust, no corrosion — even in coastal or high-humidity areas.</p>
+      <div class="rt-struct-card__highlights">
+        <span class="rt-struct-highlight">Rust Free</span>
+        <span class="rt-struct-highlight">25+ Year Life</span>
+      </div>
+    </div>
+    <div class="rt-struct-card">
+      <img class="rt-struct-card__img"
+        src="https://framerusercontent.com/images/HOmBe3jxLiuMzKtGmUb9IuAfQIo.png?scale-down-to=512"
+        alt="Chemical Anchoring">
+      <div class="rt-struct-card__title">Chemical anchoring for 100% leak-proof roof protection</div>
+      <div class="rt-struct-card__highlights">
+        <span class="rt-struct-highlight">IIT Approved</span>
+        <span class="rt-struct-highlight">Leak-proof</span>
+      </div>
+    </div>
+    <div class="rt-struct-card">
+      <img class="rt-struct-card__img"
+        src="https://framerusercontent.com/images/v3ermV8JKq2aio54xGJSkMidg.svg"
+        alt="Storm Resistant">
+      <div class="rt-struct-card__title">High-conductivity copper cabling for better safety and performance</div>
+      <div class="rt-struct-card__highlights">
+        <span class="rt-struct-highlight">Strong &amp; Sturdy</span>
+        <span class="rt-struct-highlight">Storm Resistant</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="rt-compare">
+  <div class="rt-compare__inner">
+    <div class="rt-compare__header">
+      <span class="eyebrow">ecozencare</span>
+      <h2 class="section-heading">Why <span class="accent-green">Ecozen Certified Dealers?</span></h2>
+    </div>
+    <table class="rt-compare__table">
+      <thead>
+        <tr>
+          <th>Factors</th>
+          <th>Local Dealers</th>
+          <th>Ecozen Certified Dealers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>System Design</td>
+          <td>Standard / one-size-fits-all</td>
+          <td>Customized to your home &amp; usage</td>
+        </tr>
+        <tr>
+          <td>Components</td>
+          <td>Varies vendor to vendor</td>
+          <td>Trusted brands + tested combinations</td>
+        </tr>
+        <tr>
+          <td>Structure</td>
+          <td>Basic GI / locally fabricated</td>
+          <td>Hot Dip Galvanized (25+ year life)</td>
+        </tr>
+        <tr>
+          <td>Monitoring</td>
+          <td>Limited or none</td>
+          <td>Real-time tracking via Ecosphere App</td>
+        </tr>
+        <tr>
+          <td>Service</td>
+          <td>On-call, reactive</td>
+          <td>Proactive + remote issue detection</td>
+        </tr>
+        <tr>
+          <td>Subsidy Support</td>
+          <td>You're on your own</td>
+          <td>End-to-end PMSGY assistance</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- WARRANTY -->
+<section class="rt-warranty">
+  <div class="rt-warranty__inner">
+    <div class="rt-warranty__header">
+      <span class="eyebrow eyebrow--light">Protected by ecozencare</span>
+      <h2 class="rt-warranty__heading">Care beyond <span>Installation</span></h2>
+    </div>
+    <div class="rt-warranty__grid">
+      <div class="rt-warranty-card">
+        <img class="rt-warranty-card__img"
+          src="https://framerusercontent.com/images/aopHvH7dqL5JthZX5zD808k86tM.png?scale-down-to=512"
+          alt="Solar Panels">
+        <div class="rt-warranty-card__product">Solar Panels</div>
+        <div class="rt-warranty-card__years">25</div>
+        <div class="rt-warranty-card__label">Years Performance Warranty</div>
+      </div>
+      <div class="rt-warranty-card">
+        <img class="rt-warranty-card__img"
+          src="https://framerusercontent.com/images/DcZUY7L9Qv59s3eiGBpcfJsgc.png?scale-down-to=512"
+          alt="Inverter">
+        <div class="rt-warranty-card__product">Inverters</div>
+        <div class="rt-warranty-card__years">7</div>
+        <div class="rt-warranty-card__label">Years Warranty</div>
+      </div>
+      <div class="rt-warranty-card">
+        <img class="rt-warranty-card__img"
+          src="https://framerusercontent.com/images/EtQaCNxdlLLwl8HlAjqjpEFSiU.png?scale-down-to=512"
+          alt="Structure">
+        <div class="rt-warranty-card__product">Structure</div>
+        <div class="rt-warranty-card__years">5</div>
+        <div class="rt-warranty-card__label">Years Warranty</div>
+      </div>
+      <div class="rt-warranty-card">
+        <img class="rt-warranty-card__img"
+          src="https://framerusercontent.com/images/HOmBe3jxLiuMzKtGmUb9IuAfQIo.png?scale-down-to=512"
+          alt="Other Parts">
+        <div class="rt-warranty-card__product">Other Parts</div>
+        <div class="rt-warranty-card__years">5</div>
+        <div class="rt-warranty-card__label">Years Warranty</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="rt-stats">
+  <div class="rt-stats__inner">
+    <div class="rt-stat"><div class="rt-stat__num">4L+</div><div class="rt-stat__label">Solar Installations</div></div>
+    <div class="rt-stat"><div class="rt-stat__num">4.9★</div><div class="rt-stat__label">Google Rating (3000+ reviews)</div></div>
+    <div class="rt-stat"><div class="rt-stat__num">₹78k</div><div class="rt-stat__label">Max Government Subsidy</div></div>
+    <div class="rt-stat"><div class="rt-stat__num">15+</div><div class="rt-stat__label">Years of Expertise</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="rt-faq">
+  <div class="rt-faq__inner">
+    <div class="rt-faq__heading">You asked.<br>We answered.</div>
+    <div class="rt-faq__item">
+      <div class="rt-faq__q">What is PM Surya Ghar Muft Bijli Yojana? <span class="rt-faq__icon">+</span></div>
+      <div class="rt-faq__a">PM Surya Ghar Muft Bijli Yojana (PMSGY) is a government scheme launched by PM Narendra Modi in February 2024 to promote rooftop solar installations for residential households. ecozen is an empaneled vendor under this scheme, helping homeowners get solar installed with maximum subsidy support.</div>
+    </div>
+    <div class="rt-faq__item">
+      <div class="rt-faq__q">How much subsidy can I get? <span class="rt-faq__icon">+</span></div>
+      <div class="rt-faq__a">Under PMSGY: Up to 2kW — ₹30,000 per kW (60% subsidy). For the 3rd kW — ₹18,000. Maximum central subsidy is ₹78,000. UP state offers an additional ₹30,000 subsidy. Subsidy is transferred directly to your bank account after installation.</div>
+    </div>
+    <div class="rt-faq__item">
+      <div class="rt-faq__q">Is ecozen an approved vendor under PMSGY? <span class="rt-faq__icon">+</span></div>
+      <div class="rt-faq__a">Yes — ecozen is an empaneled vendor under PM Surya Ghar Yojana. Our certified dealers help you with end-to-end support — from portal registration to installation to subsidy disbursement.</div>
+    </div>
+    <div class="rt-faq__item">
+      <div class="rt-faq__q">What's included in ecozen's full solar kit? <span class="rt-faq__icon">+</span></div>
+      <div class="rt-faq__a">ecozen provides a complete solar kit including Solar Panels (from trusted brands), On-Grid Inverter, and Heavy-duty Hot Dip Galvanized Solar Structure. All components come with warranties — panels (25yr), inverter (7yr), structure (5yr).</div>
+    </div>
+    <div class="rt-faq__item">
+      <div class="rt-faq__q">How long does installation take? <span class="rt-faq__icon">+</span></div>
+      <div class="rt-faq__a">Installation is typically completed within 5–7 days after PMSGY approval. The entire process — from booking to installation — is supported by ecozen's certified dealer network.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section class="lead-form" id="lead">
+  <div class="lead-form__inner">
+    <div class="lead-form__left">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.5)">Free Consultation</span>
+      <h2 class="section-heading" style="color:var(--clr-white)">
+        Get a free<br><span style="color:var(--clr-green)">callback today.</span>
+      </h2>
+      <p class="lead-form__sub">Fill the form and get a callback from an ecozen solar expert within 24 hours. 100% free, no obligation.</p>
+    </div>
+    <div class="lead-form__card">
+      <div class="lead-form__row">
+        <div class="lead-form__field">
+          <label class="lead-form__label">Name *</label>
+          <input type="text" class="lead-form__input" placeholder="Your name">
+        </div>
+        <div class="lead-form__field">
+          <label class="lead-form__label">Mobile *</label>
+          <input type="tel" class="lead-form__input" placeholder="+91 98765 43210">
+        </div>
+      </div>
+      <div class="lead-form__field">
+        <label class="lead-form__label">Email *</label>
+        <input type="email" class="lead-form__input" placeholder="you@email.com">
+      </div>
+      <div class="lead-form__row">
+        <div class="lead-form__field">
+          <label class="lead-form__label">PIN Code *</label>
+          <input type="text" class="lead-form__input" placeholder="Your PIN code">
+        </div>
+        <div class="lead-form__field">
+          <label class="lead-form__label">Avg Monthly Bill *</label>
+          <select class="lead-form__select">
+            <option value="" disabled selected>Select range</option>
+            <option>Less than ₹1,500</option>
+            <option>₹1,500 – ₹2,500</option>
+            <option>₹2,500 – ₹4,000</option>
+            <option>₹4,000 – ₹8,000</option>
+            <option>More than ₹8,000</option>
+          </select>
+        </div>
+      </div>
+      <div class="lead-form__row">
+        <div class="lead-form__field">
+          <label class="lead-form__label">State *</label>
+          <select class="lead-form__select">
+            <option value="" disabled selected>Select state</option>
+            <option>Maharashtra</option><option>Uttar Pradesh</option>
+            <option>Rajasthan</option><option>Gujarat</option>
+            <option>Madhya Pradesh</option><option>Punjab</option><option>Other</option>
+          </select>
+        </div>
+        <div class="lead-form__field">
+          <label class="lead-form__label">District *</label>
+          <input type="text" class="lead-form__input" placeholder="Your district">
+        </div>
+      </div>
+      <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--type-body-sm);color:var(--clr-muted);cursor:pointer">
+        <input type="checkbox" style="margin-top:3px;accent-color:var(--clr-green);flex-shrink:0">
+        You agree to our <a href="#" style="color:var(--clr-green);margin-left:4px">privacy policy</a>.
+      </label>
+      <button class="btn btn--primary" style="width:100%;justify-content:center;padding:14px;font-size:var(--type-body)">Get Free Callback →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FRAUD ALERT -->
+<div class="fraud-alert">
+  <div class="fraud-alert__inner">
+    <span class="fraud-alert__icon">⚠️</span>
+    <p class="fraud-alert__text">
+      <strong>Caution Notice:</strong> ecozen Solutions Private Limited does not ask job seekers or customers to pay any fees, deposit, or provide sensitive personal information during any process. Beware of scammers impersonating ecozen.
+      <a href="#" class="fraud-alert__link">Report fraud →</a>
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__top">
+    <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="footer__logo">
+    <div class="footer__tagline"><span class="accent-gradient">Innovation Never Ends</span></div>
+  </div>
+  <div class="footer__main">
+    <div>
+      <div class="footer__col-head footer__col-head--green">Products</div>
+      <div class="footer__links">
+        <a href="ecotron.html" class="footer__link">Ecotron</a>
+        <a href="ecofrost.html" class="footer__link footer__link--active">Ecofrost</a>
+        <a href="#" class="footer__link">Solar AC</a>
+        <a href="#" class="footer__link">Smart AC</a>
+        <a href="#" class="footer__link">Ecofreeze</a>
+        <a href="#" class="footer__link">Smart Rooftop</a>
+        <a href="#" class="footer__link">Solar Atta Chakki</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head footer__col-head--cyan">Technology</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">Ecozen AI</a>
+        <a href="#" class="footer__link">Ice Core</a>
+        <a href="#" class="footer__link">Motor Controls</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">Ecozen</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">About Us</a>
+        <a href="#" class="footer__link">Careers</a>
+        <a href="#" class="footer__link">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">Others</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">User Portal</a>
+        <a href="#" class="footer__link">Legal Policy</a>
+        <a href="#" class="footer__link">Corporate</a>
+        <a href="#" class="footer__link">Press Kit</a>
+        <a href="#" class="footer__link">CSR</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">India 🇮🇳</div>
+      <div class="footer__toll-label">Toll Free</div>
+      <div class="footer__toll-number">1800 121 7515</div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div>
+      <div class="footer__newsletter-label">Subscribe to Newsletter</div>
+      <div class="footer__newsletter-form">
+        <input type="email" class="footer__newsletter-input" placeholder="Your email address">
+        <button class="footer__newsletter-btn">Subscribe</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:32px;">
+      <div class="footer__socials">
+        <a href="#" class="footer__social">ig</a>
+        <a href="#" class="footer__social">tw</a>
+        <a href="#" class="footer__social">fb</a>
+        <a href="#" class="footer__social">🌐</a>
+      </div>
+      <button class="footer__scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Scroll to top ↑</button>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <div class="footer__legal-grid">
+      <div class="footer__legal-entity">
+        <div class="footer__legal-name">Ecozen Solutions Private Limited</div>
+        <div class="footer__legal-detail"><strong>CIN:</strong> U93090PN2010PTC237833</div>
+        <div class="footer__legal-detail"><strong>Registered Office:</strong> 901, Amar Tech Park, Next to Mitcon College, Balewadi, Baner Gaon, Haveli, Pune – 411045, Maharashtra</div>
+      </div>
+      <div class="footer__legal-entity">
+        <div class="footer__legal-name">Ecofrost Technologies Private Limited</div>
+        <div class="footer__legal-detail"><strong>CIN:</strong> U73100PN2012PTC242344</div>
+        <div class="footer__legal-detail"><strong>Registered Office:</strong> 901, Amar Tech Park, Next to Mitcon College, Balewadi, Baner Gaon, Haveli, Pune – 411045, Maharashtra</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__copy">
+    <span class="footer__copy-text">©Copyright 2026 by Ecozen Solutions Private Limited</span>
+    <span class="footer__copy-brand accent-gradient">Innovation Never Ends</span>
+  </div>
+</footer>
+
+<!-- COOKIE CONSENT BANNER -->
+<div class="cookie-banner hidden" id="cookieBanner">
+  <div class="cookie-banner__icon">🍪</div>
+  <div class="cookie-banner__content">
+    <div class="cookie-banner__title">We value your privacy</div>
+    <p class="cookie-banner__text">We use cookies to enhance your experience and analyze traffic. See our <a href="#">privacy policy</a>.</p>
+  </div>
+  <div class="cookie-banner__actions">
+    <button class="cookie-btn cookie-btn--reject" id="cookieReject">Reject</button>
+    <button class="cookie-btn cookie-btn--accept" id="cookieAccept">Accept All</button>
+  </div>
+</div>
+
+
+<script>
+
+  // ── MEGA MENU ──
+  (function() {
+    function setup() {
+      var items = document.querySelectorAll('.nav__item');
+      if (!items.length) { setTimeout(setup, 50); return; }
+      var t = null;
+      function show(item) {
+        clearTimeout(t);
+        document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+        document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        var mega = item.querySelector('.mega');
+        if (!mega) return;
+        var nav = document.querySelector('.nav');
+        if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+        mega.classList.add('is-open');
+        item.classList.add('active');
+      }
+      function hide() {
+        t = setTimeout(function() {
+          document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+          document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        }, 150);
+      }
+      items.forEach(function(item) {
+        var mega = item.querySelector('.mega');
+        item.addEventListener('mouseenter', function() { show(item); });
+        item.addEventListener('mouseleave', hide);
+        if (mega) {
+          mega.addEventListener('mouseenter', function() { clearTimeout(t); });
+          mega.addEventListener('mouseleave', hide);
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else { setup(); }
+  })();
+
+  // ── PEOPLE SLIDER ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var people = [
+      {
+        quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
+        name: "Yash",
+        role: "Senior Analyst, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "Working on real problems that impact millions of farmers — that makes every day here truly meaningful.",
+        name: "Riddhi",
+        role: "Recruitment Specialist, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "ecozen gives you the rare opportunity to build deep tech that truly shifts how India consumes energy.",
+        name: "[ Name ]",
+        role: "[ Role ], ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      }
+    ];
+    var idx = 0;
+    var qEl = document.getElementById('voicesQuote');
+    var nEl = document.getElementById('voicesName');
+    var rEl = document.getElementById('voicesRole');
+    var pEl = document.getElementById('voicesPhoto');
+    function go(i) {
+      idx = (i + people.length) % people.length;
+      var p = people[idx];
+      [qEl, nEl, pEl].forEach(function(el) { if(el) el.style.opacity = '0'; });
+      setTimeout(function() {
+        if (qEl) qEl.textContent = p.quote;
+        if (nEl) nEl.textContent = p.name;
+        if (rEl) rEl.textContent = p.role;
+        if (pEl) pEl.src = p.photo;
+        [qEl, nEl, pEl].forEach(function(el) { if(el) el.style.opacity = '1'; });
+      }, 200);
+    }
+    [qEl, nEl, pEl].forEach(function(el) {
+      if (el) el.style.transition = 'opacity 0.2s ease';
+    });
+    var prev = document.getElementById('voicesPrev');
+    var next = document.getElementById('voicesNext');
+    if (prev) prev.addEventListener('click', function() { go(idx - 1); });
+    if (next) next.addEventListener('click', function() { go(idx + 1); });
+  });
+
+  // ── CAMPAIGN SLIDER ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var track = document.getElementById('campTrack');
+    var dots = document.querySelectorAll('.camp-dot');
+    var slides = document.querySelectorAll('.camp-slide');
+    if (!track || !slides.length) return;
+    var cur = 0;
+    var auto;
+    function go(i) {
+      cur = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, j) { d.classList.toggle('active', j === cur); });
+    }
+    var p = document.getElementById('campPrev');
+    var n = document.getElementById('campNext');
+    if (p) p.addEventListener('click', function() { clearInterval(auto); go(cur-1); startAuto(); });
+    if (n) n.addEventListener('click', function() { clearInterval(auto); go(cur+1); startAuto(); });
+    dots.forEach(function(d) {
+      d.addEventListener('click', function() { clearInterval(auto); go(+d.dataset.i); startAuto(); });
+    });
+    function startAuto() { auto = setInterval(function() { go(cur+1); }, 5000); }
+    startAuto();
+  });
+
+  // Cookie — simple display none, versioned key
+  (function() {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    if (localStorage.getItem('ez_cookie_v4')) { banner.style.display = 'none'; return; }
+    document.getElementById('cookieAccept')?.addEventListener('click', () => { localStorage.setItem('ez_cookie_v4','y'); banner.style.display='none'; });
+    document.getElementById('cookieReject')?.addEventListener('click', () => { localStorage.setItem('ez_cookie_v4','n'); banner.style.display='none'; });
+  })();
+
+  // Campaign banner — static image, no JS needed });
+  document.getElementById('campNext')?.addEventListener('click', () => { clearInterval(campAuto); goToCamp(campIdx + 1); startAuto(); });
+  campDots.forEach(dot => dot.addEventListener('click', () => { clearInterval(campAuto); goToCamp(+dot.dataset.idx); startAuto(); }));
+
+  function startAuto() { campAuto = setInterval(() => goToCamp(campIdx + 1), 5000); }
+  startAuto();
+
+
+  const voicesPeople = [
+    {
+      quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
+      name: "Yash",
+      role: "Senior Analyst, ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    },
+    {
+      quote: "Working on real problems that impact millions of farmers — that's what makes every day truly meaningful here.",
+      name: "Riddhi",
+      role: "Recruitment Specialist, ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    },
+    {
+      quote: "ecozen gives you the rare opportunity to build deep tech that truly shifts how India consumes energy.",
+      name: "[ Name ]",
+      role: "[ Role ], ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    }
+  ];
+  let voicesIdx = 0;
+  const voicesQuoteEl = document.getElementById('voicesQuote');
+  const voicesNameEl = document.getElementById('voicesName');
+  const voicesRoleEl = document.getElementById('voicesRole');
+  const voicesPhotoEl = document.getElementById('voicesPhoto');
+
+  function updateVoices(idx) {
+    const p = voicesPeople[idx];
+    voicesQuoteEl.style.opacity = '0';
+    voicesNameEl.style.opacity = '0';
+    voicesPhotoEl.style.opacity = '0';
+    setTimeout(() => {
+      voicesQuoteEl.textContent = p.quote;
+      voicesNameEl.textContent = p.name;
+      voicesRoleEl.textContent = p.role;
+      voicesPhotoEl.src = p.photo;
+      voicesQuoteEl.style.opacity = '1';
+      voicesNameEl.style.opacity = '1';
+      voicesPhotoEl.style.opacity = '1';
+    }, 200);
+  }
+  [voicesQuoteEl, voicesNameEl, voicesPhotoEl].forEach(el => {
+    el.style.transition = 'opacity 0.2s ease';
+  });
+  document.getElementById('voicesNext').addEventListener('click', () => {
+    voicesIdx = (voicesIdx + 1) % voicesPeople.length;
+    updateVoices(voicesIdx);
+  });
+  document.getElementById('voicesPrev').addEventListener('click', () => {
+    voicesIdx = (voicesIdx - 1 + voicesPeople.length) % voicesPeople.length;
+    updateVoices(voicesIdx);
+  });
+
+  // Mega menu — HOVER
+  (function() {
+    var navItems = document.querySelectorAll('.nav__item');
+    var timer = null;
+    function openMega(item) {
+      clearTimeout(timer);
+      document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('is-open'); });
+      navItems.forEach(function(i){ i.classList.remove('active'); });
+      var mega = item.querySelector('.mega');
+      if (!mega) return;
+      var nav = document.querySelector('.nav');
+      if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+      mega.classList.add('is-open');
+      item.classList.add('active');
+      var nw = document.querySelector('.nav-wrapper');
+      if (nw) nw.classList.add('menu-open');
+    }
+    function closeMega() {
+      timer = setTimeout(function() {
+        document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('is-open'); });
+        navItems.forEach(function(i){ i.classList.remove('active'); });
+        var nw = document.querySelector('.nav-wrapper');
+        if (nw) nw.classList.remove('menu-open');
+      }, 150);
+    }
+    navItems.forEach(function(item) {
+      var mega = item.querySelector('.mega');
+      item.addEventListener('mouseenter', function(){ openMega(item); });
+      item.addEventListener('mouseleave', closeMega);
+      if (mega) {
+        mega.addEventListener('mouseenter', function(){ clearTimeout(timer); });
+        mega.addEventListener('mouseleave', closeMega);
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav__item')) closeMega();
+    });
+  })();
+
+  // Nav scroll — announcement is in normal flow, nav fixed below it
+  const nav = document.querySelector('.nav-wrapper');
+  const ann = document.querySelector('.announcement');
+  function syncNav() {
+    if (!ann) return;
+    const annBottom = ann.getBoundingClientRect().bottom;
+    if (annBottom <= 0) {
+      // Announcement scrolled away — nav sits at top
+      nav.style.top = '0';
+      nav.classList.add('scrolled');
+    } else {
+      // Announcement still visible — nav sits below it
+      nav.style.top = annBottom + 'px';
+      nav.classList.remove('scrolled');
+    }
+  }
+  syncNav();
+  window.addEventListener('scroll', syncNav, { passive: true });
+
+  document.querySelectorAll('.rt-faq__q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = q.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.rt-faq__item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
