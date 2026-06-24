@@ -1,0 +1,2597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart AC — ecozen</title>
+<meta name="description" content="ecozen Smart AC — Solar-powered, app-controlled air conditioning. Works on solar + grid. Smart monitoring, copper coil, 5-year warranty.">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS — single source of truth
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  /* Colors */
+  --clr-green:      #6BA546;
+  --clr-green-dark: #006037;
+  --clr-cyan:       #16CDFF;
+  --clr-yellow:     #FDBA17;
+  --clr-black:      #0D1117;
+  --clr-white:      #FFFFFF;
+  --clr-gray-100:   #F5F7F2;
+  --clr-gray-200:   #E8EDE3;
+  --clr-gray-400:   #999999;
+  --clr-muted:      #6B7A5E;
+
+  /* Typography — fluid scale */
+  --type-display: clamp(48px, 6vw, 72px);   /* Hero only */
+  --type-h1:      clamp(36px, 5vw, 56px);   /* Page titles */
+  --type-h2:      clamp(22px, 3vw, 36px);   /* Section headings */
+  --type-h3:      clamp(18px, 2vw, 24px);   /* Card titles */
+  --type-body-lg: 18px;                      /* Lead text */
+  --type-body:    16px;                      /* General */
+  --type-body-sm: 14px;                      /* Descriptions */
+  --type-label:   12px;                      /* Eyebrows, tags */
+
+  /* Font weights */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  /* Spacing — 8px grid */
+  --sp-1:  8px;
+  --sp-2:  16px;
+  --sp-3:  24px;
+  --sp-4:  32px;
+  --sp-5:  40px;
+  --sp-6:  48px;
+  --sp-8:  64px;
+  --sp-10: 80px;
+  --sp-12: 96px;
+
+  /* Section rhythm */
+  --section-pad: var(--sp-10);
+
+  /* Radius — Apple hierarchy */
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   20px;
+  --r-xl:   28px;
+  --r-pill: 980px;
+
+  /* Container */
+  --max-w: 1200px;
+}
+
+body {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  background: var(--clr-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   GLOBAL REUSABLE PATTERNS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Section label / eyebrow — used consistently everywhere */
+.eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  color: var(--clr-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
+/* Section heading — H2 level */
+.section-heading {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Green accent word in headings */
+.accent-green { color: var(--clr-green); }
+
+/* Gradient text — used sparingly */
+.accent-gradient {
+  background: linear-gradient(90deg, var(--clr-green), var(--clr-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Container */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BUTTONS — global system
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 10px var(--sp-3);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  box-shadow: 0 2px 12px rgba(107,165,70,0.25);
+}
+.btn--primary:hover {
+  background: var(--clr-green-dark);
+  box-shadow: 0 4px 20px rgba(107,165,70,0.35);
+}
+.btn--secondary {
+  background: var(--clr-yellow);
+  color: var(--clr-black);
+}
+.btn--secondary:hover { filter: brightness(0.96); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--clr-green);
+  border: 1.5px solid var(--clr-green);
+}
+.btn--ghost:hover { background: var(--clr-green); color: var(--clr-white); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ANNOUNCEMENT BAR
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.announcement {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  text-align: center;
+  padding: 9px var(--sp-2);
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 102;
+}
+.announcement a {
+  color: var(--clr-yellow);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  margin-left: 4px;
+}
+.announcement a:hover { text-decoration: underline; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAV
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.nav-wrapper {
+  position: fixed;
+  left: 0; right: 0;
+  z-index: 100;
+  transition: top 0.1s linear;
+  padding: 12px var(--sp-3) 0;
+}
+.nav {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: var(--r-md);
+  padding: 12px var(--sp-4);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: background 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 2;
+}
+.nav-wrapper.scrolled .nav {
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.nav__logo { display: flex; text-decoration: none; }
+.nav__logo-img { height: 64px; width: auto; display: block; }
+
+.nav__links { display: flex; align-items: center; gap: var(--sp-4); list-style: none; }
+.nav__item { position: static; list-style: none; }
+
+.nav__trigger {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  font-weight: var(--fw-medium);
+  color: var(--clr-black);
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer; background: none; border: none; padding: 0;
+  transition: color 0.2s;
+}
+.nav__trigger:hover,
+.nav__item:hover .nav__trigger { color: var(--clr-green); }
+
+.nav__chevron {
+  font-size: 10px; color: var(--clr-muted);
+  transition: transform 0.2s; display: inline-block;
+}
+.nav__item:hover .nav__chevron { transform: rotate(180deg); }
+
+.nav__phone-btn {
+  display: flex; align-items: center; gap: var(--sp-1);
+  background: var(--clr-yellow); color: var(--clr-black);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body); font-weight: var(--fw-bold);
+  padding: 10px 20px; border-radius: var(--r-pill);
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: -0.01em; white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(253,186,23,0.3);
+}
+.nav__phone-btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+/* ━━━━ MEGA MENU ━━━━ */
+.mega {
+  display: none;
+  position: fixed;
+  left: 0; right: 0;
+  top: 80px;
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+  border: 1px solid #E8EDE3;
+  border-top: none;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  padding: 32px 48px 32px;
+  z-index: 99999;
+}
+.mega.is-open { display: block; }
+.mega__inner { max-width: 1200px; margin: 0 auto; }
+.mega__section-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.mega__grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 12px; }
+.mega__grid--3 { grid-template-columns: repeat(3,1fr); gap: 32px; }
+.mega__card { display: flex; flex-direction: column; gap: 6px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__card:hover { background: #F5F7F2; }
+.mega__card:hover .mega__name { color: #6BA546; }
+.mega__img-wrap { width: 100%; aspect-ratio: 1; background: #F5F7F2; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 8px; }
+.mega__card:hover .mega__img-wrap { background: #E8EDE3; }
+.mega__img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+.mega__name { font-size: 13px; font-weight: 600; color: #0D1117; letter-spacing: -0.01em; transition: color 0.18s; }
+.mega__sub { font-size: 11px; color: #6B7A5E; }
+.mega__tech-card { display: flex; flex-direction: column; gap: 12px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__tech-card:hover { background: #F5F7F2; }
+.mega__tech-card:hover .mega__tech-name { color: #6BA546; }
+.mega__tech-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
+.mega__tech-name { font-size: 15px; font-weight: 600; color: #0D1117; transition: color 0.18s; }
+.mega__tech-desc { font-size: 13px; color: #6B7A5E; line-height: 1.5; }
+.mega__cols { display: flex; gap: 48px; }
+.mega__col-group { display: flex; flex-direction: column; gap: 2px; }
+.mega__col-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.mega__link { font-size: 15px; font-weight: 500; color: #0D1117; text-decoration: none; padding: 8px; border-radius: 6px; display: block; transition: background 0.18s, color 0.18s; }
+.mega__link:hover { background: #F5F7F2; color: #6BA546; }
+.nav-wrapper.menu-open .nav { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: var(--sp-10);
+  background: #0a1a0f;
+}
+/* Video fills full hero — behind everything */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  /* Contain video — doesn't bleed into nav or ticker */
+  display: block;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+.hero__fade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 240px;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+  z-index: 2;
+}
+.hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 820px;
+  padding: 0 var(--sp-3);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero__title {
+  font-size: var(--type-h1);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: var(--sp-2);
+  opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards;
+}
+.hero__subtitle {
+  font-size: var(--type-body-lg);
+  font-weight: var(--fw-medium);
+  color: var(--clr-green);
+  opacity: 0; animation: fadeUp 0.6s ease 0.4s forwards;
+}
+
+/* Ticker inside hero — sits at bottom of hero above fold */
+.hero__ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  border-radius: 0;
+}
+.ticker {
+  width: 100%; overflow: hidden;
+  background: linear-gradient(90deg, var(--clr-green), var(--clr-cyan));
+  padding: 12px 0;
+}
+.ticker__track {
+  display: flex; width: max-content;
+  animation: ticker 28s linear infinite;
+  will-change: transform;
+}
+.ticker__img { height: 22px; width: auto; margin-right: var(--sp-6); display: block; flex-shrink: 0; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CAMPAIGN SLIDER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.camp-section { width: 100%; line-height: 0; }
+.camp-wrap { position: relative; overflow: hidden; width: 100%; }
+.camp-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+.camp-slide { flex-shrink: 0; width: 100%; }
+.camp-slide img { width: 100%; height: auto; display: block; }
+.camp-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.35); color: white;
+  border: none; width: 48px; height: 48px;
+  border-radius: 50%; font-size: 26px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 5; transition: background 0.2s;
+  backdrop-filter: blur(6px);
+}
+.camp-arrow:hover { background: rgba(0,0,0,0.6); }
+.camp-arrow--prev { left: 20px; }
+.camp-arrow--next { right: 20px; }
+.camp-dots {
+  position: absolute; bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 5;
+}
+.camp-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  border: none; cursor: pointer; padding: 0;
+  transition: all 0.2s ease;
+}
+.camp-dot.active {
+  background: white;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.mission {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(180deg, #eaf5e2 0%, var(--clr-white) 100%);
+  overflow: hidden;
+}
+.mission__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+}
+.mission__image-col { position: relative; }
+.mission__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-xl);
+  display: block;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+}
+.mission__copy-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.mission__heading {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.mission__body {
+  font-size: var(--type-body-lg);
+  color: var(--clr-muted);
+  line-height: 1.6;
+  font-weight: var(--fw-regular);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PRODUCTS CAROUSEL
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.products {
+  padding: var(--section-pad) 0;
+  background: var(--clr-gray-100);
+}
+.products__header {
+  text-align: center;
+  padding: 0 var(--sp-6);
+  margin-bottom: var(--sp-6);
+}
+
+/* Featured 3 — bigger, 3 col */
+.products__featured {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+
+/* More products — 4 col smaller */
+.products__more {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-3);
+}
+
+/* Featured card — taller visual */
+.product-card--featured .product-card__visual {
+  aspect-ratio: 3/2.5;
+}
+.product-card--featured .product-card__name {
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+/* Carousel kept for scroll fallback */
+.carousel { position: relative; }
+.carousel__track {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-6) var(--sp-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+
+/* Product card — Apple floating style */
+.product-card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--clr-white);
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+}
+
+/* Image area — colored bg, floating product */
+.product-card__visual {
+  aspect-ratio: 4/3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  padding: var(--sp-3);
+}
+
+/* Each product gets its own bg color */
+.product-card:nth-child(1) .product-card__visual { background: #EDF4E7; }
+.product-card:nth-child(2) .product-card__visual { background: #E8F4FA; }
+.product-card:nth-child(3) .product-card__visual { background: #F0F7EE; }
+.product-card:nth-child(4) .product-card__visual { background: #EAF3F8; }
+.product-card:nth-child(5) .product-card__visual { background: #F5F0FA; }
+.product-card:nth-child(6) .product-card__visual { background: #FFF8E8; }
+.product-card:nth-child(7) .product-card__visual { background: #EDF4E7; }
+
+/* Floating product image */
+.product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.35s ease;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+  display: block;
+}
+.product-card:hover .product-card__img {
+  transform: scale(1.04) translateY(-3px);
+}
+
+/* Subtle radial glow behind product */
+.product-card__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 60%, rgba(107,165,70,0.12) 0%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Text area */
+.product-card__body {
+  background: var(--clr-white);
+  padding: var(--sp-3) var(--sp-3) var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  border: 1px solid var(--clr-gray-200);
+  border-top: none;
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  flex: 1;
+}
+.product-card__tag {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.product-card__name {
+  font-size: var(--type-h3);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.product-card__desc {
+  font-size: var(--type-body-sm);
+  color: var(--clr-gray-400);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  margin-bottom: var(--sp-2);
+}
+/* Ghost CTA — subtle, not competing with image */
+.product-card__cta {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+.product-card:hover .product-card__cta { gap: 8px; }
+
+.carousel-btn {
+  position: absolute; top: 42%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: var(--clr-black);
+  border: 1px solid var(--clr-gray-200);
+  font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+.carousel-btn:hover {
+  background: var(--clr-white);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.carousel-btn--prev { left: var(--sp-2); }
+.carousel-btn--next { right: var(--sp-2); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TECHNOLOGY BENTO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tech {
+  padding: var(--section-pad) 0;
+  background: var(--clr-black);
+}
+.tech__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.tech__header { margin-bottom: var(--sp-6); }
+.tech__header .section-heading { color: var(--clr-white); }
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: var(--sp-2);
+}
+
+/* Bento cell base */
+.bento__cell {
+  background: #141a14;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.2s;
+}
+.bento__cell:hover { border-color: rgba(107,165,70,0.3); }
+
+/* Grid placements */
+.bento__cell--ai      { grid-column: span 5; grid-row: span 2; min-height: 320px; }
+.bento__cell--motor   { grid-column: span 4; grid-row: span 1; min-height: 150px; }
+.bento__cell--thermal { grid-column: span 3; grid-row: span 1; min-height: 150px; }
+.bento__cell--stat1   { grid-column: span 4; grid-row: span 1; min-height: 150px; }
+.bento__cell--stat2   { grid-column: span 3; grid-row: span 1; min-height: 150px; }
+
+.bento__img {
+  width: 100%; height: 100%;
+  object-fit: cover; position: absolute; inset: 0;
+  opacity: 0.5; transition: opacity 0.3s;
+}
+.bento__cell:hover .bento__img { opacity: 0.65; }
+
+.bento__content {
+  position: relative; z-index: 2;
+  padding: var(--sp-3);
+  display: flex; flex-direction: column;
+  justify-content: flex-end; height: 100%;
+}
+.bento__cell--ai .bento__content { justify-content: flex-end; min-height: 320px; }
+
+.bento__tag {
+  font-size: var(--type-label); font-weight: var(--fw-semi);
+  color: var(--clr-green); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: var(--sp-1);
+  display: block;
+}
+.bento__title {
+  font-size: var(--type-h3); font-weight: var(--fw-semi);
+  color: var(--clr-white); line-height: 1.2;
+  letter-spacing: -0.01em; margin-bottom: 6px;
+}
+.bento__desc {
+  font-size: var(--type-body-sm); color: rgba(255,255,255,0.55);
+  line-height: 1.5; font-weight: var(--fw-regular);
+}
+
+/* Stat cells */
+.bento__stat {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: var(--fw-black);
+  color: var(--clr-white);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: 6px;
+}
+.bento__stat-accent { color: var(--clr-green); }
+.bento__stat-label {
+  font-size: var(--type-body-sm); color: rgba(255,255,255,0.5);
+  font-weight: var(--fw-regular);
+}
+
+/* Legal entities in footer */
+.footer__legal {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: var(--sp-4) var(--sp-6);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.footer__legal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.footer__legal-entity { display: flex; flex-direction: column; gap: 6px; }
+.footer__legal-entity + .footer__legal-entity {
+  border-left: 1px solid rgba(255,255,255,0.08);
+  padding-left: var(--sp-4);
+}
+.footer__legal-name {
+  font-size: var(--type-label);
+  font-weight: var(--fw-bold);
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.footer__legal-detail {
+  font-size: var(--type-label);
+  color: rgba(255,255,255,0.3);
+  line-height: 1.6;
+}
+.footer__legal-detail strong {
+  color: rgba(255,255,255,0.45);
+  font-weight: var(--fw-semi);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COOKIE CONSENT BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.cookie-banner__icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.cookie-banner__content { flex: 1; }
+.cookie-banner__title {
+  font-size: var(--type-body);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  margin-bottom: 4px;
+}
+.cookie-banner__text {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  line-height: 1.5;
+}
+.cookie-banner__text a {
+  color: var(--clr-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cookie-banner__actions {
+  display: flex;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+.cookie-btn {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.cookie-btn--reject {
+  background: transparent;
+  color: var(--clr-muted);
+  border: 1.5px solid var(--clr-gray-200);
+}
+.cookie-btn--reject:hover { border-color: var(--clr-black); color: var(--clr-black); }
+.cookie-btn--accept {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  box-shadow: 0 2px 12px rgba(107,165,70,0.3);
+}
+.cookie-btn--accept:hover { background: var(--clr-green-dark); }
+.fraud-alert {
+  background: #FFF8E6;
+  border-top: 1px solid #F5E4B0;
+  border-bottom: 1px solid #F5E4B0;
+  padding: var(--sp-3) var(--sp-6);
+}
+.fraud-alert__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+}
+.fraud-alert__icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.fraud-alert__text {
+  font-size: var(--type-body-sm);
+  color: #7A5C00;
+  line-height: 1.6;
+  font-weight: var(--fw-regular);
+}
+.fraud-alert__text strong {
+  font-weight: var(--fw-semi);
+  color: #5C4400;
+}
+.fraud-alert__link {
+  color: #7A5C00;
+  font-weight: var(--fw-semi);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-left: var(--sp-1);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.fraud-alert__link:hover { color: #5C4400; }
+.lead-form {
+  background: var(--clr-green-dark);
+  padding: var(--section-pad) 0;
+}
+.lead-form__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--sp-8);
+  align-items: center;
+}
+.lead-form__sub {
+  font-size: var(--type-body);
+  color: rgba(255,255,255,0.6);
+  margin-top: var(--sp-2);
+}
+.lead-form__card {
+  background: var(--clr-white);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.lead-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+.lead-form__field { display: flex; flex-direction: column; gap: var(--sp-1); }
+.lead-form__label {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+}
+.lead-form__input,
+.lead-form__select {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  background: var(--clr-gray-100);
+  border: 1.5px solid var(--clr-gray-200);
+  border-radius: var(--r-sm);
+  padding: 10px var(--sp-2);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.lead-form__input:focus,
+.lead-form__select:focus { border-color: var(--clr-green); }
+.lead-form__input::placeholder { color: var(--clr-muted); }
+.lead-form__submit { width: 100%; justify-content: center; padding: 14px; font-size: var(--type-body); }
+.lead-form__note { font-size: var(--type-label); color: var(--clr-muted); text-align: center; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COOKIE BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 300px;
+  background: #1a1a1a;
+  color: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  box-sizing: border-box;
+}
+.cookie-banner.hidden {
+  transform: translateY(calc(100% + 24px));
+  opacity: 0;
+  pointer-events: none;
+}
+.cookie-banner__emoji { font-size: 24px; flex-shrink: 0; }
+.cookie-banner__text {
+  font-size: var(--type-body-sm);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  flex: 1;
+}
+.cookie-banner__text strong {
+  color: var(--clr-white);
+  font-weight: var(--fw-semi);
+}
+.cookie-banner__text a {
+  color: var(--clr-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cookie-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  justify-content: flex-end;
+}
+.cookie-btn {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.cookie-btn--accept {
+  background: var(--clr-green);
+  color: var(--clr-white);
+}
+.cookie-btn--accept:hover { background: var(--clr-green-dark); }
+.cookie-btn--reject {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+}
+.cookie-btn--reject:hover {
+  background: rgba(255,255,255,0.14);
+  color: var(--clr-white);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CAMPAIGN SLOT — toggleable
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.campaign {
+  display: none; /* hidden by default — show when campaign is active */
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21/6; /* wide cinematic banner */
+  overflow: hidden;
+  background: var(--clr-green-dark);
+}
+.campaign.active { display: block; }
+.campaign__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.campaign__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,60,30,0.7) 0%, transparent 60%);
+}
+.campaign__content {
+  position: absolute;
+  left: var(--sp-12);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 480px;
+}
+.campaign__tag {
+  display: inline-block;
+  background: var(--clr-yellow);
+  color: var(--clr-black);
+  font-size: var(--type-label);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--r-xs);
+  margin-bottom: var(--sp-2);
+}
+.campaign__heading {
+  font-size: clamp(20px, 3vw, 36px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-3);
+}
+.campaign__close {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-3);
+  background: rgba(0,0,0,0.3);
+  border: none;
+  color: rgba(255,255,255,0.7);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 3;
+}
+.campaign__close:hover { background: rgba(0,0,0,0.5); color: white; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VOICES — full width editorial
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.voices {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(135deg, #e8f5f0 0%, #f0f9f5 40%, #e3f4f8 100%);
+  overflow: hidden;
+}
+.voices__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  text-align: center;
+}
+.voices__header { margin-bottom: var(--sp-8); }
+.voices__header .eyebrow { color: var(--clr-muted); }
+.voices__header .section-heading { color: var(--clr-green); }
+
+/* Shubham original — quote left, photo right */
+.voices__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+  min-height: 380px;
+  text-align: left;
+}
+
+.voices__card {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-4);
+  position: relative;
+}
+.voices__card--featured { display: contents; }
+
+/* Subtle glow */
+.voices__card::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(107,165,70,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Featured card spans full height */
+.voices__card--featured {
+  grid-row: span 2;
+  justify-content: flex-end;
+}
+.voices__card--featured .voices__quote {
+  font-size: clamp(20px, 2.5vw, 28px);
+}
+.voices__card--featured::before {
+  width: 320px; height: 320px;
+  top: -100px; right: -100px;
+}
+
+/* Featured has photo as background */
+.voices__photo-large {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--r-xl);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  margin: 0 auto;
+  display: block;
+}
+
+.voices__quote-mark {
+  font-size: 56px;
+  line-height: 0.8;
+  font-weight: var(--fw-black);
+  color: var(--clr-green);
+  opacity: 0.4;
+  font-family: Georgia, serif;
+  margin-bottom: var(--sp-2);
+}
+.voices__card--featured .voices__quote-mark { opacity: 0.6; }
+
+.voices__quote {
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: var(--fw-medium);
+  color: var(--clr-black);
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.voices__person {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-top: var(--sp-4);
+  margin-top: var(--sp-2);
+}
+.voices__photo {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--clr-gray-200);
+}
+.voices__photo--placeholder {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--clr-green), var(--clr-cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--type-body-lg); font-weight: var(--fw-bold);
+  color: var(--clr-white); flex-shrink: 0;
+}
+.voices__name {
+  font-size: var(--type-body);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  line-height: 1.2;
+}
+.voices__role {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  font-weight: var(--fw-regular);
+}
+/* Nav arrows */
+.voices__nav {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+}
+.voices__nav-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 18px; color: var(--clr-black);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.voices__nav-btn:hover {
+  background: var(--clr-green);
+  color: white;
+  border-color: var(--clr-green);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BLOGS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.blogs {
+  padding: var(--section-pad) 0;
+  background: var(--clr-white);
+}
+.blogs__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+.blogs__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--sp-4);
+}
+.blogs__view-all {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+  padding-bottom: 4px;
+}
+.blogs__view-all:hover { gap: 8px; }
+
+/* Filter tabs */
+.blogs__filters {
+  display: flex;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+}
+.blogs__filter {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-muted);
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  border-radius: var(--r-pill);
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.blogs__filter:hover {
+  border-color: var(--clr-green);
+  color: var(--clr-green);
+}
+.blogs__filter.active {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  border-color: var(--clr-green);
+}
+
+.blogs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.blog-card__img-wrap { overflow: hidden; flex-shrink: 0; }
+.blog-card__img {
+  width: 100%; aspect-ratio: 16/9;
+  object-fit: cover;
+  background: var(--clr-gray-100);
+  transition: transform 0.35s ease;
+  display: block;
+}
+.blog-card:hover .blog-card__img { transform: scale(1.04); }
+
+.blog-card__body {
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  flex: 1;
+}
+
+/* Category pill — color coded */
+.blog-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--r-xs);
+  padding: 4px 8px;
+  width: fit-content;
+}
+.blog-cat--press    { background: #EEF2FF; color: #4F6FDB; }
+.blog-cat--solar    { background: #EDF7E6; color: #4A8A2E; }
+.blog-cat--farmer   { background: #FFF7E6; color: #B07A10; }
+.blog-cat--tech     { background: #EAF5FA; color: #1A7FA0; }
+.blog-cat--policy   { background: #E6F4EE; color: #006037; }
+.blog-cat--company  { background: #FFF0F0; color: #C04040; }
+
+.blog-card__title {
+  font-size: var(--type-body-lg);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-top: 2px;
+}
+.blog-card__excerpt {
+  font-size: var(--type-body-sm);
+  color: var(--clr-gray-400);
+  line-height: 1.5;
+  flex: 1;
+}
+.blog-card__cta {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--sp-2);
+  transition: gap 0.2s ease;
+}
+.blog-card:hover .blog-card__cta { gap: 8px; }
+.stats {
+  background: var(--clr-gray-100);
+  padding: var(--sp-10) 0;
+}
+.stats__inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: var(--sp-3);
+}
+.stat {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  padding: var(--sp-5) var(--sp-3);
+  background: var(--clr-white);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--clr-gray-200);
+}
+.stat__number {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: var(--fw-black);
+  color: var(--clr-black);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: var(--sp-1);
+}
+/* Only ONE green number — most impactful stat */
+.stat:first-child .stat__number { color: var(--clr-green); }
+.stat__label {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.footer { background: #0a0f0a; color: rgba(255,255,255,0.65); }
+
+.footer__top {
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer__logo { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; }
+.footer__tagline { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+.footer__tagline span { font-style: normal; }
+
+.footer__main {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: var(--sp-6);
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  gap: var(--sp-6);
+}
+.footer__col-head {
+  font-size: var(--type-label); font-weight: var(--fw-bold);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); margin-bottom: 20px;
+}
+.footer__col-head--green { color: var(--clr-green); }
+.footer__col-head--cyan  { color: var(--clr-cyan); }
+.footer__links { display: flex; flex-direction: column; gap: 2px; }
+.footer__link {
+  font-size: 15px; font-weight: var(--fw-regular);
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  padding: 5px 0; transition: color 0.18s;
+}
+.footer__link:hover { color: var(--clr-white); }
+.footer__toll-label {
+  font-size: var(--type-label); font-weight: var(--fw-medium);
+  color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: var(--sp-1);
+}
+.footer__toll-number { font-size: 22px; font-weight: var(--fw-bold); color: var(--clr-white); letter-spacing: -0.02em; }
+
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--sp-3) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+}
+.footer__newsletter-label { font-size: var(--type-body-sm); font-weight: var(--fw-semi); color: rgba(255,255,255,0.6); margin-bottom: var(--sp-2); }
+.footer__newsletter-form { display: flex; gap: var(--sp-1); }
+.footer__newsletter-input {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-body-sm);
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-pill); color: var(--clr-white);
+  padding: 9px var(--sp-2); outline: none; width: 200px;
+  transition: border-color 0.2s;
+}
+.footer__newsletter-input::placeholder { color: rgba(255,255,255,0.25); }
+.footer__newsletter-input:focus { border-color: var(--clr-green); }
+.footer__newsletter-btn {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-label);
+  font-weight: var(--fw-bold); background: var(--clr-green); color: var(--clr-white);
+  border: none; border-radius: var(--r-pill); padding: 9px var(--sp-2);
+  cursor: pointer; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s;
+}
+.footer__newsletter-btn:hover { background: var(--clr-green-dark); }
+
+.footer__socials { display: flex; gap: var(--sp-2); }
+.footer__social {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; font-weight: var(--fw-semi);
+  transition: border-color 0.2s, color 0.2s;
+}
+.footer__social:hover { border-color: var(--clr-green); color: var(--clr-green); }
+
+.footer__scroll-top {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-label);
+  font-weight: var(--fw-semi); letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); cursor: pointer; background: none; border: none;
+  display: flex; align-items: center; gap: var(--sp-1); transition: color 0.2s;
+}
+.footer__scroll-top:hover { color: var(--clr-white); }
+
+.footer__copy {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: var(--sp-2) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer__copy-text { font-size: var(--type-label); color: rgba(255,255,255,0.2); }
+.footer__copy-brand { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SMART AC HERO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-hero {
+  position: relative; width: 100%; min-height: 100vh;
+  display: flex; align-items: center; justify-content: flex-end;
+  overflow: hidden;
+}
+.ac-hero__bg {
+  position: absolute; inset: 0;
+  background: url('https://framerusercontent.com/images/lWHQYdndNq0QxUMyFzvYoccBMxg.jpg?scale-down-to=2048') center/cover no-repeat;
+  z-index: 0;
+}
+.ac-hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 30%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.75) 100%);
+  z-index: 1;
+}
+.ac-hero__content {
+  position: relative; z-index: 2;
+  width: 44%; margin-right: 5%;
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding-top: 80px;
+}
+.ac-hero__tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--clr-green); color: var(--clr-white);
+  font-size: var(--type-label); font-weight: var(--fw-semi);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: var(--r-pill);
+  width: fit-content; margin-bottom: var(--sp-2);
+}
+.ac-hero__name {
+  font-size: clamp(52px, 6vw, 80px); font-weight: var(--fw-bold);
+  color: var(--clr-white); line-height: 0.95;
+  letter-spacing: -0.03em; margin-bottom: 10px;
+}
+.ac-hero__name span { color: var(--clr-green); }
+.ac-hero__sub {
+  font-size: clamp(16px, 1.6vw, 20px); font-weight: var(--fw-semi);
+  color: var(--clr-white); margin-bottom: var(--sp-2);
+}
+.ac-hero__desc {
+  font-size: var(--type-body); color: rgba(255,255,255,0.75);
+  line-height: 1.5; margin-bottom: var(--sp-4);
+}
+.ac-hero__actions { display: flex; gap: var(--sp-2); margin-bottom: var(--sp-4); flex-wrap: wrap; }
+.ac-hero__usps { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+.ac-hero__usp {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--r-pill); padding: 8px 16px;
+  font-size: var(--type-body-sm); font-weight: var(--fw-semi); color: var(--clr-white);
+}
+.ac-hero__usp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--clr-green); flex-shrink: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TICKER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ticker-wrap { position: relative; height: 46px; overflow: hidden; line-height: 0; }
+.ticker-bg { position: absolute; inset: 0; background: linear-gradient(90deg, var(--clr-green-dark) 0%, var(--clr-green) 100%); }
+.ticker-track { display: flex; align-items: center; height: 46px; position: relative; z-index: 1; width: max-content; animation: ticker-scroll 24s linear infinite; }
+.ticker-img { height: 22px; width: auto; margin-right: 40px; flex-shrink: 0; filter: brightness(0) invert(1); }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   INTRO STRIP
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-intro { padding: var(--section-pad) 0; background: var(--clr-white); }
+.ac-intro__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); align-items: center; }
+.ac-intro__heading { font-size: var(--type-h2); font-weight: var(--fw-bold); color: var(--clr-black); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--sp-3); }
+.ac-intro__desc { font-size: var(--type-body-lg); color: var(--clr-muted); line-height: 1.7; margin-bottom: var(--sp-4); }
+.ac-intro__feats { display: flex; flex-direction: column; gap: 12px; }
+.ac-intro__feat { display: flex; align-items: center; gap: 12px; font-size: var(--type-body); color: var(--clr-black); font-weight: var(--fw-medium); }
+.ac-intro__feat::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--clr-green); flex-shrink: 0; }
+.ac-intro__img { width: 100%; border-radius: var(--r-xl); display: block; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   AC VARIANTS CAROUSEL
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-variants { padding: var(--section-pad) 0; background: var(--clr-gray-100); }
+.ac-variants__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.ac-variants__header { text-align: center; margin-bottom: var(--sp-6); }
+.ac-variants__carousel { display: flex; gap: var(--sp-3); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: var(--sp-3); scrollbar-width: none; }
+.ac-variants__carousel::-webkit-scrollbar { display: none; }
+.ac-variant-card {
+  flex: 0 0 calc(50% - var(--sp-2));
+  scroll-snap-align: start;
+  border-radius: var(--r-xl); overflow: hidden;
+  position: relative; min-height: 500px;
+  background-size: cover; background-position: center;
+  cursor: pointer;
+}
+.ac-variant-card__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.85) 100%); }
+.ac-variant-card__ac {
+  position: absolute; top: 24px; left: 50%;
+  transform: translateX(-50%);
+  width: 55%; z-index: 2;
+}
+.ac-variant-card__body { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: var(--sp-5); display: flex; justify-content: space-between; align-items: flex-end; }
+.ac-variant-card__name { font-size: clamp(22px,2.5vw,32px); font-weight: var(--fw-bold); color: var(--clr-white); }
+.ac-variant-card__name em { font-style: normal; color: rgba(255,255,255,0.6); }
+.ac-variant-card__btn { background: var(--clr-white); color: var(--clr-black); font-size: var(--type-body-sm); font-weight: var(--fw-semi); padding: 8px 18px; border-radius: var(--r-pill); border: none; cursor: pointer; white-space: nowrap; text-decoration: none; }
+.ac-variants__cta { text-align: center; margin-top: var(--sp-5); }
+.ac-variants__explore { display: inline-flex; align-items: center; gap: 8px; background: var(--clr-yellow); color: var(--clr-black); font-size: var(--type-body); font-weight: var(--fw-bold); padding: 14px 32px; border-radius: var(--r-pill); text-decoration: none; transition: opacity 0.2s; }
+.ac-variants__explore:hover { opacity: 0.9; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SMART APP FEATURES
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-app { padding: var(--section-pad) 0; background: var(--clr-white); }
+.ac-app__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.ac-app__hero-img { width: 100%; border-radius: var(--r-xl); margin-bottom: var(--sp-6); display: block; max-height: 400px; object-fit: cover; }
+.ac-app__cards { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--sp-3); }
+.ac-app-card { background: var(--clr-gray-100); border-radius: var(--r-xl); overflow: hidden; }
+.ac-app-card__screen { width: 100%; aspect-ratio: 1/1; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f5f5f5; }
+.ac-app-card__body { padding: var(--sp-3); }
+.ac-app-card__title { font-size: var(--type-body); font-weight: var(--fw-bold); color: var(--clr-black); margin-bottom: 4px; }
+.ac-app-card__desc { font-size: var(--type-body-sm); color: var(--clr-muted); line-height: 1.5; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SMART FEATURES
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-features { padding: var(--section-pad) 0; background: var(--clr-gray-100); }
+.ac-features__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.ac-features__header { text-align: center; margin-bottom: var(--sp-6); }
+.ac-features__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--sp-3); }
+.ac-feat-card { background: var(--clr-white); border-radius: var(--r-xl); padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); transition: transform 0.2s; }
+.ac-feat-card__problem { font-size: var(--type-body-sm); color: var(--clr-muted); font-style: italic; margin-bottom: 4px; padding-bottom: 10px; border-bottom: 1px solid var(--clr-gray-200); }
+.ac-feat-card:hover { transform: translateY(-3px); }
+.ac-feat-card__problem {
+  font-size: var(--type-body-sm); color: var(--clr-muted);
+  font-style: italic; margin-bottom: 8px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--clr-gray-200);
+}
+.ac-feat-card__icon { font-size: 36px; }
+.ac-feat-card__title { font-size: var(--type-body); font-weight: var(--fw-bold); color: var(--clr-black); }
+.ac-feat-card__desc { font-size: var(--type-body-sm); color: var(--clr-muted); line-height: 1.6; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SPECS TABLE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-specs { padding: var(--section-pad) 0; background: var(--clr-gray-100); }
+.ac-specs__inner { max-width: 740px; margin: 0 auto; padding: 0 var(--sp-6); }
+.ac-specs__heading { font-size: clamp(24px,3vw,36px); font-weight: var(--fw-bold); color: var(--clr-green); text-align: center; margin-bottom: var(--sp-6); }
+.ac-specs__card { background: var(--clr-white); border-radius: var(--r-xl); overflow: hidden; }
+.ac-specs__row { display: grid; grid-template-columns: 1fr 1fr; padding: 20px 32px; border-bottom: 1px solid var(--clr-gray-200); }
+.ac-specs__row:last-child { border-bottom: none; }
+.ac-specs__cat { font-size: var(--type-body); font-weight: var(--fw-medium); color: var(--clr-black); }
+.ac-specs__val { font-size: var(--type-body); color: var(--clr-muted); }
+.ac-specs__val strong { color: var(--clr-black); font-weight: var(--fw-semi); display: block; }
+.ac-specs__download { text-align: center; margin-top: var(--sp-5); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TECH FEATURES — copper coil + warranty
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-tech { padding: var(--section-pad) 0 0; background: var(--clr-white); }
+.ac-tech__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.ac-tech__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.ac-tech-card { border-radius: var(--r-xl); overflow: hidden; position: relative; min-height: 420px; }
+.ac-tech-card__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ac-tech-card__body { position: absolute; bottom: 0; left: 0; right: 0; padding: var(--sp-5); background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.95) 60%); }
+.ac-tech-card__body--dark { background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 60%); }
+.ac-tech-card__title { font-size: clamp(22px,2.5vw,34px); font-weight: var(--fw-bold); color: var(--clr-black); line-height: 1.2; margin-bottom: 8px; }
+.ac-tech-card__title--light { color: var(--clr-white); }
+.ac-tech-card__desc { font-size: var(--type-body-sm); color: rgba(0,0,0,0.6); line-height: 1.5; }
+.ac-tech-card__desc--light { color: rgba(255,255,255,0.75); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TESTIMONIALS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-test { padding: var(--section-pad) 0; background: var(--clr-white); }
+.ac-test__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.ac-test__label { font-size: 18px; color: var(--clr-muted); letter-spacing: 2px; text-align: center; margin-bottom: var(--sp-5); text-transform: uppercase; }
+.ac-test__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.ac-tcard { border-radius: var(--r-xl); overflow: hidden; height: 480px; position: relative; background-size: cover; background-position: center top; }
+.ac-tcard::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.92) 100%); }
+.ac-tcard__body { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: var(--sp-4); }
+.ac-tcard__stars { color: #FFC108; font-size: 14px; letter-spacing: 2px; margin-bottom: 8px; }
+.ac-tcard__quote { font-size: clamp(16px,1.8vw,20px); font-weight: var(--fw-semi); color: var(--clr-white); line-height: 1.3; margin-bottom: 10px; }
+.ac-tcard__divider { border: none; border-top: 1px solid rgba(255,255,255,0.2); margin-bottom: 10px; }
+.ac-tcard__person { font-size: var(--type-body-sm); color: rgba(255,255,255,0.65); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FAQ
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ac-faq { padding: 100px var(--sp-6); background: var(--clr-white); }
+.ac-faq__inner { max-width: 800px; margin: 0 auto; }
+.ac-faq__heading { font-size: clamp(36px,4vw,52px); font-weight: var(--fw-medium); text-align: center; letter-spacing: -1px; color: #424242; margin-bottom: var(--sp-6); }
+.ac-faq__item { border-radius: 12px; box-shadow: 0 4px 6px 4px rgba(180,156,197,.08); background: rgba(255,255,255,.5); margin-bottom: var(--sp-2); }
+.ac-faq__q { display: flex; justify-content: space-between; align-items: center; padding: 28px 32px; cursor: pointer; font-size: 18px; font-weight: var(--fw-medium); color: #424242; gap: var(--sp-3); }
+.ac-faq__icon { font-size: 18px; color: var(--clr-green-dark); flex-shrink: 0; transition: transform 0.2s; }
+.ac-faq__item.open .ac-faq__icon { transform: rotate(45deg); }
+.ac-faq__a { display: none; padding: 0 32px 28px; font-size: var(--type-body); color: rgba(0,0,0,.8); line-height: 1.6; }
+.ac-faq__item.open .ac-faq__a { display: block; }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  Get 20% OFF on Ecozen Smart AC. Offer Valid till 30th May. T&amp;C*
+  <a href="#">Buy Now &rsaquo;</a>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="#" class="nav__logo">
+      <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="nav__logo-img">
+    </a>
+    <ul class="nav__links">
+      <li class="nav__item">
+        <button class="nav__trigger">Products <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Products</div>
+            <div class="mega__grid">
+              <a href="ecotron.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/ho1yoHUhEznXalDBkGUGEcn3w.png?scale-down-to=512" alt="Ecotron"></div><div class="mega__name">Ecotron</div><div class="mega__sub">Solar Pump Controller Set</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UpCjHunNdpYxz5EHMBB63oRNq6w.png?scale-down-to=512" alt="Smart Rooftop"></div><div class="mega__name">Smart Rooftop</div><div class="mega__sub">Solar Rooftop System</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UI5C0avLzgcVcBtQARfb0413SM.png?scale-down-to=512" alt="Solar AC"></div><div class="mega__name">Solar AC</div><div class="mega__sub">True Solar AC</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HQo0shYCaFQr4ftH355yY4MzHQ.png?scale-down-to=512" alt="Smart AC"></div><div class="mega__name">Smart AC</div><div class="mega__sub">Solar Compatible AC</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HhdZoSO9Ks6NhkyIJgvRO4FNCc.png?scale-down-to=512" alt="Ecofrost"></div><div class="mega__name">Ecofrost</div><div class="mega__sub">Solar Cold Room</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/1y9A85gop6sykfhXhLwi0EU4.png?scale-down-to=512" alt="Ecofreeze"></div><div class="mega__name">Ecofreeze</div><div class="mega__sub">Solar &amp; Grid Freezer</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/rouKjd27Ia6UNiOXetYTrX1T4.png?scale-down-to=512" alt="Atta Chakki"></div><div class="mega__name">Atta Chakki</div><div class="mega__sub">Solar Powered</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Technology <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Technology</div>
+            <div class="mega__grid mega__grid--3">
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/SlgjaFXiZTm2VLRSN0f3PeJbU.png" alt="AI"><div class="mega__tech-name">AI Solutions</div><div class="mega__tech-desc">Open a world of possibilities with our AI Solutions</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jVGWDfpkNuQuf0CGzeykQbt48.png" alt="Motor"><div class="mega__tech-name">Motor Control</div><div class="mega__tech-desc">Efficiently Controls BLDC, PMSM, SYNRM &amp; Other Motors</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jXWGMjOBo5Ew7idmSO5F2hTMXCA.png" alt="Thermal"><div class="mega__tech-name">Thermal Energy Storage</div><div class="mega__tech-desc">ecozen's Patented Ice-core Technology</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Resources <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Learn</div>
+                <a href="#" class="mega__link">Ecozen Blogs</a>
+                <a href="#" class="mega__link">News</a>
+                <a href="#" class="mega__link">Case Studies</a>
+                <a href="#" class="mega__link">Documents</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">More <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Company</div>
+                <a href="#" class="mega__link">About Us</a>
+                <a href="#" class="mega__link">Careers</a>
+              </div>
+              <div class="mega__col-group">
+                <div class="mega__col-label">Contact</div>
+                <a href="#" class="mega__link">Find Certified Dealer</a>
+                <a href="#" class="mega__link">Find Experience Centre</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <a href="tel:18001217515" class="nav__phone-btn">📞 1800 121 7515</a>
+  </nav>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <span class="cookie-banner__emoji">🍪</span>
+  <p class="cookie-banner__text">
+    <strong>We use cookies</strong> to improve your experience and analyse site traffic.
+    By continuing, you agree to our <a href="#">Privacy Policy</a>.
+  </p>
+  <div class="cookie-banner__actions">
+    <button class="cookie-btn cookie-btn--reject" id="cookieReject">Reject All</button>
+    <button class="cookie-btn cookie-btn--accept" id="cookieAccept">Accept All</button>
+  </div>
+</div>
+
+<!-- CAMPAIGN SLOT — set class="campaign active" to show -->
+<div class="campaign" id="campaignSlot">
+  <img class="campaign__img" src="" alt="Campaign">
+  <div class="campaign__overlay"></div>
+  <div class="campaign__content">
+    <span class="campaign__tag">⚡ Limited Time</span>
+    <h2 class="campaign__heading">Campaign Heading Goes Here</h2>
+    <a href="#" class="btn btn--primary">Learn More →</a>
+  </div>
+  <button class="campaign__close" onclick="document.getElementById('campaignSlot').classList.remove('active')">✕</button>
+</div>
+
+
+<!-- HERO -->
+<section class="ac-hero">
+  <div class="ac-hero__bg"></div>
+  <div class="ac-hero__overlay"></div>
+  <div class="ac-hero__content">
+    <div class="ac-hero__tag">ecozen Product</div>
+    <h1 class="ac-hero__name">Smart<br><span>AC</span></h1>
+    <p class="ac-hero__sub">Cool More. Pay Less. Every Day.</p>
+    <p class="ac-hero__desc">India's first solar-compatible smart AC. Cut your electricity bill by up to 60% — while staying cooler than ever.</p>
+    <div class="ac-hero__actions">
+      <a href="#lead" class="btn btn--primary">Enquire Now</a>
+      <a href="#specs" class="btn btn--ghost">View Specs</a>
+    </div>
+    <div class="ac-hero__usps">
+      <div class="ac-hero__usp"><div class="ac-hero__usp-dot"></div>Solar + Grid</div>
+      <div class="ac-hero__usp"><div class="ac-hero__usp-dot"></div>App Controlled</div>
+      <div class="ac-hero__usp"><div class="ac-hero__usp-dot"></div>5-Year Warranty</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-bg"></div>
+  <div class="ticker-track">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="ac-intro">
+  <div class="ac-intro__inner">
+    <div>
+      <span class="eyebrow">What Makes It Smart</span>
+      <h2 class="ac-intro__heading">Cool Smarter,<br>Save More</h2>
+      <p class="ac-intro__desc">ecozen Smart AC combines solar power compatibility with intelligent app control — giving you comfort without the electricity bill shock.</p>
+      <div class="ac-intro__feats">
+        <div class="ac-intro__feat">Works on solar panels + grid power</div>
+        <div class="ac-intro__feat">Remote monitoring via EcoSphere™ app</div>
+        <div class="ac-intro__feat">5-star rated energy efficiency</div>
+        <div class="ac-intro__feat">100% copper coil with blue fin coating</div>
+        <div class="ac-intro__feat">Auto-restart & voltage protection</div>
+      </div>
+    </div>
+    <img class="ac-intro__img"
+      src="https://framerusercontent.com/images/5It95jIPNSnmsgzxmwNJGO2tiY.png?scale-down-to=1024"
+      alt="ecozen Smart AC">
+  </div>
+</section>
+
+<!-- AC VARIANTS -->
+<section class="ac-variants">
+  <div class="ac-variants__inner">
+    <div class="ac-variants__header">
+      <span class="eyebrow">Choose Your Style</span>
+      <h2 class="section-heading">Pick Your <span class="accent-green">Variant</span></h2>
+    </div>
+    <div class="ac-variants__carousel">
+      <div class="ac-variant-card" style="background-image:url('https://framerusercontent.com/images/8y9WXH52iZcDcQW2rgMLEncRM.jpg?scale-down-to=1024')">
+        <div class="ac-variant-card__overlay"></div>
+        <img class="ac-variant-card__ac" src="https://framerusercontent.com/images/GucnY8koUCoAR9i3St8LWn7UUto.png?scale-down-to=512" alt="Indigo Flow AC">
+        <div class="ac-variant-card__body">
+          <div class="ac-variant-card__name">Indigo <em>Flow</em></div>
+          <a href="https://ecozen.homes/products/ecozen-smart-ac-1-5-ton-split-ac" target="_blank" class="ac-variant-card__btn">Buy Now</a>
+        </div>
+      </div>
+      <div class="ac-variant-card" style="background-image:url('https://framerusercontent.com/images/fupUJyvTHzaHuYK0kzT99cVBxlo.jpg?scale-down-to=1024')">
+        <div class="ac-variant-card__overlay"></div>
+        <img class="ac-variant-card__ac" src="https://framerusercontent.com/images/hs0MJhrozk5hUXKfRYiqlg3Q6w.png?scale-down-to=512" alt="Earth Luxe AC">
+        <div class="ac-variant-card__body">
+          <div class="ac-variant-card__name">Earth <em>Luxe</em></div>
+          <a href="https://ecozen.homes/products/ecozen-smart-ac-1-5-ton-split-ac" target="_blank" class="ac-variant-card__btn">Buy Now</a>
+        </div>
+      </div>
+      <div class="ac-variant-card" style="background-image:url('https://framerusercontent.com/images/Ii6ii1zHeawFxP1XFPLPLqfsHM.jpg?scale-down-to=1024')">
+        <div class="ac-variant-card__overlay"></div>
+        <img class="ac-variant-card__ac" src="https://framerusercontent.com/images/qLtT80054LBAWkuwNPAdefpDnXU.png?scale-down-to=512" alt="Urban Bold AC">
+        <div class="ac-variant-card__body">
+          <div class="ac-variant-card__name">Urban <em>Bold</em></div>
+          <a href="https://ecozen.homes/products/ecozen-smart-ac-1-5-ton-split-ac" target="_blank" class="ac-variant-card__btn">Buy Now</a>
+        </div>
+      </div>
+      <div class="ac-variant-card" style="background-image:url('https://framerusercontent.com/images/IO0E3l3iYkAcAPyJrxfYT3J8eE.jpg?scale-down-to=1024')">
+        <div class="ac-variant-card__overlay"></div>
+        <img class="ac-variant-card__ac" src="https://framerusercontent.com/images/wbq26i2FzRebzbXifD1Ka5YuQIo.png?scale-down-to=512" alt="Classic Stone AC">
+        <div class="ac-variant-card__body">
+          <div class="ac-variant-card__name">Classic <em>Stone</em></div>
+          <a href="https://ecozen.homes/products/ecozen-smart-ac-1-5-ton-split-ac" target="_blank" class="ac-variant-card__btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="ac-variants__cta">
+      <a href="#lead" class="ac-variants__explore">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Explore Variants
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SMART APP -->
+<section class="ac-app">
+  <div class="ac-app__inner">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="eyebrow">EcoSphere™ App</span>
+      <h2 class="section-heading">Real intelligence<br><span class="accent-green">in your hand.</span></h2>
+    </div>
+    <img class="ac-app__hero-img"
+      src="https://framerusercontent.com/images/M0Mkd8NpSGJCbxmTIQaUEC3zs.png?scale-down-to=1024"
+      alt="Smart AC App Control">
+    <div class="ac-app__cards">
+      <div class="ac-app-card">
+        <div class="ac-app-card__screen" style="background-image:url('https://framerusercontent.com/images/36HQGlQEJPLLYnt4AHmoFwzeto.png?scale-down-to=512')"></div>
+        <div class="ac-app-card__body">
+          <div class="ac-app-card__title">Smart monitoring</div>
+          <div class="ac-app-card__desc">Live energy tracking. Control your bills. Save even more.</div>
+        </div>
+      </div>
+      <div class="ac-app-card">
+        <div class="ac-app-card__screen" style="background-image:url('https://framerusercontent.com/images/my1NsdKouqPOGfmMkQ7kmkUSBXQ.png?scale-down-to=512')"></div>
+        <div class="ac-app-card__body">
+          <div class="ac-app-card__title">Smart control</div>
+          <div class="ac-app-card__desc">Walk into pre-cooled rooms. Schedule your comfort. Anytime, anywhere.</div>
+        </div>
+      </div>
+      <div class="ac-app-card">
+        <div class="ac-app-card__screen" style="background-image:url('https://framerusercontent.com/images/DM3oddeekjbZkxpIwXQj4Kq3MfM.png?scale-down-to=512')"></div>
+        <div class="ac-app-card__body">
+          <div class="ac-app-card__title">Service request</div>
+          <div class="ac-app-card__desc">Automated diagnostics. Remote assistance. Zero hassle servicing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMART FEATURES -->
+<section class="ac-features">
+  <div class="ac-features__inner">
+    <div class="ac-features__header">
+      <span class="eyebrow">Smart features for your benefits</span>
+      <h2 class="section-heading">Every problem.<br><span class="accent-green">Solved.</span></h2>
+    </div>
+    <div class="ac-features__grid">
+      <div class="ac-feat-card">
+        <div class="ac-feat-card__problem">Electricity bill too high?</div>
+        <div class="ac-feat-card__icon">☀️</div>
+        <div class="ac-feat-card__title">Works on Solar</div>
+        <div class="ac-feat-card__desc">Cut your bill by up to 60%. Runs on solar panels, grid, or both — you choose what's cheaper.</div>
+      </div>
+      <div class="ac-feat-card">
+        <div class="ac-feat-card__problem">AC off when you're away?</div>
+        <div class="ac-feat-card__icon">📱</div>
+        <div class="ac-feat-card__title">EcoSphere™ App Control</div>
+        <div class="ac-feat-card__desc">Switch it on before you reach home. Monitor energy, set schedules, control from anywhere.</div>
+      </div>
+      <div class="ac-feat-card">
+        <div class="ac-feat-card__problem">AC fails in peak summer?</div>
+        <div class="ac-feat-card__icon">❄️</div>
+        <div class="ac-feat-card__title">Turbo Cooling Mode</div>
+        <div class="ac-feat-card__desc">42°C outside? Still 25°C inside. Turbo mode + 4-way swing reaches every corner instantly.</div>
+      </div>
+      <div class="ac-feat-card">
+        <div class="ac-feat-card__problem">Surprise breakdowns?</div>
+        <div class="ac-feat-card__icon">🔧</div>
+        <div class="ac-feat-card__title">AI Self-Diagnosis</div>
+        <div class="ac-feat-card__desc">Detects filter clogs, voltage issues, and gas levels before they become problems. Zero surprises.</div>
+      </div>
+      <div class="ac-feat-card">
+        <div class="ac-feat-card__problem">Voltage fluctuations?</div>
+        <div class="ac-feat-card__icon">🛡️</div>
+        <div class="ac-feat-card__title">Built-in Protection</div>
+        <div class="ac-feat-card__desc">Auto-restart + voltage stabilizer built in. No separate stabilizer needed. Works through power cuts.</div>
+      </div>
+      <div class="ac-feat-card">
+        <div class="ac-feat-card__problem">Worried about quality?</div>
+        <div class="ac-feat-card__icon">🏆</div>
+        <div class="ac-feat-card__title">5-Year Warranty</div>
+        <div class="ac-feat-card__desc">100% copper coil. 5-year comprehensive warranty + 5 years on compressor. Built to last a decade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS TABLE -->
+<section class="ac-specs" id="specs">
+  <div class="ac-specs__inner">
+    <div class="ac-specs__heading">ecozen smart AC specifications</div>
+    <div class="ac-specs__card">
+      <div class="ac-specs__row"><div class="ac-specs__cat">Capacity</div><div class="ac-specs__val"><strong>1.0T / 1.5T / 2.0T</strong></div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Type</div><div class="ac-specs__val"><strong>Inverter Split AC</strong></div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Energy Rating</div><div class="ac-specs__val"><strong>3-Star</strong> (ISEER 4.1)</div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Cooling Capacity</div><div class="ac-specs__val"><strong>5000 Watts</strong> (1.5T)</div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Power Supply</div><div class="ac-specs__val"><strong>230V / 50Hz</strong> / Single Phase</div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Operating Modes</div><div class="ac-specs__val"><strong>Auto / Cool / Fan / Sleep / Turbo / AI</strong></div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Compressor</div><div class="ac-specs__val"><strong>Rotary</strong> – Variable Speed</div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Refrigerant</div><div class="ac-specs__val"><strong>R32</strong> – Eco-Friendly</div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Coil</div><div class="ac-specs__val"><strong>100% Copper</strong> with Blue Fin Coating</div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Solar Compatibility</div><div class="ac-specs__val"><strong>On-Grid &amp; Hybrid</strong> Solar Systems</div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">App Connectivity</div><div class="ac-specs__val"><strong>EcoSphere™</strong> App (iOS + Android)</div></div>
+      <div class="ac-specs__row"><div class="ac-specs__cat">Warranty</div><div class="ac-specs__val"><strong>5 Year Comprehensive</strong><br>+ 5 Years on Compressor</div></div>
+    </div>
+    <div style="margin-top:var(--sp-4);background:var(--clr-gray-100);border-radius:var(--r-md);overflow:hidden">
+      <div style="padding:16px 32px;background:var(--clr-green);color:white;font-weight:var(--fw-bold);font-size:var(--type-body)">Room Size Guide</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--clr-gray-200)"><div style="padding:14px 32px;font-weight:var(--fw-semi);color:var(--clr-black)">Room Size (sq ft)</div><div style="padding:14px 32px;color:var(--clr-muted)">Recommended Capacity</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--clr-gray-200)"><div style="padding:14px 32px;color:var(--clr-black)">0 – 100 sq ft</div><div style="padding:14px 32px;color:var(--clr-muted)">0.8 TR</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--clr-gray-200)"><div style="padding:14px 32px;color:var(--clr-black)">100 – 150 sq ft</div><div style="padding:14px 32px;color:var(--clr-muted)">1.0 TR</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--clr-gray-200)"><div style="padding:14px 32px;color:var(--clr-black)">150 – 200 sq ft</div><div style="padding:14px 32px;color:var(--clr-muted)">1.5 TR</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr"><div style="padding:14px 32px;color:var(--clr-black)">200 – 250 sq ft</div><div style="padding:14px 32px;color:var(--clr-muted)">2.0 TR</div></div>
+    </div>
+    <div class="ac-specs__download">
+      <a href="#" class="btn btn--ghost">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v9M8 10l-3-3M8 10l3-3M2 12v2h12v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download Brochure
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TECH — copper coil + warranty -->
+<section class="ac-tech">
+  <div class="ac-tech__inner">
+    <div class="ac-tech__grid">
+      <div class="ac-tech-card">
+        <img class="ac-tech-card__img"
+          src="https://framerusercontent.com/images/mKkIbCDv4SBRJHlqk8rrDq4tRI.png?scale-down-to=1024"
+          alt="100% copper coil">
+        <div class="ac-tech-card__body">
+          <div class="ac-tech-card__title">100% copper coil with<br>blue fin coating</div>
+          <div class="ac-tech-card__desc">Better cooling. Longer life. Blue fin coating protects against rust and environmental damage — built for India's climate.</div>
+        </div>
+      </div>
+      <div class="ac-tech-card">
+        <img class="ac-tech-card__img"
+          src="https://framerusercontent.com/images/eZF52l1UvFKy9Uh5aq2aAb2z5DE.jpg?scale-down-to=1024"
+          alt="5 Year Warranty">
+        <div class="ac-tech-card__body ac-tech-card__body--dark">
+          <div class="ac-tech-card__title ac-tech-card__title--light">5 Years comprehensive<br>warranty</div>
+          <div class="ac-tech-card__desc ac-tech-card__desc--light">5 years comprehensive coverage + 5 years on compressor. One of the best warranty packages in the industry.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="ac-test">
+  <div class="ac-test__inner">
+    <div class="ac-test__label">Customer experience</div>
+    <div class="ac-test__grid">
+      <div class="ac-tcard" style="background-image:url('https://framerusercontent.com/images/dRYqcddnJBL3LGuLglDhX4ULHWs.jpg?scale-down-to=1024')">
+        <div class="ac-tcard__body">
+          <div class="ac-tcard__stars">★★★★★</div>
+          <div class="ac-tcard__quote">"My electricity bill dropped by 60% after switching to ecozen Smart AC."</div>
+          <hr class="ac-tcard__divider">
+          <div class="ac-tcard__person">Rajesh Kumar, Homeowner, Pune</div>
+        </div>
+      </div>
+      <div class="ac-tcard" style="background-image:url('https://framerusercontent.com/images/IO0E3l3iYkAcAPyJrxfYT3J8eE.jpg?scale-down-to=1024')">
+        <div class="ac-tcard__body">
+          <div class="ac-tcard__stars">★★★★★</div>
+          <div class="ac-tcard__quote">"The app control is amazing — I can switch it on before I reach home."</div>
+          <hr class="ac-tcard__divider">
+          <div class="ac-tcard__person">Priya Sharma, Business Owner, Delhi</div>
+        </div>
+      </div>
+      <div class="ac-tcard" style="background-image:url('https://framerusercontent.com/images/bHJKDP0bCZg2CAUkOLepK0lflXk.jpg?scale-down-to=1024')">
+        <div class="ac-tcard__body">
+          <div class="ac-tcard__stars">★★★★★</div>
+          <div class="ac-tcard__quote">"Solar-powered AC seemed like a dream. ecozen made it real."</div>
+          <hr class="ac-tcard__divider">
+          <div class="ac-tcard__person">Amit Patel, Farmer, Gujarat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="ac-faq">
+  <div class="ac-faq__inner">
+    <div class="ac-faq__heading">You asked.<br>We answered.</div>
+    <div class="ac-faq__item">
+      <div class="ac-faq__q">Does ecozen Smart AC work without solar panels? <span class="ac-faq__icon">+</span></div>
+      <div class="ac-faq__a">Yes — ecozen Smart AC works on both solar power and regular grid electricity. You can use it even without solar panels, but connecting solar maximizes savings.</div>
+    </div>
+    <div class="ac-faq__item">
+      <div class="ac-faq__q">What app do I need to control the AC? <span class="ac-faq__icon">+</span></div>
+      <div class="ac-faq__a">ecozen Smart AC is controlled via the EcoSphere™ app, available on both iOS (App Store) and Android (Play Store). The app lets you monitor temperature, set schedules, raise service requests, and more.</div>
+    </div>
+    <div class="ac-faq__item">
+      <div class="ac-faq__q">What is the warranty on ecozen Smart AC? <span class="ac-faq__icon">+</span></div>
+      <div class="ac-faq__a">ecozen Smart AC comes with 1 year comprehensive warranty + 5 years on the compressor — one of the best warranty packages in the industry.</div>
+    </div>
+    <div class="ac-faq__item">
+      <div class="ac-faq__q">What sizes are available? <span class="ac-faq__icon">+</span></div>
+      <div class="ac-faq__a">ecozen Smart AC is available in 1.0 Ton, 1.5 Ton, and 2.0 Ton variants to suit different room sizes and requirements.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section class="lead-form" id="lead">
+  <div class="lead-form__inner">
+    <div class="lead-form__left">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.5)">Get in Touch</span>
+      <h2 class="section-heading" style="color:var(--clr-white)">
+        Interested in <span style="color:var(--clr-green)">Smart AC?</span>
+      </h2>
+      <p class="lead-form__sub">Our experts will call you back within 24 hours with pricing and installation details.</p>
+    </div>
+    <div class="lead-form__card">
+      <div class="lead-form__row">
+        <div class="lead-form__field">
+          <label class="lead-form__label">Name *</label>
+          <input type="text" class="lead-form__input" placeholder="First name">
+        </div>
+        <div class="lead-form__field">
+          <label class="lead-form__label">Surname *</label>
+          <input type="text" class="lead-form__input" placeholder="Last name">
+        </div>
+      </div>
+      <div class="lead-form__field">
+        <label class="lead-form__label">Mobile *</label>
+        <input type="tel" class="lead-form__input" placeholder="+91 98765 43210">
+      </div>
+      <div class="lead-form__field">
+        <label class="lead-form__label">Email *</label>
+        <input type="email" class="lead-form__input" placeholder="you@email.com">
+      </div>
+      <div class="lead-form__row">
+        <div class="lead-form__field">
+          <label class="lead-form__label">State *</label>
+          <select class="lead-form__select">
+            <option value="" disabled selected>Select state</option>
+            <option>Maharashtra</option><option>Rajasthan</option>
+            <option>Uttar Pradesh</option><option>Gujarat</option>
+            <option>Delhi</option><option>Punjab</option><option>Other</option>
+          </select>
+        </div>
+        <div class="lead-form__field">
+          <label class="lead-form__label">AC Capacity</label>
+          <select class="lead-form__select">
+            <option value="" disabled selected>Select capacity</option>
+            <option>1.0 Ton</option><option>1.5 Ton</option><option>2.0 Ton</option>
+          </select>
+        </div>
+      </div>
+      <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--type-body-sm);color:var(--clr-muted);cursor:pointer">
+        <input type="checkbox" style="margin-top:3px;accent-color:var(--clr-green);flex-shrink:0">
+        You agree to our <a href="#" style="color:var(--clr-green);margin-left:4px">privacy policy</a>.
+      </label>
+      <button class="btn btn--primary" style="width:100%;justify-content:center;padding:14px;font-size:var(--type-body)">Submit Details →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FRAUD ALERT -->
+<div class="fraud-alert">
+  <div class="fraud-alert__inner">
+    <span class="fraud-alert__icon">⚠️</span>
+    <p class="fraud-alert__text">
+      <strong>Caution Notice:</strong> ecozen Solutions Private Limited does not ask job seekers or customers to pay any fees, deposit, or provide sensitive personal information during any process. Beware of scammers impersonating ecozen.
+      <a href="#" class="fraud-alert__link">Report fraud →</a>
+    </p>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="#" class="nav__logo">
+      <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="nav__logo-img">
+    </a>
+    <ul class="nav__links">
+      <li class="nav__item">
+        <button class="nav__trigger">Products <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Products</div>
+            <div class="mega__grid">
+              <a href="ecotron.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/ho1yoHUhEznXalDBkGUGEcn3w.png?scale-down-to=512" alt="Ecotron"></div><div class="mega__name">Ecotron</div><div class="mega__sub">Solar Pump Controller Set</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UpCjHunNdpYxz5EHMBB63oRNq6w.png?scale-down-to=512" alt="Smart Rooftop"></div><div class="mega__name">Smart Rooftop</div><div class="mega__sub">Solar Rooftop System</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UI5C0avLzgcVcBtQARfb0413SM.png?scale-down-to=512" alt="Solar AC"></div><div class="mega__name">Solar AC</div><div class="mega__sub">True Solar AC</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HQo0shYCaFQr4ftH355yY4MzHQ.png?scale-down-to=512" alt="Smart AC"></div><div class="mega__name">Smart AC</div><div class="mega__sub">Solar Compatible AC</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HhdZoSO9Ks6NhkyIJgvRO4FNCc.png?scale-down-to=512" alt="Ecofrost"></div><div class="mega__name">Ecofrost</div><div class="mega__sub">Solar Cold Room</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/1y9A85gop6sykfhXhLwi0EU4.png?scale-down-to=512" alt="Ecofreeze"></div><div class="mega__name">Ecofreeze</div><div class="mega__sub">Solar &amp; Grid Freezer</div></a>
+              <a href="#" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/rouKjd27Ia6UNiOXetYTrX1T4.png?scale-down-to=512" alt="Atta Chakki"></div><div class="mega__name">Atta Chakki</div><div class="mega__sub">Solar Powered</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Technology <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Technology</div>
+            <div class="mega__grid mega__grid--3">
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/SlgjaFXiZTm2VLRSN0f3PeJbU.png" alt="AI"><div class="mega__tech-name">AI Solutions</div><div class="mega__tech-desc">Open a world of possibilities with our AI Solutions</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jVGWDfpkNuQuf0CGzeykQbt48.png" alt="Motor"><div class="mega__tech-name">Motor Control</div><div class="mega__tech-desc">Efficiently Controls BLDC, PMSM, SYNRM &amp; Other Motors</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jXWGMjOBo5Ew7idmSO5F2hTMXCA.png" alt="Thermal"><div class="mega__tech-name">Thermal Energy Storage</div><div class="mega__tech-desc">ecozen's Patented Ice-core Technology</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Resources <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Learn</div>
+                <a href="#" class="mega__link">Ecozen Blogs</a>
+                <a href="#" class="mega__link">News</a>
+                <a href="#" class="mega__link">Case Studies</a>
+                <a href="#" class="mega__link">Documents</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">More <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Company</div>
+                <a href="#" class="mega__link">About Us</a>
+                <a href="#" class="mega__link">Careers</a>
+              </div>
+              <div class="mega__col-group">
+                <div class="mega__col-label">Contact</div>
+                <a href="#" class="mega__link">Find Certified Dealer</a>
+                <a href="#" class="mega__link">Find Experience Centre</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <a href="tel:18001217515" class="nav__phone-btn">📞 1800 121 7515</a>
+  </nav>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__top">
+    <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="footer__logo">
+    <div class="footer__tagline"><span class="accent-gradient">Innovation Never Ends</span></div>
+  </div>
+  <div class="footer__main">
+    <div>
+      <div class="footer__col-head footer__col-head--green">Products</div>
+      <div class="footer__links">
+        <a href="ecotron.html" class="footer__link">Ecotron</a>
+        <a href="ecofrost.html" class="footer__link footer__link--active">Ecofrost</a>
+        <a href="#" class="footer__link">Solar AC</a>
+        <a href="#" class="footer__link">Smart AC</a>
+        <a href="#" class="footer__link">Ecofreeze</a>
+        <a href="#" class="footer__link">Smart Rooftop</a>
+        <a href="#" class="footer__link">Solar Atta Chakki</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head footer__col-head--cyan">Technology</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">Ecozen AI</a>
+        <a href="#" class="footer__link">Ice Core</a>
+        <a href="#" class="footer__link">Motor Controls</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">Ecozen</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">About Us</a>
+        <a href="#" class="footer__link">Careers</a>
+        <a href="#" class="footer__link">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">Others</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">User Portal</a>
+        <a href="#" class="footer__link">Legal Policy</a>
+        <a href="#" class="footer__link">Corporate</a>
+        <a href="#" class="footer__link">Press Kit</a>
+        <a href="#" class="footer__link">CSR</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">India 🇮🇳</div>
+      <div class="footer__toll-label">Toll Free</div>
+      <div class="footer__toll-number">1800 121 7515</div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div>
+      <div class="footer__newsletter-label">Subscribe to Newsletter</div>
+      <div class="footer__newsletter-form">
+        <input type="email" class="footer__newsletter-input" placeholder="Your email address">
+        <button class="footer__newsletter-btn">Subscribe</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:32px;">
+      <div class="footer__socials">
+        <a href="#" class="footer__social">ig</a>
+        <a href="#" class="footer__social">tw</a>
+        <a href="#" class="footer__social">fb</a>
+        <a href="#" class="footer__social">🌐</a>
+      </div>
+      <button class="footer__scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Scroll to top ↑</button>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <div class="footer__legal-grid">
+      <div class="footer__legal-entity">
+        <div class="footer__legal-name">Ecozen Solutions Private Limited</div>
+        <div class="footer__legal-detail"><strong>CIN:</strong> U93090PN2010PTC237833</div>
+        <div class="footer__legal-detail"><strong>Registered Office:</strong> 901, Amar Tech Park, Next to Mitcon College, Balewadi, Baner Gaon, Haveli, Pune – 411045, Maharashtra</div>
+      </div>
+      <div class="footer__legal-entity">
+        <div class="footer__legal-name">Ecofrost Technologies Private Limited</div>
+        <div class="footer__legal-detail"><strong>CIN:</strong> U73100PN2012PTC242344</div>
+        <div class="footer__legal-detail"><strong>Registered Office:</strong> 901, Amar Tech Park, Next to Mitcon College, Balewadi, Baner Gaon, Haveli, Pune – 411045, Maharashtra</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__copy">
+    <span class="footer__copy-text">©Copyright 2026 by Ecozen Solutions Private Limited</span>
+    <span class="footer__copy-brand accent-gradient">Innovation Never Ends</span>
+  </div>
+</footer>
+
+<!-- COOKIE CONSENT BANNER -->
+<div class="cookie-banner hidden" id="cookieBanner">
+  <div class="cookie-banner__icon">🍪</div>
+  <div class="cookie-banner__content">
+    <div class="cookie-banner__title">We value your privacy</div>
+    <p class="cookie-banner__text">We use cookies to enhance your experience and analyze traffic. See our <a href="#">privacy policy</a>.</p>
+  </div>
+  <div class="cookie-banner__actions">
+    <button class="cookie-btn cookie-btn--reject" id="cookieReject">Reject</button>
+    <button class="cookie-btn cookie-btn--accept" id="cookieAccept">Accept All</button>
+  </div>
+</div>
+
+
+<script>
+
+  // ── MEGA MENU ──
+  (function() {
+    function setup() {
+      var items = document.querySelectorAll('.nav__item');
+      if (!items.length) { setTimeout(setup, 50); return; }
+      var t = null;
+      function show(item) {
+        clearTimeout(t);
+        document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+        document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        var mega = item.querySelector('.mega');
+        if (!mega) return;
+        var nav = document.querySelector('.nav');
+        if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+        mega.classList.add('is-open');
+        item.classList.add('active');
+      }
+      function hide() {
+        t = setTimeout(function() {
+          document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+          document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        }, 150);
+      }
+      items.forEach(function(item) {
+        var mega = item.querySelector('.mega');
+        item.addEventListener('mouseenter', function() { show(item); });
+        item.addEventListener('mouseleave', hide);
+        if (mega) {
+          mega.addEventListener('mouseenter', function() { clearTimeout(t); });
+          mega.addEventListener('mouseleave', hide);
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else { setup(); }
+  })();
+
+  // ── PEOPLE SLIDER ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var people = [
+      {
+        quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
+        name: "Yash",
+        role: "Senior Analyst, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "Working on real problems that impact millions of farmers — that makes every day here truly meaningful.",
+        name: "Riddhi",
+        role: "Recruitment Specialist, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "ecozen gives you the rare opportunity to build deep tech that truly shifts how India consumes energy.",
+        name: "[ Name ]",
+        role: "[ Role ], ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      }
+    ];
+    var idx = 0;
+    var qEl = document.getElementById('voicesQuote');
+    var nEl = document.getElementById('voicesName');
+    var rEl = document.getElementById('voicesRole');
+    var pEl = document.getElementById('voicesPhoto');
+    function go(i) {
+      idx = (i + people.length) % people.length;
+      var p = people[idx];
+      [qEl, nEl, pEl].forEach(function(el) { if(el) el.style.opacity = '0'; });
+      setTimeout(function() {
+        if (qEl) qEl.textContent = p.quote;
+        if (nEl) nEl.textContent = p.name;
+        if (rEl) rEl.textContent = p.role;
+        if (pEl) pEl.src = p.photo;
+        [qEl, nEl, pEl].forEach(function(el) { if(el) el.style.opacity = '1'; });
+      }, 200);
+    }
+    [qEl, nEl, pEl].forEach(function(el) {
+      if (el) el.style.transition = 'opacity 0.2s ease';
+    });
+    var prev = document.getElementById('voicesPrev');
+    var next = document.getElementById('voicesNext');
+    if (prev) prev.addEventListener('click', function() { go(idx - 1); });
+    if (next) next.addEventListener('click', function() { go(idx + 1); });
+  });
+
+  // ── CAMPAIGN SLIDER ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var track = document.getElementById('campTrack');
+    var dots = document.querySelectorAll('.camp-dot');
+    var slides = document.querySelectorAll('.camp-slide');
+    if (!track || !slides.length) return;
+    var cur = 0;
+    var auto;
+    function go(i) {
+      cur = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, j) { d.classList.toggle('active', j === cur); });
+    }
+    var p = document.getElementById('campPrev');
+    var n = document.getElementById('campNext');
+    if (p) p.addEventListener('click', function() { clearInterval(auto); go(cur-1); startAuto(); });
+    if (n) n.addEventListener('click', function() { clearInterval(auto); go(cur+1); startAuto(); });
+    dots.forEach(function(d) {
+      d.addEventListener('click', function() { clearInterval(auto); go(+d.dataset.i); startAuto(); });
+    });
+    function startAuto() { auto = setInterval(function() { go(cur+1); }, 5000); }
+    startAuto();
+  });
+
+  // Cookie — simple display none, versioned key
+  (function() {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    if (localStorage.getItem('ez_cookie_v4')) { banner.style.display = 'none'; return; }
+    document.getElementById('cookieAccept')?.addEventListener('click', () => { localStorage.setItem('ez_cookie_v4','y'); banner.style.display='none'; });
+    document.getElementById('cookieReject')?.addEventListener('click', () => { localStorage.setItem('ez_cookie_v4','n'); banner.style.display='none'; });
+  })();
+
+  // Campaign banner — static image, no JS needed });
+  document.getElementById('campNext')?.addEventListener('click', () => { clearInterval(campAuto); goToCamp(campIdx + 1); startAuto(); });
+  campDots.forEach(dot => dot.addEventListener('click', () => { clearInterval(campAuto); goToCamp(+dot.dataset.idx); startAuto(); }));
+
+  function startAuto() { campAuto = setInterval(() => goToCamp(campIdx + 1), 5000); }
+  startAuto();
+
+
+  const voicesPeople = [
+    {
+      quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
+      name: "Yash",
+      role: "Senior Analyst, ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    },
+    {
+      quote: "Working on real problems that impact millions of farmers — that's what makes every day truly meaningful here.",
+      name: "Riddhi",
+      role: "Recruitment Specialist, ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    },
+    {
+      quote: "ecozen gives you the rare opportunity to build deep tech that truly shifts how India consumes energy.",
+      name: "[ Name ]",
+      role: "[ Role ], ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    }
+  ];
+  let voicesIdx = 0;
+  const voicesQuoteEl = document.getElementById('voicesQuote');
+  const voicesNameEl = document.getElementById('voicesName');
+  const voicesRoleEl = document.getElementById('voicesRole');
+  const voicesPhotoEl = document.getElementById('voicesPhoto');
+
+  function updateVoices(idx) {
+    const p = voicesPeople[idx];
+    voicesQuoteEl.style.opacity = '0';
+    voicesNameEl.style.opacity = '0';
+    voicesPhotoEl.style.opacity = '0';
+    setTimeout(() => {
+      voicesQuoteEl.textContent = p.quote;
+      voicesNameEl.textContent = p.name;
+      voicesRoleEl.textContent = p.role;
+      voicesPhotoEl.src = p.photo;
+      voicesQuoteEl.style.opacity = '1';
+      voicesNameEl.style.opacity = '1';
+      voicesPhotoEl.style.opacity = '1';
+    }, 200);
+  }
+  [voicesQuoteEl, voicesNameEl, voicesPhotoEl].forEach(el => {
+    el.style.transition = 'opacity 0.2s ease';
+  });
+  document.getElementById('voicesNext').addEventListener('click', () => {
+    voicesIdx = (voicesIdx + 1) % voicesPeople.length;
+    updateVoices(voicesIdx);
+  });
+  document.getElementById('voicesPrev').addEventListener('click', () => {
+    voicesIdx = (voicesIdx - 1 + voicesPeople.length) % voicesPeople.length;
+    updateVoices(voicesIdx);
+  });
+
+  // Mega menu — HOVER
+  (function() {
+    var navItems = document.querySelectorAll('.nav__item');
+    var timer = null;
+    function openMega(item) {
+      clearTimeout(timer);
+      document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('is-open'); });
+      navItems.forEach(function(i){ i.classList.remove('active'); });
+      var mega = item.querySelector('.mega');
+      if (!mega) return;
+      var nav = document.querySelector('.nav');
+      if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+      mega.classList.add('is-open');
+      item.classList.add('active');
+      var nw = document.querySelector('.nav-wrapper');
+      if (nw) nw.classList.add('menu-open');
+    }
+    function closeMega() {
+      timer = setTimeout(function() {
+        document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('is-open'); });
+        navItems.forEach(function(i){ i.classList.remove('active'); });
+        var nw = document.querySelector('.nav-wrapper');
+        if (nw) nw.classList.remove('menu-open');
+      }, 150);
+    }
+    navItems.forEach(function(item) {
+      var mega = item.querySelector('.mega');
+      item.addEventListener('mouseenter', function(){ openMega(item); });
+      item.addEventListener('mouseleave', closeMega);
+      if (mega) {
+        mega.addEventListener('mouseenter', function(){ clearTimeout(timer); });
+        mega.addEventListener('mouseleave', closeMega);
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav__item')) closeMega();
+    });
+  })();
+
+  // Nav scroll — announcement is in normal flow, nav fixed below it
+  const nav = document.querySelector('.nav-wrapper');
+  const ann = document.querySelector('.announcement');
+  function syncNav() {
+    if (!ann) return;
+    const annBottom = ann.getBoundingClientRect().bottom;
+    if (annBottom <= 0) {
+      // Announcement scrolled away — nav sits at top
+      nav.style.top = '0';
+      nav.classList.add('scrolled');
+    } else {
+      // Announcement still visible — nav sits below it
+      nav.style.top = annBottom + 'px';
+      nav.classList.remove('scrolled');
+    }
+  }
+  syncNav();
+  window.addEventListener('scroll', syncNav, { passive: true });
+
+
+  // FAQ
+  document.querySelectorAll('.ac-faq__q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = q.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.ac-faq__item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
