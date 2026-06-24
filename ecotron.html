@@ -1,0 +1,3158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ecotron Solar Pump Controller Set — ecozen</title>
+<meta property="og:title" content="ecotron Solar Pump Controller Set — ecozen">
+<meta property="og:description" content="India's first 4G enabled solar pump controller. Trusted by 5 lakh+ farmers.">
+<meta property="og:image" content="https://framerusercontent.com/images/TJvWP7idgY36XfhdKtVqdlB2t9s.png">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS — single source of truth
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  /* Colors */
+  --clr-green:      #6BA546;
+  --clr-green-dark: #006037;
+  --clr-cyan:       #16CDFF;
+  --clr-yellow:     #FDBA17;
+  --clr-black:      #0D1117;
+  --clr-white:      #FFFFFF;
+  --clr-gray-100:   #F5F7F2;
+  --clr-gray-200:   #E8EDE3;
+  --clr-gray-400:   #999999;
+  --clr-muted:      #6B7A5E;
+
+  /* Typography — fluid scale */
+  --type-display: clamp(48px, 6vw, 72px);   /* Hero only */
+  --type-h1:      clamp(36px, 5vw, 56px);   /* Page titles */
+  --type-h2:      clamp(22px, 3vw, 36px);   /* Section headings */
+  --type-h3:      clamp(18px, 2vw, 24px);   /* Card titles */
+  --type-body-lg: 18px;                      /* Lead text */
+  --type-body:    16px;                      /* General */
+  --type-body-sm: 14px;                      /* Descriptions */
+  --type-label:   12px;                      /* Eyebrows, tags */
+
+  /* Font weights */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  /* Spacing — 8px grid */
+  --sp-1:  8px;
+  --sp-2:  16px;
+  --sp-3:  24px;
+  --sp-4:  32px;
+  --sp-5:  40px;
+  --sp-6:  48px;
+  --sp-8:  64px;
+  --sp-10: 80px;
+  --sp-12: 96px;
+
+  /* Section rhythm */
+  --section-pad: var(--sp-10);
+
+  /* Radius — Apple hierarchy */
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   20px;
+  --r-xl:   28px;
+  --r-pill: 980px;
+
+  /* Container */
+  --max-w: 1200px;
+}
+
+body {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  background: var(--clr-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   GLOBAL REUSABLE PATTERNS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Section label / eyebrow — used consistently everywhere */
+.eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  color: var(--clr-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
+/* Section heading — H2 level */
+.section-heading {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Green accent word in headings */
+.accent-green { color: var(--clr-green); }
+
+/* Gradient text — used sparingly */
+.accent-gradient {
+  background: linear-gradient(90deg, var(--clr-green), var(--clr-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Container */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BUTTONS — global system
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 10px var(--sp-3);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  box-shadow: 0 2px 12px rgba(107,165,70,0.25);
+}
+.btn--primary:hover {
+  background: var(--clr-green-dark);
+  box-shadow: 0 4px 20px rgba(107,165,70,0.35);
+}
+.btn--secondary {
+  background: var(--clr-yellow);
+  color: var(--clr-black);
+}
+.btn--secondary:hover { filter: brightness(0.96); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--clr-green);
+  border: 1.5px solid var(--clr-green);
+}
+.btn--ghost:hover { background: var(--clr-green); color: var(--clr-white); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ANNOUNCEMENT BAR
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.announcement {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  text-align: center;
+  padding: 9px var(--sp-2);
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 102;
+}
+.announcement a {
+  color: var(--clr-yellow);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  margin-left: 4px;
+}
+.announcement a:hover { text-decoration: underline; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAV
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.nav-wrapper {
+  position: fixed;
+  left: 0; right: 0;
+  z-index: 100;
+  transition: top 0.1s linear;
+  padding: 12px var(--sp-3) 0;
+}
+.nav {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: var(--r-md);
+  padding: 12px var(--sp-4);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: background 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 2;
+}
+.nav-wrapper.scrolled .nav {
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.nav__logo { display: flex; text-decoration: none; }
+.nav__logo-img { height: 64px; width: auto; display: block; }
+
+.nav__links { display: flex; align-items: center; gap: var(--sp-4); list-style: none; }
+.nav__item { position: static; list-style: none; }
+
+.nav__trigger {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  font-weight: var(--fw-medium);
+  color: var(--clr-black);
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer; background: none; border: none; padding: 0;
+  transition: color 0.2s;
+}
+.nav__trigger:hover,
+.nav__item:hover .nav__trigger { color: var(--clr-green); }
+
+.nav__chevron {
+  font-size: 10px; color: var(--clr-muted);
+  transition: transform 0.2s; display: inline-block;
+}
+.nav__item:hover .nav__chevron { transform: rotate(180deg); }
+
+.nav__phone-btn {
+  display: flex; align-items: center; gap: var(--sp-1);
+  background: var(--clr-yellow); color: var(--clr-black);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body); font-weight: var(--fw-bold);
+  padding: 10px 20px; border-radius: var(--r-pill);
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: -0.01em; white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(253,186,23,0.3);
+}
+.nav__phone-btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+/* ━━━━ MEGA MENU ━━━━ */
+.mega {
+  display: none;
+  position: fixed;
+  left: 0; right: 0;
+  top: 80px;
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+  border: 1px solid #E8EDE3;
+  border-top: none;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  padding: 32px 48px 32px;
+  z-index: 99999;
+}
+.mega.is-open { display: block; }
+.mega__inner { max-width: 1200px; margin: 0 auto; }
+.mega__section-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.mega__grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 12px; }
+.mega__grid--3 { grid-template-columns: repeat(3,1fr); gap: 32px; }
+.mega__card { display: flex; flex-direction: column; gap: 6px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__card:hover { background: #F5F7F2; }
+.mega__card:hover .mega__name { color: #6BA546; }
+.mega__img-wrap { width: 100%; aspect-ratio: 1; background: #F5F7F2; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 8px; }
+.mega__card:hover .mega__img-wrap { background: #E8EDE3; }
+.mega__img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+.mega__name { font-size: 13px; font-weight: 600; color: #0D1117; letter-spacing: -0.01em; transition: color 0.18s; }
+.mega__sub { font-size: 11px; color: #6B7A5E; }
+.mega__tech-card { display: flex; flex-direction: column; gap: 12px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__tech-card:hover { background: #F5F7F2; }
+.mega__tech-card:hover .mega__tech-name { color: #6BA546; }
+.mega__tech-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
+.mega__tech-name { font-size: 15px; font-weight: 600; color: #0D1117; transition: color 0.18s; }
+.mega__tech-desc { font-size: 13px; color: #6B7A5E; line-height: 1.5; }
+.mega__cols { display: flex; gap: 48px; }
+.mega__col-group { display: flex; flex-direction: column; gap: 2px; }
+.mega__col-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.mega__link { font-size: 15px; font-weight: 500; color: #0D1117; text-decoration: none; padding: 8px; border-radius: 6px; display: block; transition: background 0.18s, color 0.18s; }
+.mega__link:hover { background: #F5F7F2; color: #6BA546; }
+.nav-wrapper.menu-open .nav { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: var(--sp-10);
+  background: #0a1a0f;
+}
+/* Video fills full hero — behind everything */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  /* Contain video — doesn't bleed into nav or ticker */
+  display: block;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+.hero__fade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 240px;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+  z-index: 2;
+}
+.hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 820px;
+  padding: 0 var(--sp-3);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero__title {
+  font-size: var(--type-h1);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: var(--sp-2);
+  opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards;
+}
+.hero__subtitle {
+  font-size: var(--type-body-lg);
+  font-weight: var(--fw-medium);
+  color: var(--clr-green);
+  opacity: 0; animation: fadeUp 0.6s ease 0.4s forwards;
+}
+
+/* Ticker inside hero — sits at bottom of hero above fold */
+.hero__ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  border-radius: 0;
+}
+.ticker {
+  width: 100%; overflow: hidden;
+  background: linear-gradient(90deg, var(--clr-green), var(--clr-cyan));
+  padding: 12px 0;
+}
+.ticker__track {
+  display: flex; width: max-content;
+  animation: ticker 28s linear infinite;
+  will-change: transform;
+}
+.ticker__img { height: 22px; width: auto; margin-right: var(--sp-6); display: block; flex-shrink: 0; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CAMPAIGN SLIDER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.camp-section { width: 100%; line-height: 0; }
+.camp-wrap { position: relative; overflow: hidden; width: 100%; }
+.camp-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+.camp-slide { flex-shrink: 0; width: 100%; }
+.camp-slide img { width: 100%; height: auto; display: block; }
+.camp-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.35); color: white;
+  border: none; width: 48px; height: 48px;
+  border-radius: 50%; font-size: 26px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 5; transition: background 0.2s;
+  backdrop-filter: blur(6px);
+}
+.camp-arrow:hover { background: rgba(0,0,0,0.6); }
+.camp-arrow--prev { left: 20px; }
+.camp-arrow--next { right: 20px; }
+.camp-dots {
+  position: absolute; bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 5;
+}
+.camp-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  border: none; cursor: pointer; padding: 0;
+  transition: all 0.2s ease;
+}
+.camp-dot.active {
+  background: white;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.mission {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(180deg, #eaf5e2 0%, var(--clr-white) 100%);
+  overflow: hidden;
+}
+.mission__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+}
+.mission__image-col { position: relative; }
+.mission__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-xl);
+  display: block;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+}
+.mission__copy-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.mission__heading {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.mission__body {
+  font-size: var(--type-body-lg);
+  color: var(--clr-muted);
+  line-height: 1.6;
+  font-weight: var(--fw-regular);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PRODUCTS CAROUSEL
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.products {
+  padding: var(--section-pad) 0;
+  background: var(--clr-gray-100);
+}
+.products__header {
+  text-align: center;
+  padding: 0 var(--sp-6);
+  margin-bottom: var(--sp-6);
+}
+
+/* Featured 3 — bigger, 3 col */
+.products__featured {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+
+/* More products — 4 col smaller */
+.products__more {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-3);
+}
+
+/* Featured card — taller visual */
+.product-card--featured .product-card__visual {
+  aspect-ratio: 3/2.5;
+}
+.product-card--featured .product-card__name {
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+/* Carousel kept for scroll fallback */
+.carousel { position: relative; }
+.carousel__track {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-6) var(--sp-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+
+/* Product card — Apple floating style */
+.product-card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--clr-white);
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+}
+
+/* Image area — colored bg, floating product */
+.product-card__visual {
+  aspect-ratio: 4/3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  padding: var(--sp-3);
+}
+
+/* Each product gets its own bg color */
+.product-card:nth-child(1) .product-card__visual { background: #EDF4E7; }
+.product-card:nth-child(2) .product-card__visual { background: #E8F4FA; }
+.product-card:nth-child(3) .product-card__visual { background: #F0F7EE; }
+.product-card:nth-child(4) .product-card__visual { background: #EAF3F8; }
+.product-card:nth-child(5) .product-card__visual { background: #F5F0FA; }
+.product-card:nth-child(6) .product-card__visual { background: #FFF8E8; }
+.product-card:nth-child(7) .product-card__visual { background: #EDF4E7; }
+
+/* Floating product image */
+.product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.35s ease;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+  display: block;
+}
+.product-card:hover .product-card__img {
+  transform: scale(1.04) translateY(-3px);
+}
+
+/* Subtle radial glow behind product */
+.product-card__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 60%, rgba(107,165,70,0.12) 0%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Text area */
+.product-card__body {
+  background: var(--clr-white);
+  padding: var(--sp-3) var(--sp-3) var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  border: 1px solid var(--clr-gray-200);
+  border-top: none;
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  flex: 1;
+}
+.product-card__tag {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.product-card__name {
+  font-size: var(--type-h3);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.product-card__desc {
+  font-size: var(--type-body-sm);
+  color: var(--clr-gray-400);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  margin-bottom: var(--sp-2);
+}
+/* Ghost CTA — subtle, not competing with image */
+.product-card__cta {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+.product-card:hover .product-card__cta { gap: 8px; }
+
+.carousel-btn {
+  position: absolute; top: 42%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: var(--clr-black);
+  border: 1px solid var(--clr-gray-200);
+  font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+.carousel-btn:hover {
+  background: var(--clr-white);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.carousel-btn--prev { left: var(--sp-2); }
+.carousel-btn--next { right: var(--sp-2); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TECHNOLOGY BENTO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tech {
+  padding: var(--section-pad) 0;
+  background: var(--clr-black);
+}
+.tech__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.tech__header { margin-bottom: var(--sp-6); }
+.tech__header .section-heading { color: var(--clr-white); }
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: var(--sp-2);
+}
+
+/* Bento cell base */
+.bento__cell {
+  background: #141a14;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.2s;
+}
+.bento__cell:hover { border-color: rgba(107,165,70,0.3); }
+
+/* Grid placements */
+.bento__cell--ai      { grid-column: span 5; grid-row: span 2; min-height: 320px; }
+.bento__cell--motor   { grid-column: span 4; grid-row: span 1; min-height: 150px; }
+.bento__cell--thermal { grid-column: span 3; grid-row: span 1; min-height: 150px; }
+.bento__cell--stat1   { grid-column: span 4; grid-row: span 1; min-height: 150px; }
+.bento__cell--stat2   { grid-column: span 3; grid-row: span 1; min-height: 150px; }
+
+.bento__img {
+  width: 100%; height: 100%;
+  object-fit: cover; position: absolute; inset: 0;
+  opacity: 0.5; transition: opacity 0.3s;
+}
+.bento__cell:hover .bento__img { opacity: 0.65; }
+
+.bento__content {
+  position: relative; z-index: 2;
+  padding: var(--sp-3);
+  display: flex; flex-direction: column;
+  justify-content: flex-end; height: 100%;
+}
+.bento__cell--ai .bento__content { justify-content: flex-end; min-height: 320px; }
+
+.bento__tag {
+  font-size: var(--type-label); font-weight: var(--fw-semi);
+  color: var(--clr-green); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: var(--sp-1);
+  display: block;
+}
+.bento__title {
+  font-size: var(--type-h3); font-weight: var(--fw-semi);
+  color: var(--clr-white); line-height: 1.2;
+  letter-spacing: -0.01em; margin-bottom: 6px;
+}
+.bento__desc {
+  font-size: var(--type-body-sm); color: rgba(255,255,255,0.55);
+  line-height: 1.5; font-weight: var(--fw-regular);
+}
+
+/* Stat cells */
+.bento__stat {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: var(--fw-black);
+  color: var(--clr-white);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: 6px;
+}
+.bento__stat-accent { color: var(--clr-green); }
+.bento__stat-label {
+  font-size: var(--type-body-sm); color: rgba(255,255,255,0.5);
+  font-weight: var(--fw-regular);
+}
+
+/* Legal entities in footer */
+.footer__legal {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: var(--sp-4) var(--sp-6);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.footer__legal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.footer__legal-entity { display: flex; flex-direction: column; gap: 6px; }
+.footer__legal-entity + .footer__legal-entity {
+  border-left: 1px solid rgba(255,255,255,0.08);
+  padding-left: var(--sp-4);
+}
+.footer__legal-name {
+  font-size: var(--type-label);
+  font-weight: var(--fw-bold);
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.footer__legal-detail {
+  font-size: var(--type-label);
+  color: rgba(255,255,255,0.3);
+  line-height: 1.6;
+}
+.footer__legal-detail strong {
+  color: rgba(255,255,255,0.45);
+  font-weight: var(--fw-semi);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COOKIE CONSENT BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.cookie-banner__icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.cookie-banner__content { flex: 1; }
+.cookie-banner__title {
+  font-size: var(--type-body);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  margin-bottom: 4px;
+}
+.cookie-banner__text {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  line-height: 1.5;
+}
+.cookie-banner__text a {
+  color: var(--clr-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cookie-banner__actions {
+  display: flex;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+.cookie-btn {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.cookie-btn--reject {
+  background: transparent;
+  color: var(--clr-muted);
+  border: 1.5px solid var(--clr-gray-200);
+}
+.cookie-btn--reject:hover { border-color: var(--clr-black); color: var(--clr-black); }
+.cookie-btn--accept {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  box-shadow: 0 2px 12px rgba(107,165,70,0.3);
+}
+.cookie-btn--accept:hover { background: var(--clr-green-dark); }
+.fraud-alert {
+  background: #FFF8E6;
+  border-top: 1px solid #F5E4B0;
+  border-bottom: 1px solid #F5E4B0;
+  padding: var(--sp-3) var(--sp-6);
+}
+.fraud-alert__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+}
+.fraud-alert__icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.fraud-alert__text {
+  font-size: var(--type-body-sm);
+  color: #7A5C00;
+  line-height: 1.6;
+  font-weight: var(--fw-regular);
+}
+.fraud-alert__text strong {
+  font-weight: var(--fw-semi);
+  color: #5C4400;
+}
+.fraud-alert__link {
+  color: #7A5C00;
+  font-weight: var(--fw-semi);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-left: var(--sp-1);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.fraud-alert__link:hover { color: #5C4400; }
+.lead-form {
+  background: var(--clr-green-dark);
+  padding: var(--section-pad) 0;
+}
+.lead-form__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--sp-8);
+  align-items: center;
+}
+.lead-form__sub {
+  font-size: var(--type-body);
+  color: rgba(255,255,255,0.6);
+  margin-top: var(--sp-2);
+}
+.lead-form__card {
+  background: var(--clr-white);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.lead-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+.lead-form__field { display: flex; flex-direction: column; gap: var(--sp-1); }
+.lead-form__label {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+}
+.lead-form__input,
+.lead-form__select {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  background: var(--clr-gray-100);
+  border: 1.5px solid var(--clr-gray-200);
+  border-radius: var(--r-sm);
+  padding: 10px var(--sp-2);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.lead-form__input:focus,
+.lead-form__select:focus { border-color: var(--clr-green); }
+.lead-form__input::placeholder { color: var(--clr-muted); }
+.lead-form__submit { width: 100%; justify-content: center; padding: 14px; font-size: var(--type-body); }
+.lead-form__note { font-size: var(--type-label); color: var(--clr-muted); text-align: center; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COOKIE BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 300px;
+  background: #1a1a1a;
+  color: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  box-sizing: border-box;
+}
+.cookie-banner.hidden {
+  transform: translateY(calc(100% + 24px));
+  opacity: 0;
+  pointer-events: none;
+}
+.cookie-banner__emoji { font-size: 24px; flex-shrink: 0; }
+.cookie-banner__text {
+  font-size: var(--type-body-sm);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  flex: 1;
+}
+.cookie-banner__text strong {
+  color: var(--clr-white);
+  font-weight: var(--fw-semi);
+}
+.cookie-banner__text a {
+  color: var(--clr-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cookie-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  justify-content: flex-end;
+}
+.cookie-btn {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.cookie-btn--accept {
+  background: var(--clr-green);
+  color: var(--clr-white);
+}
+.cookie-btn--accept:hover { background: var(--clr-green-dark); }
+.cookie-btn--reject {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+}
+.cookie-btn--reject:hover {
+  background: rgba(255,255,255,0.14);
+  color: var(--clr-white);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CAMPAIGN SLOT — toggleable
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.campaign {
+  display: none; /* hidden by default — show when campaign is active */
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21/6; /* wide cinematic banner */
+  overflow: hidden;
+  background: var(--clr-green-dark);
+}
+.campaign.active { display: block; }
+.campaign__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.campaign__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,60,30,0.7) 0%, transparent 60%);
+}
+.campaign__content {
+  position: absolute;
+  left: var(--sp-12);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 480px;
+}
+.campaign__tag {
+  display: inline-block;
+  background: var(--clr-yellow);
+  color: var(--clr-black);
+  font-size: var(--type-label);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--r-xs);
+  margin-bottom: var(--sp-2);
+}
+.campaign__heading {
+  font-size: clamp(20px, 3vw, 36px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-3);
+}
+.campaign__close {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-3);
+  background: rgba(0,0,0,0.3);
+  border: none;
+  color: rgba(255,255,255,0.7);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 3;
+}
+.campaign__close:hover { background: rgba(0,0,0,0.5); color: white; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VOICES — full width editorial
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.voices {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(135deg, #e8f5f0 0%, #f0f9f5 40%, #e3f4f8 100%);
+  overflow: hidden;
+}
+.voices__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  text-align: center;
+}
+.voices__header { margin-bottom: var(--sp-8); }
+.voices__header .eyebrow { color: var(--clr-muted); }
+.voices__header .section-heading { color: var(--clr-green); }
+
+/* Shubham original — quote left, photo right */
+.voices__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+  min-height: 380px;
+  text-align: left;
+}
+
+.voices__card {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-4);
+  position: relative;
+}
+.voices__card--featured { display: contents; }
+
+/* Subtle glow */
+.voices__card::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(107,165,70,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Featured card spans full height */
+.voices__card--featured {
+  grid-row: span 2;
+  justify-content: flex-end;
+}
+.voices__card--featured .voices__quote {
+  font-size: clamp(20px, 2.5vw, 28px);
+}
+.voices__card--featured::before {
+  width: 320px; height: 320px;
+  top: -100px; right: -100px;
+}
+
+/* Featured has photo as background */
+.voices__photo-large {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--r-xl);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  margin: 0 auto;
+  display: block;
+}
+
+.voices__quote-mark {
+  font-size: 56px;
+  line-height: 0.8;
+  font-weight: var(--fw-black);
+  color: var(--clr-green);
+  opacity: 0.4;
+  font-family: Georgia, serif;
+  margin-bottom: var(--sp-2);
+}
+.voices__card--featured .voices__quote-mark { opacity: 0.6; }
+
+.voices__quote {
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: var(--fw-medium);
+  color: var(--clr-black);
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.voices__person {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-top: var(--sp-4);
+  margin-top: var(--sp-2);
+}
+.voices__photo {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--clr-gray-200);
+}
+.voices__photo--placeholder {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--clr-green), var(--clr-cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--type-body-lg); font-weight: var(--fw-bold);
+  color: var(--clr-white); flex-shrink: 0;
+}
+.voices__name {
+  font-size: var(--type-body);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  line-height: 1.2;
+}
+.voices__role {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  font-weight: var(--fw-regular);
+}
+/* Nav arrows */
+.voices__nav {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+}
+.voices__nav-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 18px; color: var(--clr-black);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.voices__nav-btn:hover {
+  background: var(--clr-green);
+  color: white;
+  border-color: var(--clr-green);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BLOGS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.blogs {
+  padding: var(--section-pad) 0;
+  background: var(--clr-white);
+}
+.blogs__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+.blogs__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--sp-4);
+}
+.blogs__view-all {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+  padding-bottom: 4px;
+}
+.blogs__view-all:hover { gap: 8px; }
+
+/* Filter tabs */
+.blogs__filters {
+  display: flex;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+}
+.blogs__filter {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-muted);
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  border-radius: var(--r-pill);
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.blogs__filter:hover {
+  border-color: var(--clr-green);
+  color: var(--clr-green);
+}
+.blogs__filter.active {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  border-color: var(--clr-green);
+}
+
+.blogs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-gray-200);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.blog-card__img-wrap { overflow: hidden; flex-shrink: 0; }
+.blog-card__img {
+  width: 100%; aspect-ratio: 16/9;
+  object-fit: cover;
+  background: var(--clr-gray-100);
+  transition: transform 0.35s ease;
+  display: block;
+}
+.blog-card:hover .blog-card__img { transform: scale(1.04); }
+
+.blog-card__body {
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  flex: 1;
+}
+
+/* Category pill — color coded */
+.blog-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--r-xs);
+  padding: 4px 8px;
+  width: fit-content;
+}
+.blog-cat--press    { background: #EEF2FF; color: #4F6FDB; }
+.blog-cat--solar    { background: #EDF7E6; color: #4A8A2E; }
+.blog-cat--farmer   { background: #FFF7E6; color: #B07A10; }
+.blog-cat--tech     { background: #EAF5FA; color: #1A7FA0; }
+.blog-cat--policy   { background: #E6F4EE; color: #006037; }
+.blog-cat--company  { background: #FFF0F0; color: #C04040; }
+
+.blog-card__title {
+  font-size: var(--type-body-lg);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-top: 2px;
+}
+.blog-card__excerpt {
+  font-size: var(--type-body-sm);
+  color: var(--clr-gray-400);
+  line-height: 1.5;
+  flex: 1;
+}
+.blog-card__cta {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--sp-2);
+  transition: gap 0.2s ease;
+}
+.blog-card:hover .blog-card__cta { gap: 8px; }
+.stats {
+  background: var(--clr-gray-100);
+  padding: var(--sp-10) 0;
+}
+.stats__inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: var(--sp-3);
+}
+.stat {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  padding: var(--sp-5) var(--sp-3);
+  background: var(--clr-white);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--clr-gray-200);
+}
+.stat__number {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: var(--fw-black);
+  color: var(--clr-black);
+  letter-spacing: -0.03em; line-height: 1;
+  margin-bottom: var(--sp-1);
+}
+/* Only ONE green number — most impactful stat */
+.stat:first-child .stat__number { color: var(--clr-green); }
+.stat__label {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.footer { background: #0a0f0a; color: rgba(255,255,255,0.65); }
+
+.footer__top {
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer__logo { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; }
+.footer__tagline { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+.footer__tagline span { font-style: normal; }
+
+.footer__main {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: var(--sp-6);
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  gap: var(--sp-6);
+}
+.footer__col-head {
+  font-size: var(--type-label); font-weight: var(--fw-bold);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); margin-bottom: 20px;
+}
+.footer__col-head--green { color: var(--clr-green); }
+.footer__col-head--cyan  { color: var(--clr-cyan); }
+.footer__links { display: flex; flex-direction: column; gap: 2px; }
+.footer__link {
+  font-size: 15px; font-weight: var(--fw-regular);
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  padding: 5px 0; transition: color 0.18s;
+}
+.footer__link:hover { color: var(--clr-white); }
+.footer__toll-label {
+  font-size: var(--type-label); font-weight: var(--fw-medium);
+  color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: var(--sp-1);
+}
+.footer__toll-number { font-size: 22px; font-weight: var(--fw-bold); color: var(--clr-white); letter-spacing: -0.02em; }
+
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--sp-3) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+}
+.footer__newsletter-label { font-size: var(--type-body-sm); font-weight: var(--fw-semi); color: rgba(255,255,255,0.6); margin-bottom: var(--sp-2); }
+.footer__newsletter-form { display: flex; gap: var(--sp-1); }
+.footer__newsletter-input {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-body-sm);
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-pill); color: var(--clr-white);
+  padding: 9px var(--sp-2); outline: none; width: 200px;
+  transition: border-color 0.2s;
+}
+.footer__newsletter-input::placeholder { color: rgba(255,255,255,0.25); }
+.footer__newsletter-input:focus { border-color: var(--clr-green); }
+.footer__newsletter-btn {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-label);
+  font-weight: var(--fw-bold); background: var(--clr-green); color: var(--clr-white);
+  border: none; border-radius: var(--r-pill); padding: 9px var(--sp-2);
+  cursor: pointer; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s;
+}
+.footer__newsletter-btn:hover { background: var(--clr-green-dark); }
+
+.footer__socials { display: flex; gap: var(--sp-2); }
+.footer__social {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; font-weight: var(--fw-semi);
+  transition: border-color 0.2s, color 0.2s;
+}
+.footer__social:hover { border-color: var(--clr-green); color: var(--clr-green); }
+
+.footer__scroll-top {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-label);
+  font-weight: var(--fw-semi); letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); cursor: pointer; background: none; border: none;
+  display: flex; align-items: center; gap: var(--sp-1); transition: color 0.2s;
+}
+.footer__scroll-top:hover { color: var(--clr-white); }
+
+.footer__copy {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: var(--sp-2) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer__copy-text { font-size: var(--type-label); color: rgba(255,255,255,0.2); }
+.footer__copy-brand { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ECOTRON PAGE — HERO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.eco-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://framerusercontent.com/images/vmfZrTYrUYaftOVxE7arNnHntyI.png?width=2998&height=1720');
+  background-size: cover;
+  background-position: center center;
+  z-index: 0;
+}
+.eco-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  z-index: 1;
+}
+.eco-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 44%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 80px;
+}
+.eco-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--clr-green);
+  color: var(--clr-white);
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: var(--r-pill);
+  width: fit-content;
+  margin-bottom: var(--sp-2);
+}
+.eco-hero__name {
+  font-size: clamp(52px, 6vw, 80px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-green);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+.eco-hero__sub {
+  font-size: clamp(16px, 1.6vw, 20px);
+  font-weight: var(--fw-semi);
+  color: var(--clr-white);
+  margin-bottom: var(--sp-4);
+}
+.eco-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+  flex-wrap: wrap;
+}
+.eco-hero__brochure {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-base);
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-white);
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  padding: 12px 22px;
+  border-radius: var(--r-pill);
+  transition: background 0.2s;
+  background: rgba(255,255,255,0.08);
+}
+.eco-hero__brochure:hover { background: rgba(255,255,255,0.18); border-color: var(--clr-white); }
+.eco-hero__trust {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--clr-white);
+  border-radius: var(--r-md);
+  padding: 12px 18px 12px 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+.eco-hero__trust img { width: 34px; height: 34px; object-fit: contain; flex-shrink: 0; }
+.eco-hero__trust-rating { font-size: 18px; font-weight: var(--fw-black); color: var(--clr-black); line-height: 1; }
+.eco-hero__trust-stars { color: #FDBA17; font-size: 13px; }
+.eco-hero__trust-text strong { display: block; font-size: 13px; font-weight: var(--fw-bold); color: var(--clr-black); }
+.eco-hero__trust-text span { font-size: 11px; color: var(--clr-muted); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TICKER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ticker-wrap { position: relative; height: 46px; overflow: hidden; line-height: 0; }
+.ticker-bg { position: absolute; inset: 0; background: linear-gradient(90deg, var(--clr-cyan) 0%, var(--clr-green) 100%); }
+.ticker-track {
+  display: flex; align-items: center; height: 46px;
+  position: relative; z-index: 1;
+  width: max-content;
+  animation: ticker-scroll 24s linear infinite;
+  will-change: transform;
+}
+.ticker-img { height: 22px; width: auto; margin-right: 40px; flex-shrink: 0; filter: brightness(0) invert(1); }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   INTRO STRIP
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-intro {
+  position: relative;
+  padding: var(--section-pad) 0;
+  background: url('https://framerusercontent.com/images/5vZicg91bkgRM1quFZJYiB1TiU.png?width=1440&height=855') center/cover no-repeat;
+}
+.eco-intro::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(0, 96, 55, 0.88);
+}
+.eco-intro__inner {
+  position: relative; z-index: 1;
+  max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6);
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); align-items: center;
+}
+.eco-intro__heading { font-size: clamp(24px, 3vw, 40px); font-weight: var(--fw-light); color: var(--clr-white); line-height: 1.3; }
+.eco-intro__heading strong { font-weight: var(--fw-bold); color: var(--clr-cyan); }
+.eco-intro__stats { display: flex; gap: var(--sp-6); }
+.eco-intro__stat-num { font-size: clamp(36px, 5vw, 56px); font-weight: var(--fw-black); color: var(--clr-white); letter-spacing: -0.03em; line-height: 1; }
+.eco-intro__stat-label { font-size: var(--type-body-sm); color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VARIANTS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-variants { padding: var(--section-pad) 0; background: var(--clr-gray-100); }
+.eco-variants__header { text-align: center; margin-bottom: var(--sp-5); }
+.eco-variants__desc { font-size: var(--type-body); color: var(--clr-muted); margin-top: var(--sp-2); }
+
+/* Single unified white box */
+.eco-variants__box {
+  background: var(--clr-white);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--clr-gray-200);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+}
+
+/* Illustration full width inside box */
+.eco-variants__illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Thin divider between illustration and cards */
+.eco-variants__divider {
+  height: 1px;
+  background: var(--clr-gray-200);
+}
+
+/* Cards side by side inside box — no outer border */
+.eco-variants__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+/* Card — no outer border, left card has right border */
+.vcard {
+  background: var(--clr-white);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--clr-gray-200);
+}
+.vcard:last-child { border-right: none; }
+
+.vcard__img-wrap {
+  background: var(--clr-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+  aspect-ratio: 4/3;
+  border-bottom: 1px solid var(--clr-gray-200);
+}
+.vcard__img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+}
+.vcard__body {
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  flex: 1;
+  border-top: 1px solid var(--clr-gray-200);
+}
+.vcard__name {
+  font-size: var(--type-h3);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.vcard__use {
+  display: inline-block;
+  background: var(--clr-gray-100);
+  border: 1px solid var(--clr-gray-200);
+  border-radius: var(--r-pill);
+  padding: 5px 14px;
+  font-size: var(--type-body-sm);
+  color: var(--clr-black);
+  width: fit-content;
+  font-weight: var(--fw-medium);
+}
+.vcard__feats {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: var(--sp-1) 0;
+  flex: 1;
+}
+.vcard__feat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  font-weight: var(--fw-medium);
+}
+.vcard__feat::before {
+  content: "✓";
+  color: var(--clr-green);
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+.vcard__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--clr-gray-200);
+  margin-top: auto;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOTOR SPECS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-motor { padding: var(--section-pad) 0; background: var(--clr-white); }
+.eco-motor__sub {
+  font-size: var(--type-body);
+  color: var(--clr-muted);
+  margin-top: var(--sp-2);
+  line-height: 1.5;
+}
+.eco-motor__pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: var(--sp-3);
+}
+.eco-motor__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: var(--r-pill);
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  background: var(--clr-black);
+  color: var(--clr-white);
+  letter-spacing: 0.02em;
+}
+.eco-motor__pill--outline {
+  background: transparent;
+  color: var(--clr-black);
+  border: 1.5px solid var(--clr-gray-200);
+}
+.eco-motor__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.eco-motor__header { margin-bottom: var(--sp-6); }
+.eco-motor__heading { font-size: var(--type-h2); font-weight: var(--fw-bold); color: var(--clr-black); line-height: 1.2; letter-spacing: -0.02em; }
+.eco-motor__cards { display: flex; flex-direction: column; gap: var(--sp-3); }
+.eco-motor__card {
+  background: linear-gradient(264deg,#E0E0E0 0%,#F2F2F2 100%);
+  border-radius: var(--r-md);
+  display: grid; grid-template-columns: 380px 1fr;
+  overflow: hidden; min-height: 220px; align-items: center;
+}
+.eco-motor__card-img { height: 100%; min-height: 220px; background-size: cover; background-position: center; }
+.eco-motor__card-copy { padding: var(--sp-5) var(--sp-6); }
+.eco-motor__card-title { font-size: clamp(32px,4vw,48px); font-weight: var(--fw-regular); color: #282B31; line-height: 1.1; margin-bottom: var(--sp-2); }
+.eco-motor__card-desc { font-size: clamp(18px,2vw,26px); color: #999699; line-height: 1.5; }
+.eco-motor__bldc {
+  background: var(--clr-gray-100); border-radius: var(--r-md);
+  display: grid; grid-template-columns: 400px 1fr;
+  overflow: hidden; align-items: center; min-height: 380px;
+}
+.eco-motor__bldc-img { height: 100%; min-height: 380px; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: var(--clr-gray-100); }
+.eco-motor__bldc-copy { padding: var(--sp-5) var(--sp-6); }
+.eco-motor__bldc-title { font-size: clamp(40px,5vw,60px); font-weight: var(--fw-semi); color: var(--clr-black); margin-bottom: var(--sp-2); }
+.eco-motor__bldc-feats { display: flex; flex-direction: column; gap: 12px; margin-bottom: var(--sp-4); }
+.eco-motor__bldc-feat { display: flex; align-items: center; gap: 14px; font-size: 20px; color: var(--clr-black); }
+.eco-motor__bldc-feat::before { content: ''; width: 28px; height: 2px; background: var(--clr-black); flex-shrink: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CONTROLLER (BRAIN)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-ctrl { background: var(--clr-black); padding: var(--section-pad) 0; }
+.eco-ctrl__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.eco-ctrl__header { text-align: center; margin-bottom: var(--sp-6); }
+.eco-ctrl__heading { font-size: var(--type-h2); font-weight: var(--fw-bold); color: var(--clr-white); }
+.eco-ctrl__lifestyle {
+  width: 100%; height: 420px; border-radius: var(--r-xl);
+  background: url('https://framerusercontent.com/images/WJ1mqYP5HU2RNxVcVdqredLheYo.png') center/cover no-repeat;
+  position: relative; overflow: hidden; margin-bottom: var(--sp-3);
+}
+.eco-ctrl__lifestyle-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.75) 100%); }
+.eco-ctrl__lifestyle-badge { position: absolute; bottom: var(--sp-5); left: var(--sp-5); display: flex; align-items: center; gap: var(--sp-3); }
+.eco-ctrl__cards { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--sp-2); }
+.eco-ctrl__card {
+  border-radius: var(--r-md); height: 320px;
+  position: relative; overflow: hidden;
+  background-size: cover; background-position: center;
+}
+.eco-ctrl__card-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%); }
+.eco-ctrl__card-label { position: absolute; bottom: var(--sp-3); left: var(--sp-3); font-size: clamp(18px,2vw,26px); font-weight: var(--fw-semi); color: var(--clr-white); line-height: 1.1; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LIGHT AS AIR
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-air { padding: var(--section-pad) 0; background: var(--clr-white); }
+.eco-air__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); align-items: center; }
+.eco-air__heading { font-size: clamp(28px,4vw,52px); font-weight: var(--fw-bold); color: var(--clr-black); line-height: 1.1; margin-bottom: var(--sp-2); }
+.eco-air__desc { font-size: clamp(18px,2vw,26px); color: #999699; line-height: 1.5; margin-bottom: var(--sp-4); }
+.eco-air__warranty { display: flex; align-items: center; gap: var(--sp-4); background: var(--clr-gray-100); border-radius: var(--r-md); padding: var(--sp-4); }
+
+.eco-air__warranty-num { font-size: clamp(48px,6vw,72px); font-weight: var(--fw-semi); color: var(--clr-green); line-height: 1; flex-shrink: 0; }
+.eco-air__warranty-text strong { display: block; font-size: var(--type-body); font-weight: var(--fw-bold); color: var(--clr-black); }
+.eco-air__warranty-text p { font-size: var(--type-body-sm); color: var(--clr-muted); margin-top: 4px; line-height: 1.5; }
+.eco-air__warranty-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--sp-2); border: 1.5px solid var(--clr-green); border-radius: var(--r-pill); padding: 6px 18px; font-size: var(--type-body-sm); font-weight: var(--fw-bold); color: var(--clr-green); }
+.eco-air__img { width: 100%; border-radius: var(--r-xl); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PM KUSUM
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-kusum { padding: var(--section-pad) 0; background: var(--clr-gray-100); }
+.eco-kusum__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.eco-kusum__card {
+  background: var(--clr-white);
+  border-radius: var(--r-xl);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  overflow: hidden;
+  min-height: 420px;
+}
+.eco-kusum__photo { position: relative; min-height: 380px; }
+.eco-kusum__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.eco-kusum__content { padding: var(--sp-6); display: flex; flex-direction: column; gap: var(--sp-2); }
+.eco-kusum__heading { font-size: clamp(28px,3.5vw,52px); font-weight: var(--fw-medium); color: var(--clr-black); letter-spacing: -0.02em; margin-bottom: var(--sp-1); }
+.eco-kusum__verified { display: flex; align-items: flex-start; gap: 10px; font-size: var(--type-body); color: var(--clr-black); line-height: 1.4; }
+.eco-kusum__agencies { font-size: var(--type-body-sm); color: var(--clr-muted); line-height: 1.6; }
+.eco-kusum__steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: var(--sp-3); }
+.eco-kusum__step {
+  background: var(--clr-gray-100);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.eco-kusum__step img { width: 100%; height: 120px; object-fit: cover; display: block; }
+.eco-kusum__step-body { padding: 10px 12px 12px; }
+.eco-kusum__step-num { font-size: 9px; font-weight: var(--fw-semi); color: #D9D9D9; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.eco-kusum__step-text { font-size: 13px; font-weight: var(--fw-regular); color: var(--clr-black); line-height: 1.3; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NIGHT RUNS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-night {
+  margin: 0 var(--sp-6);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  position: relative;
+  background: url('https://framerusercontent.com/images/yLiDs2vgsBsx8WKazs5QOlyYfmk.png?scale-down-to=2048') center/cover no-repeat;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+}
+.eco-night::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.38); border-radius: var(--r-xl); }
+/* Phone — bottom left, partially cut off */
+.eco-night__phone-img {
+  position: absolute;
+  bottom: -20px;
+  left: 48px;
+  width: 200px;
+  height: auto;
+  z-index: 2;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+}
+/* Copy — sits to the right of phone */
+.eco-night__copy {
+  position: relative;
+  z-index: 3;
+  margin-left: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.eco-night__heading {
+  font-size: clamp(32px,4vw,52px);
+  font-weight: var(--fw-regular);
+  color: var(--clr-white);
+  line-height: 1.2;
+  margin-bottom: var(--sp-2);
+  letter-spacing: -0.01em;
+}
+.eco-night__sub { font-size: clamp(18px,2vw,24px); color: rgba(255,255,255,0.8); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SOLAR PANELS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-panels { padding: var(--section-pad) 0; background: var(--clr-white); }
+.eco-panels__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); align-items: start; }
+.eco-panels__img-wrap { background: var(--clr-gray-100); border-radius: var(--r-xl); padding: var(--sp-5); display: flex; align-items: center; justify-content: center; margin-bottom: var(--sp-3); }
+.eco-panels__img { max-height: 200px; object-fit: contain; }
+.eco-panels__type-title { font-size: var(--type-h3); font-weight: var(--fw-semi); color: var(--clr-black); margin-bottom: 4px; }
+.eco-panels__type-range { font-size: var(--type-body); font-weight: var(--fw-semi); color: var(--clr-black); margin-bottom: var(--sp-3); }
+.eco-panels__feats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); }
+.eco-panels__feat { background: var(--clr-gray-100); border-radius: var(--r-md); padding: var(--sp-3); display: flex; flex-direction: column; gap: var(--sp-8); min-height: 180px; }
+.eco-panels__feat-icon { font-size: 20px; }
+.eco-panels__feat-text { font-size: var(--type-body-sm); color: var(--clr-black); line-height: 1.4; margin-top: auto; }
+.eco-panels__right { background: var(--clr-green); border-radius: var(--r-xl); padding: var(--sp-6); display: flex; flex-direction: column; align-items: center; min-height: 520px; justify-content: space-between; }
+.eco-panels__right-label { font-size: clamp(20px,2vw,28px); color: var(--clr-white); text-align: center; font-weight: var(--fw-regular); }
+.eco-panels__badges { display: flex; gap: var(--sp-4); flex-wrap: wrap; justify-content: center; }
+.eco-panels__badge { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: var(--type-body-sm); color: var(--clr-white); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SMART ENGINEERING
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-smart { padding: var(--section-pad) 0; background: var(--clr-gray-100); }
+.eco-smart__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+.eco-smart__header { text-align: center; margin-bottom: var(--sp-6); }
+.eco-smart__cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.eco-smart__card {
+  background: var(--clr-white); border-radius: 13px;
+  height: 420px; position: relative; overflow: hidden;
+  background-size: cover; background-position: center;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: var(--sp-4);
+}
+.eco-smart__card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.06) 100%); }
+.eco-smart__card-icon { font-size: 44px; margin-bottom: auto; position: relative; z-index: 1; padding-top: var(--sp-4); }
+.eco-smart__card-title { position: relative; z-index: 1; font-size: clamp(20px,2vw,26px); font-weight: var(--fw-semi); color: var(--clr-black); margin-bottom: 6px; }
+.eco-smart__card-desc { position: relative; z-index: 1; font-size: var(--type-body-sm); color: var(--clr-muted); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   INDIA MAP
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-map { padding: var(--section-pad) 0; background: var(--clr-white); text-align: center; }
+.eco-map__img-wrap { max-width: 1167px; margin: var(--sp-5) auto 0; padding: 0 var(--sp-6); }
+.eco-map__img { width: 100%; border-radius: var(--r-md); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TESTIMONIALS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-test { padding: var(--section-pad) 0; background: var(--clr-white); }
+.eco-test__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); }
+
+/* Bento 2-col grid */
+.eco-test__bento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.eco-test__col { display: flex; flex-direction: column; gap: 10px; }
+
+/* Stat card */
+.eco-test__stat-card {
+  background: var(--clr-gray-100);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.eco-test__stat-num { font-size: clamp(36px,4vw,52px); font-weight: var(--fw-black); color: var(--clr-black); letter-spacing: -0.03em; line-height: 1; }
+.eco-test__stat-label { font-size: var(--type-body); color: var(--clr-muted); }
+.eco-test__stars { color: #FDBA17; font-size: 20px; letter-spacing: 2px; }
+.eco-test__stat-sub { font-size: var(--type-body-sm); color: var(--clr-muted); }
+
+/* Farm photo carousel */
+.eco-test__carousel {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  height: 280px;
+  flex: 1;
+}
+.eco-test__carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.eco-test__carousel-slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.eco-test__dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(0,0,0,0.2);
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+}
+.eco-test__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: none; cursor: pointer; padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.eco-test__dot.active { background: #fff; transform: scale(1.2); }
+
+/* Text quote card */
+.eco-test__quote-card {
+  background: var(--clr-gray-100);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+.eco-test__quote-text { font-size: clamp(16px,1.8vw,22px); font-weight: var(--fw-regular); color: var(--clr-green); line-height: 1.4; letter-spacing: -0.02em; }
+.eco-test__quote-stars { color: #FDBA17; font-size: 16px; letter-spacing: 2px; }
+.eco-test__quote-name { font-size: var(--type-body-sm); color: var(--clr-green); }
+.eco-test__quote-tag { font-size: var(--type-label); color: var(--clr-muted); }
+
+/* Photo testimonial card */
+.eco-test__photo-card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  height: 320px;
+  position: relative;
+  background-size: cover;
+  background-position: center top;
+  flex: 1;
+}
+.eco-test__photo-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.9) 100%);
+}
+.eco-test__photo-body {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: var(--sp-4); z-index: 2;
+}
+.eco-test__photo-quote { font-size: clamp(16px,1.8vw,22px); font-weight: var(--fw-semi); color: #fff; line-height: 1.3; margin-bottom: 8px; letter-spacing: -0.02em; }
+.eco-test__photo-stars { color: #FDBA17; font-size: 14px; letter-spacing: 2px; margin-bottom: 4px; }
+.eco-test__photo-name { font-size: var(--type-body-sm); color: rgba(255,255,255,0.7); }
+
+/* Customer experience label */
+.eco-test__label {
+  text-align: center;
+  font-size: 20px;
+  color: var(--clr-muted);
+  letter-spacing: 0.1em;
+  margin: var(--sp-5) 0 var(--sp-4);
+}
+
+/* YouTube video cards */
+.eco-test__videos {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+.eco-test__video-card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--clr-gray-100);
+}
+.eco-test__video-thumb {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eco-test__video-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.eco-test__video-play:hover { transform: scale(1.1); }
+.eco-test__video-label {
+  padding: 14px 16px;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--clr-black);
+  line-height: 1.4;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   STATS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-stats { padding: var(--section-pad) 0; background: var(--clr-white); }
+.eco-stats__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-6); display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+.eco-stat { border-left: 1px solid var(--clr-gray-200); padding: 0 var(--sp-5); }
+.eco-stat:first-child { border-left: none; }
+.eco-stat__num { font-size: clamp(40px,5vw,64px); font-weight: var(--fw-regular); color: var(--clr-green); letter-spacing: -2.5px; line-height: 1; margin-bottom: 8px; }
+.eco-stat__label { font-size: 20px; color: var(--clr-muted); letter-spacing: -0.4px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FAQ
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.eco-faq { padding: 100px var(--sp-6); background: var(--clr-white); }
+.eco-faq__inner { max-width: 800px; margin: 0 auto; }
+.eco-faq__heading { font-size: clamp(36px,4vw,52px); font-weight: var(--fw-medium); text-align: center; letter-spacing: -1px; color: #424242; margin-bottom: var(--sp-6); }
+.eco-faq__item { border-radius: 12px; box-shadow: 0 4px 6px 4px rgba(180,156,197,.08); background: rgba(255,255,255,.5); margin-bottom: var(--sp-2); }
+.eco-faq__q { display: flex; justify-content: space-between; align-items: center; padding: 28px 32px; cursor: pointer; font-size: 18px; font-weight: var(--fw-medium); color: #424242; letter-spacing: -0.36px; gap: var(--sp-3); }
+.eco-faq__icon { font-size: 18px; color: var(--clr-green-dark); flex-shrink: 0; transition: transform 0.2s; }
+.eco-faq__item.open .eco-faq__icon { transform: rotate(45deg); }
+.eco-faq__a { display: none; padding: 0 32px 28px; font-size: var(--type-body); color: rgba(0,0,0,.8); line-height: 1.6; }
+.eco-faq__item.open .eco-faq__a { display: block; }
+</style>
+</head>
+<body>
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  Get 20% OFF on Ecozen Smart AC. Offer Valid till 30th May. T&amp;C*
+  <a href="#">Buy Now &rsaquo;</a>
+</div>
+
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">
+      <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="nav__logo-img">
+    </a>
+    <ul class="nav__links">
+      <li class="nav__item">
+        <button class="nav__trigger">Products <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Products</div>
+            <div class="mega__grid">
+              <a href="ecotron.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/ho1yoHUhEznXalDBkGUGEcn3w.png?scale-down-to=512" alt="Ecotron"></div><div class="mega__name">Ecotron</div><div class="mega__sub">Solar Pump Controller Set</div></a>
+              <a href="solar-rooftop.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UpCjHunNdpYxz5EHMBB63oRNq6w.png?scale-down-to=512" alt="Smart Rooftop"></div><div class="mega__name">Smart Rooftop</div><div class="mega__sub">Solar Rooftop System</div></a>
+              <a href="solar-ac.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UI5C0avLzgcVcBtQARfb0413SM.png?scale-down-to=512" alt="Solar AC"></div><div class="mega__name">Solar AC</div><div class="mega__sub">True Solar AC</div></a>
+              <a href="smart-ac.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HQo0shYCaFQr4ftH355yY4MzHQ.png?scale-down-to=512" alt="Smart AC"></div><div class="mega__name">Smart AC</div><div class="mega__sub">Solar Compatible AC</div></a>
+              <a href="ecofrost.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HhdZoSO9Ks6NhkyIJgvRO4FNCc.png?scale-down-to=512" alt="Ecofrost"></div><div class="mega__name">Ecofrost</div><div class="mega__sub">Solar Cold Room</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Technology <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Technology</div>
+            <div class="mega__grid mega__grid--3">
+              <a href="motor-control.html" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jVGWDfpkNuQuf0CGzeykQbt48.png" alt="Motor"><div class="mega__tech-name">Motor Control</div><div class="mega__tech-desc">Efficiently Controls BLDC, PMSM, SYNRM &amp; Other Motors</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/SlgjaFXiZTm2VLRSN0f3PeJbU.png" alt="AI"><div class="mega__tech-name">AI Solutions</div><div class="mega__tech-desc">Open a world of possibilities with our AI Solutions</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jXWGMjOBo5Ew7idmSO5F2hTMXCA.png" alt="Thermal"><div class="mega__tech-name">Thermal Energy Storage</div><div class="mega__tech-desc">ecozen's Patented Ice-core Technology</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Resources <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Learn</div>
+                <a href="#" class="mega__link">Ecozen Blogs</a>
+                <a href="#" class="mega__link">News</a>
+                <a href="#" class="mega__link">Case Studies</a>
+                <a href="#" class="mega__link">Documents</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">More <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Company</div>
+                <a href="#" class="mega__link">About Us</a>
+                <a href="#" class="mega__link">Careers</a>
+              </div>
+              <div class="mega__col-group">
+                <div class="mega__col-label">Contact</div>
+                <a href="#" class="mega__link">Find Certified Dealer</a>
+                <a href="#" class="mega__link">Find Experience Centre</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <a href="tel:18001217515" class="nav__phone-btn">📞 1800 121 7515</a>
+  </nav>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <span class="cookie-banner__emoji">🍪</span>
+  <p class="cookie-banner__text">
+    <strong>We use cookies</strong> to improve your experience and analyse site traffic.
+    By continuing, you agree to our <a href="#">Privacy Policy</a>.
+  </p>
+  <div class="cookie-banner__actions">
+    <button class="cookie-btn cookie-btn--reject" id="cookieReject">Reject All</button>
+    <button class="cookie-btn cookie-btn--accept" id="cookieAccept">Accept All</button>
+  </div>
+</div>
+
+<!-- CAMPAIGN SLOT — set class="campaign active" to show -->
+<div class="campaign" id="campaignSlot">
+  <img class="campaign__img" src="" alt="Campaign">
+  <div class="campaign__overlay"></div>
+  <div class="campaign__content">
+    <span class="campaign__tag">⚡ Limited Time</span>
+    <h2 class="campaign__heading">Campaign Heading Goes Here</h2>
+    <a href="#" class="btn btn--primary">Learn More →</a>
+  </div>
+  <button class="campaign__close" onclick="document.getElementById('campaignSlot').classList.remove('active')">✕</button>
+</div>
+
+
+<!-- HERO -->
+<section class="eco-hero">
+  <div class="eco-hero__bg"></div>
+  <div class="eco-hero__overlay"></div>
+  <div class="eco-hero__content">
+    <div class="eco-hero__tag">🇮🇳 India's First 4G Enabled</div>
+    <h1 class="eco-hero__name">ecotron</h1>
+    <p class="eco-hero__sub">Solar Pump Controller Set</p>
+    <div class="eco-hero__actions">
+      <a href="#lead" class="btn btn--primary">Buy Now</a>
+      <a href="#" class="eco-hero__brochure"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><path d="M8 1v9M8 10l-3-3M8 10l3-3M2 12v2h12v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Download Brochure</a>
+    </div>
+    <div class="eco-hero__trust">
+      <img src="https://framerusercontent.com/images/YumAa9LmHANLqWHsCpfr6b2AzaQ.png" alt="Google"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div style="display:none;width:34px;height:34px;background:#4285F4;border-radius:50%;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0">G</div>
+      <div>
+        <div class="eco-hero__trust-rating">4.9 <span class="eco-hero__trust-stars">★★★★★</span></div>
+        <div class="eco-hero__trust-text">
+          <strong>Bharat ka Smart Bharosa</strong>
+          <span>Rated 4.9 on Google with 3000+ reviews</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-bg"></div>
+  <div class="ticker-track">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+    <img src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" class="ticker-img" alt="">
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="eco-intro">
+  <div class="eco-intro__inner">
+    <div>
+      <p class="eco-intro__heading">India's leading solar pump controller set,<br><strong>trusted by 5+ lakh farmers</strong></p>
+      <p style="font-size:18px;color:rgba(255,255,255,.6);margin-top:16px">Built by ecozen's motor controller technology</p>
+    </div>
+    <div class="eco-intro__stats">
+      <div><div class="eco-intro__stat-num">5L+</div><div class="eco-intro__stat-label">Installations</div></div>
+      <div><div class="eco-intro__stat-num">4G</div><div class="eco-intro__stat-label">Remote Enabled</div></div>
+      <div><div class="eco-intro__stat-num">5yr</div><div class="eco-intro__stat-label">Warranty</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTOR -->
+<section class="eco-motor">
+  <div class="eco-motor__inner">
+    <div class="eco-motor__header">
+      <span class="eyebrow">Pumps &amp; Motors</span>
+      <h2 class="eco-motor__heading">Leading Submersible and<br>Surface Pumps &amp; Motors</h2>
+      <p class="eco-motor__sub">Available in both AC + BLDC Variants · Powered by ecozen's Motor control technology</p>
+      <div class="eco-motor__pills">
+        <span class="eco-motor__pill">3 HP</span>
+        <span class="eco-motor__pill">5 HP</span>
+        <span class="eco-motor__pill">7.5 HP</span>
+        <span class="eco-motor__pill eco-motor__pill--outline">AC Variant</span>
+        <span class="eco-motor__pill eco-motor__pill--outline">BLDC Variant</span>
+      </div>
+    </div>
+    <div class="eco-motor__cards">
+      <div class="eco-motor__card">
+        <div class="eco-motor__card-img" style="background-image:url('https://framerusercontent.com/images/KjnUfi4p5THPHOELH9KvMrJww.png')"></div>
+        <div class="eco-motor__card-copy">
+          <div class="eco-motor__card-title">Highly durable SS 304<br>casting motor parts</div>
+          <div class="eco-motor__card-desc">Corrosion-resistant, high-strength motor components designed to deliver consistent performance over years of use.</div>
+        </div>
+      </div>
+      <div class="eco-motor__card">
+        <div class="eco-motor__card-img" style="background-image:url('https://framerusercontent.com/images/0SpGF69lKUjA7KwUrf6CXhSkv5w.png')"></div>
+        <div class="eco-motor__card-copy">
+          <div class="eco-motor__card-title">Maximum water discharge<br>in the product category</div>
+          <div class="eco-motor__card-desc">Designed to deliver high water output efficiently, ensuring faster irrigation and reliable performance.</div>
+        </div>
+      </div>
+    </div>
+    <div class="eco-motor__bldc">
+      <div class="eco-motor__bldc-img" style="background-image:url('https://framerusercontent.com/images/wJiCU5YQEgyQDQ38UcqfvFq4OtY.png')"></div>
+      <div class="eco-motor__bldc-copy">
+        <div class="eco-motor__bldc-title">BLDC Motor</div>
+        <p style="font-size:20px;color:var(--clr-black);margin-bottom:24px">Delivers superior performance with lower power consumption and longer operational life</p>
+        <div class="eco-motor__bldc-feats">
+          <div class="eco-motor__bldc-feat">20% more water output</div>
+          <div class="eco-motor__bldc-feat">Long run time</div>
+          <div class="eco-motor__bldc-feat">Precise control</div>
+          <div class="eco-motor__bldc-feat">Smart Technology</div>
+        </div>
+        <a href="#lead" class="btn btn--primary">Buy Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTROLLER -->
+<section class="eco-ctrl">
+  <div class="eco-ctrl__inner">
+    <div class="eco-ctrl__header">
+      <span class="eyebrow eyebrow--light">Smart Tech</span>
+      <h2 class="eco-ctrl__heading">Brain Behind <span class="accent-green">ecozen Solar Pump</span></h2>
+    </div>
+    <div class="eco-ctrl__lifestyle">
+      <div class="eco-ctrl__lifestyle-overlay"></div>
+      <div class="eco-ctrl__lifestyle-badge">
+        <div style="font-size:40px">📡</div>
+        <h3 style="font-size:clamp(28px,3.5vw,48px);font-weight:600;color:#fff;line-height:1.1">Vodafone certified<br>IoT device</h3>
+      </div>
+    </div>
+    <div class="eco-ctrl__cards">
+      <div class="eco-ctrl__card" style="background-image:url('https://framerusercontent.com/images/2QS98s7wPXsaFGxzsp6aZA97sw.png?width=692&height=752')">
+        <div class="eco-ctrl__card-overlay"></div><div class="eco-ctrl__card-label">OTA Updates</div>
+      </div>
+      <div class="eco-ctrl__card" style="background-image:url('https://framerusercontent.com/images/mTBV74CfQIEmQoXGmig1dxgso8k.png?scale-down-to=1024')">
+        <div class="eco-ctrl__card-overlay"></div><div class="eco-ctrl__card-label">IOT Powered</div>
+      </div>
+      <div class="eco-ctrl__card" style="background-image:url('https://framerusercontent.com/images/AOoRwYA5dlCZnFyicBZX1XC5SJA.png?scale-down-to=1024')">
+        <div class="eco-ctrl__card-overlay"></div><div class="eco-ctrl__card-label">IP-65 Protection</div>
+      </div>
+      <div class="eco-ctrl__card" style="background-image:url('https://framerusercontent.com/images/uGmVuVagmczjeti6Lo50PwOmQQ.jpg?scale-down-to=1024')">
+        <div class="eco-ctrl__card-overlay"></div><div class="eco-ctrl__card-label">Smart LED</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHT AS AIR -->
+<section class="eco-air">
+  <div class="eco-air__inner">
+    <div>
+      <h2 class="eco-air__heading">Light as AIR,<br>Strong as STEEL</h2>
+      <p class="eco-air__desc">Crafted with high-grade polycarbonate for superior durability, impact resistance, and long-lasting outdoor performance.</p>
+      <div class="eco-air__warranty">
+        <div style="width:80px;height:80px;flex-shrink:0;display:flex;align-items:center;justify-content:center">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 4L8 14v18c0 14 10.5 27 24 30 13.5-3 24-16 24-30V14L32 4z" fill="#6BA546" opacity="0.15"/>
+            <path d="M32 4L8 14v18c0 14 10.5 27 24 30 13.5-3 24-16 24-30V14L32 4z" stroke="#6BA546" stroke-width="2" fill="none"/>
+            <text x="32" y="36" text-anchor="middle" font-family="Mukta,sans-serif" font-size="13" font-weight="700" fill="#6BA546">5 YR</text>
+          </svg>
+        </div>
+        <div class="eco-air__warranty-text">
+          <strong>5 Year Warranty*</strong>
+          <p>Your Controller, Taken Care Of.<br>Backed by warranty support to keep things running smoothly.</p>
+          <div class="eco-air__warranty-badge">Add-on insurance options available</div>
+        </div>
+      </div>
+    </div>
+    <img class="eco-air__img" src="https://framerusercontent.com/images/h0pTJS5YBphrTjz2IScOUlVcLmQ.png" alt="ecotron controller">
+  </div>
+</section>
+
+<!-- PM KUSUM -->
+<section class="eco-kusum">
+  <div class="eco-kusum__inner">
+    <div class="eco-kusum__card">
+      <!-- Left: farmer photo -->
+      <div class="eco-kusum__photo">
+        <img src="https://framerusercontent.com/images/7XS5H7k36d7dSuxZRIdA2Szc.jpg?scale-down-to=1024" alt="PM Kusum farmer">
+      </div>
+      <!-- Right: content -->
+      <div class="eco-kusum__content">
+        <h2 class="eco-kusum__heading">PM KUSUM Yojana</h2>
+        <div class="eco-kusum__verified">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#6BA546"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>ecozen is approved vendor of solar pumps under NODAL agencies</span>
+        </div>
+        <p class="eco-kusum__agencies">(MEDA, MSEDCL, HAREDA, UPNEDA, MPUNL, RHDS, PEDA, CREDA, OREDA, DAWB)</p>
+        <!-- 3 step cards inline -->
+        <div class="eco-kusum__steps">
+          <div class="eco-kusum__step">
+            <img src="https://framerusercontent.com/images/uZKk6d3xRymgB9tRwyji9eEYYr4.png?width=305&height=398" alt="Step 1">
+            <div class="eco-kusum__step-body">
+              <div class="eco-kusum__step-num">STEP 1</div>
+              <div class="eco-kusum__step-text">Apply via state NODAL agency</div>
+            </div>
+          </div>
+          <div class="eco-kusum__step">
+            <img src="https://framerusercontent.com/images/kSs6epmqKcWXRueZyDxVFCKh20.png?width=305&height=398" alt="Step 2">
+            <div class="eco-kusum__step-body">
+              <div class="eco-kusum__step-num">STEP 2</div>
+              <div class="eco-kusum__step-text">Approval &amp; vendor allocation</div>
+            </div>
+          </div>
+          <div class="eco-kusum__step">
+            <img src="https://framerusercontent.com/images/jdS8UYu58powGGGAh68hHyJxc.png?width=305&height=398" alt="Step 3">
+            <div class="eco-kusum__step-body">
+              <div class="eco-kusum__step-num">STEP 3</div>
+              <div class="eco-kusum__step-text">Installation + subsidy disbursal</div>
+            </div>
+          </div>
+        </div>
+        <a href="https://www.recregistryindia.nic.in/index.php/publics/SNAList" target="_blank" class="btn btn--primary" style="margin-top:var(--sp-4)">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NIGHT RUNS -->
+<div style="background:var(--clr-black);padding:var(--section-pad) 0">
+  <div class="eco-night">
+    <!-- Phone — bottom left corner, cut off at bottom -->
+    <img
+      class="eco-night__phone-img"
+      src="https://framerusercontent.com/images/WkamIeOYGNu8KCuG5tUI4GvvWP0.png"
+      alt="ecotron app"
+    >
+    <!-- Copy — center-left -->
+    <div class="eco-night__copy">
+      <svg width="37" height="41" viewBox="0 0 37 41" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:var(--sp-2)">
+          <path d="M28.839 20.5C29.981 20.5 30.906 21.418 30.906 22.55L30.906 41L26.771 41L26.771 24.6L10.229 24.6L10.229 41L6.094 41L6.094 22.55C6.094 21.418 7.019 20.5 8.161 20.5ZM18.5 28.7L18.5 32.8L14.365 32.8L14.365 28.7ZM18.5 8.2C23.2 8.199 27.497 10.83 29.6 14.998L25.898 16.833C24.498 14.054 21.633 12.299 18.5 12.299C15.367 12.299 12.502 14.054 11.102 16.833L7.4 14.998C9.503 10.83 13.8 8.199 18.5 8.2ZM18.5 0C26.334 -0.002 33.496 4.384 37 11.33L33.299 13.165C30.496 7.608 24.767 4.099 18.5 4.1C12.233 4.099 6.504 7.608 3.701 13.165L0 11.33C3.504 4.384 10.666 -0.002 18.5 0Z" fill="white"/>
+        </svg>
+      <h2 class="eco-night__heading">Save the night runs<br>to the farm</h2>
+      <p class="eco-night__sub">Operate from anywhere, anytime</p>
+    </div>
+  </div>
+</div>
+
+<!-- SOLAR PANELS -->
+<section class="eco-panels">
+  <div class="eco-panels__inner">
+    <div>
+      <span class="eyebrow">Comes with</span>
+      <h2 class="section-heading">High Performance <span class="accent-green">Solar Panels</span></h2>
+      <div class="eco-panels__img-wrap" style="margin-top:var(--sp-4)">
+        <img class="eco-panels__img" src="https://framerusercontent.com/images/aopHvH7dqL5JthZX5zD808k86tM.png" alt="Solar Panel">
+      </div>
+      <div class="eco-panels__type-title">Solar Panels</div>
+      <div class="eco-panels__type-range">Poly | Mono PERC | Bifacial Range</div>
+      <div class="eco-panels__feats">
+        <div class="eco-panels__feat"><div class="eco-panels__feat-icon">🌥️</div><div class="eco-panels__feat-text">Performs well in low light / cloudy weather</div></div>
+        <div class="eco-panels__feat"><div class="eco-panels__feat-icon">⚡</div><div class="eco-panels__feat-text">High efficiency panels — Faster ROI</div></div>
+        <div class="eco-panels__feat"><div class="eco-panels__feat-icon">💧</div><div class="eco-panels__feat-text">Faster ROI due to higher energy generation</div></div>
+      </div>
+    </div>
+    <div class="eco-panels__right">
+      <div class="eco-panels__right-label">Strong Solar Panel Structure</div>
+      <div style="flex:1;width:100%;background:rgba(255,255,255,.1);border-radius:12px;margin:16px 0;display:flex;align-items:center;justify-content:center;font-size:80px">☀️</div>
+      <div class="eco-panels__badges">
+        <div class="eco-panels__badge"><span>🔧</span>Rust Free</div>
+        <div class="eco-panels__badge"><span>💪</span>Strong &amp; Sturdy</div>
+        <div class="eco-panels__badge"><span>🎓</span>IIT Approved</div>
+        <div class="eco-panels__badge"><span>🌪️</span>Storm Resistant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMART ENGINEERING -->
+<section class="eco-smart">
+  <div class="eco-smart__inner">
+    <div class="eco-smart__header">
+      <span class="eyebrow">Smart Engineering</span>
+      <h2 class="section-heading"><span class="accent-green">for Your Benefits</span></h2>
+    </div>
+    <div class="eco-smart__cards">
+      <div class="eco-smart__card" style="background-image:url('https://framerusercontent.com/images/u9kEaObrG02oH3w1lu43akyp8.jpg')">
+        <div class="eco-smart__card-icon" style="color:var(--clr-green)">⚡</div>
+        <div class="eco-smart__card-title">Surge protection</div>
+        <div class="eco-smart__card-desc">Surge protection against internal circuit breakdown</div>
+      </div>
+      <div class="eco-smart__card" style="background-image:url('https://framerusercontent.com/images/u9kEaObrG02oH3w1lu43akyp8.jpg')">
+        <div class="eco-smart__card-icon" style="color:var(--clr-green)">🧠</div>
+        <div class="eco-smart__card-title">Intelligent System</div>
+        <div class="eco-smart__card-desc">Intelligent Diagnostics System, reduces downtime &amp; service cost</div>
+      </div>
+      <div class="eco-smart__card" style="background-image:url('https://framerusercontent.com/images/u9kEaObrG02oH3w1lu43akyp8.jpg')">
+        <div class="eco-smart__card-icon" style="color:var(--clr-green)">🔌</div>
+        <div class="eco-smart__card-title">Easy Operation</div>
+        <div class="eco-smart__card-desc">Easy to install plug &amp; pump design</div>
+      </div>
+      <div class="eco-smart__card" style="background-image:url('https://framerusercontent.com/images/u9kEaObrG02oH3w1lu43akyp8.jpg')">
+        <div class="eco-smart__card-icon" style="color:var(--clr-green)">🔋</div>
+        <div class="eco-smart__card-title">Battery Operation</div>
+        <div class="eco-smart__card-desc">Battery charging option to power other devices</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDIA MAP -->
+<section class="eco-map">
+  <div class="container">
+    <span class="eyebrow" style="display:block;text-align:center">Nationwide Presence</span>
+    <h2 class="section-heading" style="text-align:center">Empowering <span class="accent-green">5 Lakh+ Farmers</span> in India</h2>
+  </div>
+  <div class="eco-map__img-wrap">
+    <img class="eco-map__img" src="https://framerusercontent.com/images/yIJ1JsHrR3v5RBGA5WX0XwErvKE.jpg" alt="India Map">
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="eco-test">
+  <div class="eco-test__inner">
+
+    <!-- 2-col bento layout -->
+    <div class="eco-test__bento">
+
+      <!-- LEFT COLUMN -->
+      <div class="eco-test__col">
+
+        <!-- Stat card -->
+        <div class="eco-test__stat-card">
+          <div class="eco-test__stat-num">5 Lakh+</div>
+          <div class="eco-test__stat-label">Installations across India</div>
+          <div class="eco-test__stars">★★★★★</div>
+          <div class="eco-test__stat-sub">Helping Farmers &amp; Traders Across the World</div>
+        </div>
+
+        <!-- Auto-sliding farm photo carousel -->
+        <div class="eco-test__carousel" id="farmCarousel">
+          <div class="eco-test__carousel-track" id="farmTrack">
+            <div class="eco-test__carousel-slide" style="background-image:url('https://framerusercontent.com/images/u9kEaObrG02oH3w1lu43akyp8.jpg?scale-down-to=1024')"></div>
+            <div class="eco-test__carousel-slide" style="background-image:url('https://framerusercontent.com/images/VBejnEBIJ45ub8lhftuocRIjQQ.jpg?scale-down-to=1024')"></div>
+            <div class="eco-test__carousel-slide" style="background-image:url('https://framerusercontent.com/images/NN0o5Zl1KeaQ0ltS83SM2cVRgM.jpg?scale-down-to=1024')"></div>
+            <div class="eco-test__carousel-slide" style="background-image:url('https://framerusercontent.com/images/lcoNX5hykrJuqQfukxYezwlfN4.jpg?scale-down-to=1024')"></div>
+          </div>
+          <div class="eco-test__dots" id="farmDots">
+            <button class="eco-test__dot active" data-idx="0"></button>
+            <button class="eco-test__dot" data-idx="1"></button>
+            <button class="eco-test__dot" data-idx="2"></button>
+            <button class="eco-test__dot" data-idx="3"></button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="eco-test__col">
+
+        <!-- Text testimonial — green quote, no photo -->
+        <div class="eco-test__quote-card">
+          <div class="eco-test__quote-text">"Thoroughly satisfied with the timely installation of ecotron."</div>
+          <div class="eco-test__quote-stars">★★★★★</div>
+          <div class="eco-test__quote-name">Customer Name, Raisin Farmer &amp; Trader</div>
+          <div class="eco-test__quote-tag">#customerstory</div>
+        </div>
+
+        <!-- Photo testimonial card -->
+        <div class="eco-test__photo-card" style="background-image:url('https://framerusercontent.com/images/ozu5hnSLLRYjyd8HMTIE5skAMms.jpg?scale-down-to=1024')">
+          <div class="eco-test__photo-overlay"></div>
+          <div class="eco-test__photo-body">
+            <div class="eco-test__photo-quote">"Thoroughly satisfied with the timely installation of ecotron."</div>
+            <div class="eco-test__photo-stars">★★★★★</div>
+            <div class="eco-test__photo-name">Customer Name, Vegetable Farmer &amp; Trader</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Customer experience label -->
+    <div class="eco-test__label">Customer experience</div>
+
+    <!-- YouTube video cards — 3 real farmer testimonials -->
+    <div class="eco-test__videos">
+      <div class="eco-test__video-card">
+        <div class="eco-test__video-thumb" style="background-image:url('https://i.ytimg.com/vi_webp/nozMjUAvLcg/sddefault.webp')">
+          <a href="https://www.youtube.com/watch?v=nozMjUAvLcg" target="_blank" class="eco-test__video-play">
+            <svg viewBox="0 0 68 48" width="48" height="34"><path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="rgba(0,0,0,0.8)"/><path d="M 45,24 27,14 27,34" fill="#fff"/></svg>
+          </a>
+        </div>
+        <div class="eco-test__video-label">इकोझेन स्मार्ट सोलर पंप — Farmer Review</div>
+      </div>
+      <div class="eco-test__video-card">
+        <div class="eco-test__video-thumb" style="background-image:url('https://i.ytimg.com/vi_webp/vRrgR92sAZY/sddefault.webp')">
+          <a href="https://www.youtube.com/watch?v=vRrgR92sAZY" target="_blank" class="eco-test__video-play">
+            <svg viewBox="0 0 68 48" width="48" height="34"><path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="rgba(0,0,0,0.8)"/><path d="M 45,24 27,14 27,34" fill="#fff"/></svg>
+          </a>
+        </div>
+        <div class="eco-test__video-label">Ecozen's Ecotron Single Phase Controller</div>
+      </div>
+      <div class="eco-test__video-card">
+        <div class="eco-test__video-thumb" style="background-image:url('https://i.ytimg.com/vi_webp/f1D0xPQSga0/sddefault.webp')">
+          <a href="https://www.youtube.com/watch?v=f1D0xPQSga0" target="_blank" class="eco-test__video-play">
+            <svg viewBox="0 0 68 48" width="48" height="34"><path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="rgba(0,0,0,0.8)"/><path d="M 45,24 27,14 27,34" fill="#fff"/></svg>
+          </a>
+        </div>
+        <div class="eco-test__video-label">Ecozen Ecotron — 2 Years Later</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="eco-stats">
+  <div class="eco-stats__inner">
+    <div class="eco-stat"><div class="eco-stat__num">47.3Bn+</div><div class="eco-stat__label">KWh Clean Energy Generated</div></div>
+    <div class="eco-stat"><div class="eco-stat__num">552k+</div><div class="eco-stat__label">Lives Impacted</div></div>
+    <div class="eco-stat"><div class="eco-stat__num">108k+</div><div class="eco-stat__label">Food Loss Saved</div></div>
+    <div class="eco-stat"><div class="eco-stat__num">40.4Mn+</div><div class="eco-stat__label">tons CO₂ abetted</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="eco-faq">
+  <div class="eco-faq__inner">
+    <div class="eco-faq__heading">Common questions answered</div>
+    <div class="eco-faq__item">
+      <div class="eco-faq__q">How does Ecotron work? <span class="eco-faq__icon">+</span></div>
+      <div class="eco-faq__a">Ecotron connects to your solar irrigation system, enabling remote monitoring and control via the app. It tracks water usage, provides real-time data, and ensures efficient, cost-effective irrigation.</div>
+    </div>
+    <div class="eco-faq__item">
+      <div class="eco-faq__q">How do I install Ecotron? <span class="eco-faq__icon">+</span></div>
+      <div class="eco-faq__a">Subsidy Amounts — Up to 2 kW: ₹30,000 per kW · Between 2 kW and 3 kW: ₹18,000 per additional kW · Above 3 kW: Capped at ₹78,000. UP Government's additional subsidy: ₹15,000 per kW up to ₹30,000.</div>
+    </div>
+    <div class="eco-faq__item">
+      <div class="eco-faq__q">Can I control Ecotron remotely? <span class="eco-faq__icon">+</span></div>
+      <div class="eco-faq__a">Homeowners with a suitable roof, valid electricity connection, and not having availed another solar subsidy. Only one subsidy per household — direct bank transfer after installation and grid connection.</div>
+    </div>
+    <div class="eco-faq__item">
+      <div class="eco-faq__q">Does Ecotron save energy and reduce cost? <span class="eco-faq__icon">+</span></div>
+      <div class="eco-faq__a">ID proof (Aadhaar, PAN, or passport) · Property ownership/lease papers · Recent electricity bill · Vendor quotation from empaneled vendor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VARIANTS -->
+<section class="eco-variants">
+  <div class="container">
+    <div class="eco-variants__header">
+      <span class="eyebrow">Choose Your</span>
+      <h2 class="section-heading">ecotron <span class="accent-green">Omni</span></h2>
+      <p class="eco-variants__desc">Upgrade from solar pump to full power solution</p>
+    </div>
+
+    <!-- Single unified container -->
+    <div class="eco-variants__box">
+
+      <!-- Illustration — full width inside box -->
+      <div class="eco-variants__illustration">
+        <img src="https://framerusercontent.com/images/KLI8v9CtqRI2YJMd9SJSNHts.jpg?width=1218&height=325"
+          alt="ecotron Omni — how it works">
+      </div>
+
+      <!-- Divider -->
+      <div class="eco-variants__divider"></div>
+
+      <!-- 2 cards side by side inside same box -->
+      <div class="eco-variants__cards">
+        <div class="vcard">
+          <div class="vcard__img-wrap">
+            <img class="vcard__img"
+              src="https://framerusercontent.com/images/akIC16jAKqhSaafHfYlSaLhT4.png"
+              alt="ecotron Omni Single Phase Controller">
+          </div>
+          <div class="vcard__body">
+            <span class="eyebrow">ecotron Omni</span>
+            <h3 class="vcard__name">Single Phase Controller</h3>
+            <span class="vcard__use">+ Use with ecozen® ecotron solar controller</span>
+            <ul class="vcard__feats">
+              <li class="vcard__feat">4G enabled remote monitoring</li>
+              <li class="vcard__feat">Multi-mode connectivity</li>
+              <li class="vcard__feat">Steady conversion at full load</li>
+            </ul>
+            <div class="vcard__actions">
+              <a href="#lead" class="btn btn--primary">Buy Now</a>
+              <a href="#" class="btn btn--ghost">Download Brochure</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="vcard">
+          <div class="vcard__img-wrap">
+            <img class="vcard__img"
+              src="https://framerusercontent.com/images/t4q447AjV09zGvN4Yi9xqaYWvs.png?width=1000&height=750"
+              alt="ecotron Omni Add On">
+          </div>
+          <div class="vcard__body">
+            <span class="eyebrow">ecotron Omni</span>
+            <h3 class="vcard__name">Add On</h3>
+            <span class="vcard__use">+ Use with other brand solar controller</span>
+            <ul class="vcard__feats">
+              <li class="vcard__feat">4G enabled remote monitoring</li>
+              <li class="vcard__feat">Multi-mode connectivity</li>
+              <li class="vcard__feat">Steady conversion at full load</li>
+            </ul>
+            <div class="vcard__actions">
+              <a href="#lead" class="btn btn--primary">Buy Now</a>
+              <a href="#" class="btn btn--ghost">Download Brochure</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section class="lead-form" id="lead">
+  <div class="lead-form__inner">
+    <div class="lead-form__left">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.5)">Get in Touch</span>
+      <h2 class="section-heading" style="color:var(--clr-white)">
+        Interested in <span style="color:var(--clr-green)">ecotron?</span>
+      </h2>
+      <p class="lead-form__sub">Our experts will call you back within 24 hours with pricing and installation details.</p>
+    </div>
+    <div class="lead-form__card">
+      <div class="lead-form__row">
+        <div class="lead-form__field">
+          <label class="lead-form__label">Name *</label>
+          <input type="text" class="lead-form__input" placeholder="First name">
+        </div>
+        <div class="lead-form__field">
+          <label class="lead-form__label">Surname *</label>
+          <input type="text" class="lead-form__input" placeholder="Last name">
+        </div>
+      </div>
+      <div class="lead-form__field">
+        <label class="lead-form__label">Email *</label>
+        <input type="email" class="lead-form__input" placeholder="you@email.com">
+      </div>
+      <div class="lead-form__field">
+        <label class="lead-form__label">Mobile *</label>
+        <input type="tel" class="lead-form__input" placeholder="+91 98765 43210">
+      </div>
+      <div class="lead-form__row">
+        <div class="lead-form__field">
+          <label class="lead-form__label">Pin *</label>
+          <input type="text" class="lead-form__input" placeholder="400001">
+        </div>
+        <div class="lead-form__field">
+          <label class="lead-form__label">State *</label>
+          <select class="lead-form__select">
+            <option value="" disabled selected>Select state</option>
+            <option>Maharashtra</option><option>Rajasthan</option>
+            <option>Uttar Pradesh</option><option>Madhya Pradesh</option>
+            <option>Gujarat</option><option>Punjab</option>
+            <option>Haryana</option><option>Bihar</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="lead-form__field">
+        <label class="lead-form__label">District *</label>
+        <input type="text" class="lead-form__input" placeholder="Your district">
+      </div>
+      <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--type-body-sm);color:var(--clr-muted);cursor:pointer">
+        <input type="checkbox" style="margin-top:3px;accent-color:var(--clr-green);flex-shrink:0">
+        You agree to our <a href="#" style="color:var(--clr-green);margin-left:4px">privacy policy</a>.
+      </label>
+      <button class="btn btn--primary" style="width:100%;justify-content:center;padding:14px;font-size:var(--type-body)">Submit Details →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FRAUD ALERT -->
+<div class="fraud-alert">
+  <div class="fraud-alert__inner">
+    <span class="fraud-alert__icon">⚠️</span>
+    <p class="fraud-alert__text">
+      <strong>Caution Notice:</strong> ecozen Solutions Private Limited does not ask job seekers or customers to pay any fees, deposit, or provide sensitive personal information during any process. Beware of scammers impersonating ecozen.
+      <a href="#" class="fraud-alert__link">Report fraud →</a>
+    </p>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__top">
+    <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="footer__logo">
+    <div class="footer__tagline"><span class="accent-gradient">Innovation Never Ends</span></div>
+  </div>
+  <div class="footer__main">
+    <div>
+      <div class="footer__col-head footer__col-head--green">Products</div>
+      <div class="footer__links">
+        <a href="ecotron.html" class="footer__link footer__link--active">Ecotron</a>
+        <a href="ecofrost.html" class="footer__link">Ecofrost</a>
+        <a href="solar-ac.html" class="footer__link">Solar AC</a>
+        <a href="smart-ac.html" class="footer__link">Smart AC</a>
+        <a href="solar-rooftop.html" class="footer__link">Smart Rooftop</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head footer__col-head--cyan">Technology</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">Ecozen AI</a>
+        <a href="#" class="footer__link">Ice Core</a>
+        <a href="motor-control.html" class="footer__link">Motor Controls</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">Ecozen</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">About Us</a>
+        <a href="#" class="footer__link">Careers</a>
+        <a href="#" class="footer__link">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">Others</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">User Portal</a>
+        <a href="#" class="footer__link">Legal Policy</a>
+        <a href="#" class="footer__link">Corporate</a>
+        <a href="#" class="footer__link">Press Kit</a>
+        <a href="#" class="footer__link">CSR</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">India 🇮🇳</div>
+      <div class="footer__toll-label">Toll Free No.</div>
+      <div class="footer__toll-number">1800 121 7515</div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__social">
+      <a href="#" class="footer__social-link" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="#" class="footer__social-link" aria-label="Twitter">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="#" class="footer__social-link" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.ecozensolutions.com" class="footer__social-link" aria-label="Website">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      </a>
+    </div>
+    <div class="footer__scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">SCROLL TO TOP ^</div>
+  </div>
+  <div class="footer__copy">©Copyright 2024 by Ecozen Solutions Private Limited</div>
+</footer>
+
+
+<script>
+
+  // ── MEGA MENU ──
+  (function() {
+    function setup() {
+      var items = document.querySelectorAll('.nav__item');
+      if (!items.length) { setTimeout(setup, 50); return; }
+      var t = null;
+      function show(item) {
+        clearTimeout(t);
+        document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+        document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        var mega = item.querySelector('.mega');
+        if (!mega) return;
+        var nav = document.querySelector('.nav');
+        if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+        mega.classList.add('is-open');
+        item.classList.add('active');
+      }
+      function hide() {
+        t = setTimeout(function() {
+          document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+          document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        }, 150);
+      }
+      items.forEach(function(item) {
+        var mega = item.querySelector('.mega');
+        item.addEventListener('mouseenter', function() { show(item); });
+        item.addEventListener('mouseleave', hide);
+        if (mega) {
+          mega.addEventListener('mouseenter', function() { clearTimeout(t); });
+          mega.addEventListener('mouseleave', hide);
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else { setup(); }
+  })();
+
+  // ── PEOPLE SLIDER ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var people = [
+      {
+        quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
+        name: "Yash",
+        role: "Senior Analyst, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "Working on real problems that impact millions of farmers — that makes every day here truly meaningful.",
+        name: "Riddhi",
+        role: "Recruitment Specialist, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "ecozen gives you the rare opportunity to build deep tech that truly shifts how India consumes energy.",
+        name: "[ Name ]",
+        role: "[ Role ], ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      }
+    ];
+    var idx = 0;
+    var qEl = document.getElementById('voicesQuote');
+    var nEl = document.getElementById('voicesName');
+    var rEl = document.getElementById('voicesRole');
+    var pEl = document.getElementById('voicesPhoto');
+    function go(i) {
+      idx = (i + people.length) % people.length;
+      var p = people[idx];
+      [qEl, nEl, pEl].forEach(function(el) { if(el) el.style.opacity = '0'; });
+      setTimeout(function() {
+        if (qEl) qEl.textContent = p.quote;
+        if (nEl) nEl.textContent = p.name;
+        if (rEl) rEl.textContent = p.role;
+        if (pEl) pEl.src = p.photo;
+        [qEl, nEl, pEl].forEach(function(el) { if(el) el.style.opacity = '1'; });
+      }, 200);
+    }
+    [qEl, nEl, pEl].forEach(function(el) {
+      if (el) el.style.transition = 'opacity 0.2s ease';
+    });
+    var prev = document.getElementById('voicesPrev');
+    var next = document.getElementById('voicesNext');
+    if (prev) prev.addEventListener('click', function() { go(idx - 1); });
+    if (next) next.addEventListener('click', function() { go(idx + 1); });
+  });
+
+  // ── CAMPAIGN SLIDER ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var track = document.getElementById('campTrack');
+    var dots = document.querySelectorAll('.camp-dot');
+    var slides = document.querySelectorAll('.camp-slide');
+    if (!track || !slides.length) return;
+    var cur = 0;
+    var auto;
+    function go(i) {
+      cur = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, j) { d.classList.toggle('active', j === cur); });
+    }
+    var p = document.getElementById('campPrev');
+    var n = document.getElementById('campNext');
+    if (p) p.addEventListener('click', function() { clearInterval(auto); go(cur-1); startAuto(); });
+    if (n) n.addEventListener('click', function() { clearInterval(auto); go(cur+1); startAuto(); });
+    dots.forEach(function(d) {
+      d.addEventListener('click', function() { clearInterval(auto); go(+d.dataset.i); startAuto(); });
+    });
+    function startAuto() { auto = setInterval(function() { go(cur+1); }, 5000); }
+    startAuto();
+  });
+
+  // Cookie — simple display none, versioned key
+  (function() {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    if (localStorage.getItem('ez_cookie_v4')) { banner.style.display = 'none'; return; }
+    document.getElementById('cookieAccept')?.addEventListener('click', () => { localStorage.setItem('ez_cookie_v4','y'); banner.style.display='none'; });
+    document.getElementById('cookieReject')?.addEventListener('click', () => { localStorage.setItem('ez_cookie_v4','n'); banner.style.display='none'; });
+  })();
+
+  // Campaign banner — static image, no JS needed });
+  document.getElementById('campNext')?.addEventListener('click', () => { clearInterval(campAuto); goToCamp(campIdx + 1); startAuto(); });
+  campDots.forEach(dot => dot.addEventListener('click', () => { clearInterval(campAuto); goToCamp(+dot.dataset.idx); startAuto(); }));
+
+  function startAuto() { campAuto = setInterval(() => goToCamp(campIdx + 1), 5000); }
+  startAuto();
+
+
+  const voicesPeople = [
+    {
+      quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
+      name: "Yash",
+      role: "Senior Analyst, ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    },
+    {
+      quote: "Working on real problems that impact millions of farmers — that's what makes every day truly meaningful here.",
+      name: "Riddhi",
+      role: "Recruitment Specialist, ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    },
+    {
+      quote: "ecozen gives you the rare opportunity to build deep tech that truly shifts how India consumes energy.",
+      name: "[ Name ]",
+      role: "[ Role ], ecozen",
+      photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+    }
+  ];
+  let voicesIdx = 0;
+  const voicesQuoteEl = document.getElementById('voicesQuote');
+  const voicesNameEl = document.getElementById('voicesName');
+  const voicesRoleEl = document.getElementById('voicesRole');
+  const voicesPhotoEl = document.getElementById('voicesPhoto');
+
+  function updateVoices(idx) {
+    const p = voicesPeople[idx];
+    voicesQuoteEl.style.opacity = '0';
+    voicesNameEl.style.opacity = '0';
+    voicesPhotoEl.style.opacity = '0';
+    setTimeout(() => {
+      voicesQuoteEl.textContent = p.quote;
+      voicesNameEl.textContent = p.name;
+      voicesRoleEl.textContent = p.role;
+      voicesPhotoEl.src = p.photo;
+      voicesQuoteEl.style.opacity = '1';
+      voicesNameEl.style.opacity = '1';
+      voicesPhotoEl.style.opacity = '1';
+    }, 200);
+  }
+  [voicesQuoteEl, voicesNameEl, voicesPhotoEl].forEach(el => {
+    el.style.transition = 'opacity 0.2s ease';
+  });
+  document.getElementById('voicesNext').addEventListener('click', () => {
+    voicesIdx = (voicesIdx + 1) % voicesPeople.length;
+    updateVoices(voicesIdx);
+  });
+  document.getElementById('voicesPrev').addEventListener('click', () => {
+    voicesIdx = (voicesIdx - 1 + voicesPeople.length) % voicesPeople.length;
+    updateVoices(voicesIdx);
+  });
+
+  // Mega menu — HOVER
+  (function() {
+    var navItems = document.querySelectorAll('.nav__item');
+    var timer = null;
+    function openMega(item) {
+      clearTimeout(timer);
+      document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('is-open'); });
+      navItems.forEach(function(i){ i.classList.remove('active'); });
+      var mega = item.querySelector('.mega');
+      if (!mega) return;
+      var nav = document.querySelector('.nav');
+      if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+      mega.classList.add('is-open');
+      item.classList.add('active');
+      var nw = document.querySelector('.nav-wrapper');
+      if (nw) nw.classList.add('menu-open');
+    }
+    function closeMega() {
+      timer = setTimeout(function() {
+        document.querySelectorAll('.mega').forEach(function(m){ m.classList.remove('is-open'); });
+        navItems.forEach(function(i){ i.classList.remove('active'); });
+        var nw = document.querySelector('.nav-wrapper');
+        if (nw) nw.classList.remove('menu-open');
+      }, 150);
+    }
+    navItems.forEach(function(item) {
+      var mega = item.querySelector('.mega');
+      item.addEventListener('mouseenter', function(){ openMega(item); });
+      item.addEventListener('mouseleave', closeMega);
+      if (mega) {
+        mega.addEventListener('mouseenter', function(){ clearTimeout(timer); });
+        mega.addEventListener('mouseleave', closeMega);
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav__item')) closeMega();
+    });
+  })();
+
+  // Nav scroll — announcement is in normal flow, nav fixed below it
+  const nav = document.querySelector('.nav-wrapper');
+  const ann = document.querySelector('.announcement');
+  function syncNav() {
+    if (!ann) return;
+    const annBottom = ann.getBoundingClientRect().bottom;
+    if (annBottom <= 0) {
+      // Announcement scrolled away — nav sits at top
+      nav.style.top = '0';
+      nav.classList.add('scrolled');
+    } else {
+      // Announcement still visible — nav sits below it
+      nav.style.top = annBottom + 'px';
+      nav.classList.remove('scrolled');
+    }
+  }
+  syncNav();
+  window.addEventListener('scroll', syncNav, { passive: true });
+
+
+  // FARM CAROUSEL
+  (function() {
+    var track = document.getElementById('farmTrack');
+    var dots  = document.querySelectorAll('.eco-test__dot');
+    if (!track) return;
+    var slides = track.querySelectorAll('.eco-test__carousel-slide');
+    var current = 0;
+    var total = slides.length;
+
+    function goTo(idx) {
+      current = (idx + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    }
+
+    // Auto play
+    var timer = setInterval(function() { goTo(current + 1); }, 3500);
+
+    // Dot clicks
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        clearInterval(timer);
+        goTo(parseInt(dot.getAttribute('data-idx')));
+        timer = setInterval(function() { goTo(current + 1); }, 3500);
+      });
+    });
+  })();
+
+  // FAQ
+  document.querySelectorAll('.eco-faq__q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = q.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.eco-faq__item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
