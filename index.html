@@ -209,6 +209,17 @@ body {
   -webkit-backdrop-filter: blur(24px);
   padding-bottom: 0;
 }
+/* CSS :has fallback — fills gap even without JS class */
+.nav-wrapper:has(.mega.is-open) {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+.nav-wrapper:has(.mega.is-open) .nav {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: none;
+}
 .nav {
   max-width: var(--max-w);
   margin: 0 auto;
