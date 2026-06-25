@@ -9,8 +9,6 @@
 <meta property="og:image" content="https://framerusercontent.com/images/S1nwNXX2QC7XTpkBF2spKfZFSk.jpg?scale-down-to=1024">
 <meta property="og:url" content="https://neerajkataria.github.io/ecozen-website/careers.html">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="ecozen">
-<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -945,6 +943,657 @@ body {
 }
 .footer__copy-text { font-size: var(--type-label); color: rgba(255,255,255,0.2); }
 .footer__copy-brand { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CAREERS PAGE — Tesla-inspired
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── HERO ── */
+.cr-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 620px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.cr-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://framerusercontent.com/images/S1nwNXX2QC7XTpkBF2spKfZFSk.jpg?scale-down-to=2048');
+  background-size: cover;
+  background-position: center 30%;
+  transform: scale(1.03);
+  transition: transform 6s ease;
+}
+.cr-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,17,23,0.82) 0%, rgba(13,17,23,0.2) 60%, transparent 100%);
+}
+.cr-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 var(--sp-6) var(--sp-12);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.cr-hero__eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-green);
+  margin-bottom: var(--sp-2);
+}
+.cr-hero__title {
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: var(--fw-black);
+  color: var(--clr-white);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  max-width: 720px;
+  margin-bottom: var(--sp-3);
+}
+.cr-hero__sub {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: var(--fw-regular);
+  color: rgba(255,255,255,0.75);
+  max-width: 480px;
+  line-height: 1.5;
+  margin-bottom: var(--sp-5);
+}
+.cr-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--clr-green);
+  color: var(--clr-white);
+  font-family: 'Mukta', sans-serif;
+  font-size: 16px;
+  font-weight: var(--fw-semi);
+  padding: 14px 32px;
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.cr-hero__cta:hover { background: var(--clr-green-dark); transform: translateY(-1px); }
+.cr-hero__scroll {
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.cr-hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+}
+
+/* ── MARQUEE ── */
+.cr-marquee {
+  background: linear-gradient(90deg, var(--clr-green-dark), var(--clr-green) 50%, #90c06a);
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.cr-marquee__track {
+  display: inline-flex;
+  animation: marquee 22s linear infinite;
+}
+.cr-marquee__item {
+  font-size: 13px;
+  font-weight: var(--fw-black);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-white);
+  padding: 0 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.cr-marquee__item::after {
+  content: ">>";
+  opacity: 0.6;
+  font-size: 11px;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── STATS ── */
+.cr-stats {
+  background: var(--clr-white);
+  padding: var(--sp-10) var(--sp-6);
+  border-bottom: 1px solid var(--clr-gray-200);
+}
+.cr-stats__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.cr-stats__item {
+  text-align: center;
+  padding: var(--sp-4);
+  border-right: 1px solid var(--clr-gray-200);
+}
+.cr-stats__item:last-child { border-right: none; }
+.cr-stats__num {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.03em;
+  color: var(--clr-black);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.cr-stats__num span {
+  color: var(--clr-green);
+}
+.cr-stats__label {
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--clr-gray-400);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── MISSION ── */
+.cr-mission {
+  padding: var(--sp-12) var(--sp-6);
+  background: var(--clr-black);
+  position: relative;
+  overflow: hidden;
+}
+.cr-mission__bg-arrows {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.04;
+  font-size: 320px;
+  font-weight: 900;
+  color: var(--clr-white);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.cr-mission__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+}
+.cr-mission__img {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.cr-mission__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cr-mission__text { position: relative; z-index: 1; }
+.cr-mission__eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-green);
+  display: block;
+  margin-bottom: var(--sp-3);
+}
+.cr-mission__headline {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: var(--fw-black);
+  color: var(--clr-white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-4);
+}
+.cr-mission__body {
+  font-size: var(--type-body-lg);
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin-bottom: var(--sp-3);
+}
+.cr-mission__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--clr-green);
+  font-weight: var(--fw-semi);
+  font-size: var(--type-body);
+  text-decoration: none;
+  margin-top: var(--sp-2);
+  transition: gap 0.2s;
+}
+.cr-mission__link:hover { gap: 12px; }
+
+/* ── WHY ECOZEN — VALUES GRID ── */
+.cr-values {
+  padding: var(--sp-12) var(--sp-6);
+  background: var(--clr-gray-100);
+}
+.cr-values__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.cr-values__header {
+  text-align: center;
+  margin-bottom: var(--sp-8);
+}
+.cr-values__eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+.cr-values__title {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--clr-black);
+}
+.cr-values__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+.cr-values__card {
+  background: var(--clr-white);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5) var(--sp-4);
+  border: 1px solid var(--clr-gray-200);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.cr-values__card:hover {
+  box-shadow: 0 8px 32px rgba(107,165,70,0.12);
+  transform: translateY(-2px);
+}
+.cr-values__icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--clr-green), var(--clr-green-dark));
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: var(--sp-3);
+}
+.cr-values__card-title {
+  font-size: var(--type-h3);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  margin-bottom: var(--sp-1);
+}
+.cr-values__card-body {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  line-height: 1.6;
+}
+
+/* ── LIFE AT ECOZEN — PHOTO GALLERY ── */
+.cr-gallery {
+  padding: var(--sp-12) 0 var(--sp-12) var(--sp-6);
+  background: var(--clr-white);
+  overflow: hidden;
+}
+.cr-gallery__header {
+  max-width: var(--max-w);
+  margin: 0 auto var(--sp-6);
+  padding-right: var(--sp-6);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.cr-gallery__eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  display: block;
+  margin-bottom: var(--sp-1);
+}
+.cr-gallery__title {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--clr-black);
+}
+.cr-gallery__nav {
+  display: flex;
+  gap: var(--sp-1);
+}
+.cr-gallery__btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--clr-gray-200);
+  background: var(--clr-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--clr-black);
+  transition: background 0.2s, border-color 0.2s;
+}
+.cr-gallery__btn:hover { background: var(--clr-green); border-color: var(--clr-green); color: var(--clr-white); }
+.cr-gallery__track-wrap { overflow: hidden; }
+.cr-gallery__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  padding-right: var(--sp-6);
+}
+.cr-gallery__slide {
+  flex: 0 0 400px;
+  height: 280px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.cr-gallery__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.cr-gallery__slide:hover img { transform: scale(1.04); }
+.cr-gallery__dots {
+  display: flex;
+  gap: 6px;
+  margin-top: var(--sp-4);
+  padding-right: var(--sp-6);
+  justify-content: center;
+}
+.cr-gallery__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--clr-gray-200);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, width 0.2s;
+  padding: 0;
+}
+.cr-gallery__dot.active {
+  background: var(--clr-green);
+  width: 20px;
+  border-radius: 3px;
+}
+
+/* ── JOBS SECTION ── */
+.cr-jobs {
+  padding: var(--sp-12) var(--sp-6);
+  background: var(--clr-white);
+  border-top: 1px solid var(--clr-gray-200);
+}
+.cr-jobs__inner { max-width: var(--max-w); margin: 0 auto; }
+.cr-jobs__header {
+  margin-bottom: var(--sp-6);
+}
+.cr-jobs__eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+.cr-jobs__title {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  color: var(--clr-black);
+  margin-bottom: var(--sp-4);
+}
+.cr-jobs__search-row {
+  display: flex;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-6);
+}
+.cr-jobs__search {
+  flex: 1;
+  position: relative;
+}
+.cr-jobs__search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--clr-gray-400);
+  font-size: 16px;
+  pointer-events: none;
+}
+.cr-jobs__input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border: 1.5px solid var(--clr-gray-200);
+  border-radius: var(--r-pill);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  background: var(--clr-white);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.cr-jobs__input:focus { border-color: var(--clr-green); }
+.cr-jobs__input::placeholder { color: var(--clr-gray-400); }
+.cr-jobs__layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--sp-5);
+  align-items: start;
+}
+.cr-jobs__cats {
+  background: var(--clr-gray-100);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--clr-gray-200);
+  position: sticky;
+  top: 90px;
+}
+.cr-jobs__cat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border: none;
+  border-bottom: 1px solid var(--clr-gray-200);
+  background: transparent;
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background 0.15s;
+}
+.cr-jobs__cat:last-child { border-bottom: none; }
+.cr-jobs__cat:hover { background: var(--clr-gray-200); }
+.cr-jobs__cat.active {
+  background: var(--clr-black);
+  color: var(--clr-white);
+  font-weight: var(--fw-semi);
+}
+.cr-jobs__cat-count {
+  font-size: var(--type-body-sm);
+  color: var(--clr-gray-400);
+  font-weight: var(--fw-regular);
+}
+.cr-jobs__cat.active .cr-jobs__cat-count { color: rgba(255,255,255,0.5); }
+.cr-jobs__list { display: flex; flex-direction: column; gap: var(--sp-2); }
+.cr-jobs__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-4) var(--sp-4);
+  border: 1.5px solid var(--clr-gray-200);
+  border-radius: var(--r-lg);
+  background: var(--clr-white);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.cr-jobs__card:hover {
+  border-color: var(--clr-green);
+  box-shadow: 0 4px 20px rgba(107,165,70,0.1);
+}
+.cr-jobs__card-left { flex: 1; }
+.cr-jobs__card-title {
+  font-size: var(--type-body-lg);
+  font-weight: var(--fw-semi);
+  color: var(--clr-black);
+  margin-bottom: 4px;
+}
+.cr-jobs__card-meta {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
+}
+.cr-jobs__card-loc, .cr-jobs__card-type {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cr-jobs__card-badge {
+  font-size: 11px;
+  font-weight: var(--fw-semi);
+  background: var(--clr-gray-100);
+  color: var(--clr-muted);
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.cr-jobs__card-arrow {
+  font-size: 18px;
+  color: var(--clr-gray-400);
+  margin-left: var(--sp-3);
+  transition: transform 0.2s, color 0.2s;
+}
+.cr-jobs__card:hover .cr-jobs__card-arrow {
+  transform: translateX(4px);
+  color: var(--clr-green);
+}
+.cr-jobs__empty {
+  text-align: center;
+  padding: var(--sp-8);
+  color: var(--clr-muted);
+  font-size: var(--type-body-lg);
+}
+
+/* ── CONNECT BANNER ── */
+.cr-connect {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+.cr-connect__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://framerusercontent.com/images/7OfLwTrvce5aUZqTUh5FN38I55I.jpg?width=1600&height=1200');
+  background-size: cover;
+  background-position: center;
+}
+.cr-connect__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,17,23,0.65);
+}
+.cr-connect__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--sp-6);
+}
+.cr-connect__label {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-green);
+  margin-bottom: var(--sp-2);
+}
+.cr-connect__title {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: var(--fw-black);
+  color: var(--clr-white);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-4);
+}
+.cr-connect__socials {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
+}
+.cr-connect__social {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--clr-white);
+  padding: 10px 20px;
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-medium);
+  transition: background 0.2s;
+}
+.cr-connect__social:hover { background: rgba(255,255,255,0.22); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .cr-hero__title { font-size: clamp(40px, 10vw, 64px); }
+  .cr-stats__inner { grid-template-columns: repeat(2, 1fr); }
+  .cr-stats__item:nth-child(2) { border-right: none; }
+  .cr-mission__inner { grid-template-columns: 1fr; }
+  .cr-mission__img { aspect-ratio: 16/9; }
+  .cr-values__grid { grid-template-columns: 1fr 1fr; }
+  .cr-jobs__layout { grid-template-columns: 1fr; }
+  .cr-jobs__cats { position: static; display: flex; overflow-x: auto; gap: 8px; background: transparent; border: none; border-radius: 0; }
+  .cr-jobs__cat { border-bottom: none; border: 1.5px solid var(--clr-gray-200); border-radius: var(--r-pill); white-space: nowrap; flex-shrink: 0; padding: 10px 16px; }
+  .cr-jobs__cat.active { background: var(--clr-green); border-color: var(--clr-green); }
+  .cr-gallery__slide { flex: 0 0 300px; height: 220px; }
+  .cr-connect__socials { flex-wrap: wrap; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .cr-values__grid { grid-template-columns: 1fr; }
+  .cr-stats__inner { grid-template-columns: repeat(2, 1fr); }
+}
 </style>
 </head>
 <body>
@@ -1030,8 +1679,238 @@ body {
   </nav>
 </div>
 
-<!-- COOKIE BANNER -->
-<div class="cookie-banner" id="cookieBanner">
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="cr-hero">
+  <div class="cr-hero__bg" id="heroBg"></div>
+  <div class="cr-hero__overlay"></div>
+  <div class="cr-hero__content">
+    <span class="cr-hero__eyebrow">Careers at ecozen</span>
+    <h1 class="cr-hero__title">Power Your Purpose.</h1>
+    <p class="cr-hero__sub">Join a team that's building a smarter, sustainable future. Real problems. Real impact. Real ownership.</p>
+    <a href="#cr-jobs" class="cr-hero__cta">View Open Roles &nbsp;→</a>
+  </div>
+  <div class="cr-hero__scroll">
+    <div class="cr-hero__scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MARQUEE
+═══════════════════════════════════════ -->
+<div class="cr-marquee">
+  <div class="cr-marquee__track" id="marqueeTrack">
+    <span class="cr-marquee__item">Power the Shift</span>
+    <span class="cr-marquee__item">Build the Future</span>
+    <span class="cr-marquee__item">Own the Impact</span>
+    <span class="cr-marquee__item">Solar Innovation</span>
+    <span class="cr-marquee__item">Deep Tech Roots</span>
+    <span class="cr-marquee__item">Power the Shift</span>
+    <span class="cr-marquee__item">Build the Future</span>
+    <span class="cr-marquee__item">Own the Impact</span>
+    <span class="cr-marquee__item">Solar Innovation</span>
+    <span class="cr-marquee__item">Deep Tech Roots</span>
+    <span class="cr-marquee__item">Power the Shift</span>
+    <span class="cr-marquee__item">Build the Future</span>
+    <span class="cr-marquee__item">Own the Impact</span>
+    <span class="cr-marquee__item">Solar Innovation</span>
+    <span class="cr-marquee__item">Deep Tech Roots</span>
+    <span class="cr-marquee__item">Power the Shift</span>
+    <span class="cr-marquee__item">Build the Future</span>
+    <span class="cr-marquee__item">Own the Impact</span>
+    <span class="cr-marquee__item">Solar Innovation</span>
+    <span class="cr-marquee__item">Deep Tech Roots</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     STATS
+═══════════════════════════════════════ -->
+<section class="cr-stats">
+  <div class="cr-stats__inner">
+    <div class="cr-stats__item">
+      <div class="cr-stats__num">4<span>L+</span></div>
+      <div class="cr-stats__label">Installations</div>
+    </div>
+    <div class="cr-stats__item">
+      <div class="cr-stats__num">15<span>+</span></div>
+      <div class="cr-stats__label">Years of Innovation</div>
+    </div>
+    <div class="cr-stats__item">
+      <div class="cr-stats__num">28<span>+</span></div>
+      <div class="cr-stats__label">States Served</div>
+    </div>
+    <div class="cr-stats__item">
+      <div class="cr-stats__num">1</div>
+      <div class="cr-stats__label">Mission</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MISSION
+═══════════════════════════════════════ -->
+<section class="cr-mission">
+  <div class="cr-mission__bg-arrows">&rsaquo;&rsaquo;</div>
+  <div class="cr-mission__inner">
+    <div class="cr-mission__img">
+      <img src="https://framerusercontent.com/images/pcJTWLgbUJFWznRgNdYZ0aYHRJM.jpg?scale-down-to=2048" alt="ecozen team at work" loading="lazy">
+    </div>
+    <div class="cr-mission__text">
+      <span class="cr-mission__eyebrow">Why ecozen</span>
+      <h2 class="cr-mission__headline">Build the future of energy.<br>Build yourself while you're at it.</h2>
+      <p class="cr-mission__body">We're not waiting for the future to make an impact — we're already in it. Every role here connects to real problems, real people, and real outcomes.</p>
+      <p class="cr-mission__body">At ecozen, growth comes with responsibility, impact comes with ownership, and every challenge is an opportunity to step up. We move fast, think deeply, and build solutions that matter today.</p>
+      <a href="#cr-jobs" class="cr-mission__link">Explore open roles &nbsp;→</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     VALUES
+═══════════════════════════════════════ -->
+<section class="cr-values">
+  <div class="cr-values__inner">
+    <div class="cr-values__header">
+      <span class="cr-values__eyebrow">The ecozen Way</span>
+      <h2 class="cr-values__title">The people who <span class="accent-green">power the shift.</span></h2>
+    </div>
+    <div class="cr-values__grid">
+      <div class="cr-values__card">
+        <div class="cr-values__icon">🎯</div>
+        <div class="cr-values__card-title">Ownership First</div>
+        <div class="cr-values__card-body">You own your work end to end — from problem to solution. No hand-holding, no micromanagement.</div>
+      </div>
+      <div class="cr-values__card">
+        <div class="cr-values__icon">⚡</div>
+        <div class="cr-values__card-title">Real Impact</div>
+        <div class="cr-values__card-body">When you build here, you're building infrastructure for India's energy future — not a feature on a backlog.</div>
+      </div>
+      <div class="cr-values__card">
+        <div class="cr-values__icon">🔬</div>
+        <div class="cr-values__card-title">Deep Tech Roots</div>
+        <div class="cr-values__card-body">Our motor controllers, thermal storage, and AI systems are developed in-house. You'll work on real engineering challenges.</div>
+      </div>
+      <div class="cr-values__card">
+        <div class="cr-values__icon">🌱</div>
+        <div class="cr-values__card-title">Grow Together</div>
+        <div class="cr-values__card-body">Teams that evolve through every challenge. Your growth is not a perk — it's how we scale.</div>
+      </div>
+      <div class="cr-values__card">
+        <div class="cr-values__icon">🏆</div>
+        <div class="cr-values__card-title">Recognised Excellence</div>
+        <div class="cr-values__card-body">National Award for Agricultural Innovation 2024. We build what gets recognised — because it works.</div>
+      </div>
+      <div class="cr-values__card">
+        <div class="cr-values__icon">🇮🇳</div>
+        <div class="cr-values__card-title">Made for India</div>
+        <div class="cr-values__card-body">Harsh conditions, real field constraints, 28+ states. Solutions built here are tested against India's toughest realities.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PHOTO GALLERY — Life at ecozen
+═══════════════════════════════════════ -->
+<section class="cr-gallery">
+  <div class="cr-gallery__header">
+    <div>
+      <span class="cr-gallery__eyebrow">PeopleOurPower</span>
+      <h2 class="cr-gallery__title">Life <span class="accent-green">at ecozen</span></h2>
+    </div>
+    <div class="cr-gallery__nav">
+      <button class="cr-gallery__btn" id="galleryPrev">&#8249;</button>
+      <button class="cr-gallery__btn" id="galleryNext">&#8250;</button>
+    </div>
+  </div>
+  <div class="cr-gallery__track-wrap">
+    <div class="cr-gallery__track" id="galleryTrack">
+      <div class="cr-gallery__slide">
+        <img src="https://framerusercontent.com/images/nPp2XXcoV7eV0CHssrZZXCDg3g.jpg?scale-down-to=4096" alt="ecozen factory floor" loading="lazy">
+      </div>
+      <div class="cr-gallery__slide">
+        <img src="https://framerusercontent.com/images/pcJTWLgbUJFWznRgNdYZ0aYHRJM.jpg?scale-down-to=2048" alt="ecozen engineer at work" loading="lazy">
+      </div>
+      <div class="cr-gallery__slide">
+        <img src="https://framerusercontent.com/images/9r8bKiVS9Doj5phcVp5kxOIezLQ.jpeg?width=1600" alt="ecozen team" loading="lazy">
+      </div>
+      <div class="cr-gallery__slide">
+        <img src="https://framerusercontent.com/images/QDmhlMxmsxqe7Kpemt8GNCxPMs.jpg?width=4032" alt="ecozen workspace" loading="lazy">
+      </div>
+      <div class="cr-gallery__slide">
+        <img src="https://framerusercontent.com/images/S1nwNXX2QC7XTpkBF2spKfZFSk.jpg?scale-down-to=2048" alt="ecozen office" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="cr-gallery__dots" id="galleryDots">
+    <button class="cr-gallery__dot active" data-idx="0"></button>
+    <button class="cr-gallery__dot" data-idx="1"></button>
+    <button class="cr-gallery__dot" data-idx="2"></button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     JOBS LISTING
+═══════════════════════════════════════ -->
+<section class="cr-jobs" id="cr-jobs">
+  <div class="cr-jobs__inner">
+    <div class="cr-jobs__header">
+      <span class="cr-jobs__eyebrow">Work which is diverse and dynamic</span>
+      <h2 class="cr-jobs__title">Find your role at ecozen.</h2>
+      <div class="cr-jobs__search-row">
+        <div class="cr-jobs__search">
+          <span class="cr-jobs__search-icon">&#9906;</span>
+          <input type="text" class="cr-jobs__input" id="jobSearch" placeholder="Search by role or keyword">
+        </div>
+      </div>
+    </div>
+    <div class="cr-jobs__layout">
+      <div class="cr-jobs__cats" id="jobCats">
+        <button class="cr-jobs__cat active" data-cat="all">All Teams <span class="cr-jobs__cat-count">10</span></button>
+        <button class="cr-jobs__cat" data-cat="engineering">Engineering <span class="cr-jobs__cat-count">04</span></button>
+        <button class="cr-jobs__cat" data-cat="business">Business <span class="cr-jobs__cat-count">02</span></button>
+        <button class="cr-jobs__cat" data-cat="design">Design <span class="cr-jobs__cat-count">02</span></button>
+        <button class="cr-jobs__cat" data-cat="corporate">Corporate <span class="cr-jobs__cat-count">01</span></button>
+        <button class="cr-jobs__cat" data-cat="quality">Quality <span class="cr-jobs__cat-count">01</span></button>
+      </div>
+      <div class="cr-jobs__list" id="jobsList">
+        <!-- Jobs rendered by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONNECT BANNER
+═══════════════════════════════════════ -->
+<section class="cr-connect">
+  <div class="cr-connect__bg"></div>
+  <div class="cr-connect__overlay"></div>
+  <div class="cr-connect__content">
+    <span class="cr-connect__label">Stay Connected</span>
+    <h2 class="cr-connect__title">Connect with us</h2>
+    <div class="cr-connect__socials">
+      <a href="https://www.linkedin.com/company/ecozen/" class="cr-connect__social" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.instagram.com/ecozen.official/" class="cr-connect__social" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.facebook.com/ecozensolutions" class="cr-connect__social" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COOKIE -->
+<div id="cookieBanner" class="cookie-banner">
   <span class="cookie-banner__emoji">🍪</span>
   <div>
     <p class="cookie-banner__text">
@@ -1045,278 +1924,10 @@ body {
   </div>
 </div>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     HERO
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="cr-hero">
-  <img class="cr-hero__img"
-       src="https://framerusercontent.com/images/S1nwNXX2QC7XTpkBF2spKfZFSk.jpg"
-       alt="Life at ecozen">
-  <div class="cr-hero__overlay"></div>
-  <div class="cr-hero__content">
-    <span class="cr-hero__eyebrow">Careers at ecozen</span>
-    <h1 class="cr-hero__title">Power Your Purpose</h1>
-    <p class="cr-hero__sub">Join a team that's building a smarter, sustainable future. Together.</p>
-    <div class="cr-hero__ctas">
-      <a href="#cr-jobs" class="btn btn--primary">View Open Roles</a>
-      <a href="#cr-life" class="btn btn--ghost">Life at ecozen</a>
-    </div>
-  </div>
-  <!-- Stats strip -->
-  <div class="cr-hero__stats">
-    <div class="cr-hero__stats-inner">
-      <div class="cr-stat">
-        <span class="cr-stat__num">150+</span>
-        <span class="cr-stat__label">People</span>
-      </div>
-      <div class="cr-stat">
-        <span class="cr-stat__num">4 Lakh+</span>
-        <span class="cr-stat__label">Installations</span>
-      </div>
-      <div class="cr-stat">
-        <span class="cr-stat__num">1</span>
-        <span class="cr-stat__label">Mission</span>
-      </div>
-      <div class="cr-stat">
-        <span class="cr-stat__num">14+</span>
-        <span class="cr-stat__label">Years of Innovation</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-  </div>
-</div>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     MISSION STATEMENT
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="cr-mission">
-  <div class="cr-mission__inner">
-    <p class="cr-mission__line1">Build the future of energy.</p>
-    <p class="cr-mission__line2">Build yourself while you're at it.</p>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     PHOTO CAROUSEL
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="cr-gallery" aria-label="Life at ecozen photos">
-  <div class="cr-gallery__track" id="galleryTrack">
-    <div class="cr-gallery__slide">
-      <img class="cr-gallery__img" src="https://framerusercontent.com/images/S1nwNXX2QC7XTpkBF2spKfZFSk.jpg" alt="ecozen factory floor">
-      <div class="cr-gallery__caption">
-        <p class="cr-gallery__caption-text">At Ecozen, growth comes with responsibility, impact comes with ownership, and every challenge is an opportunity to step up. We move fast, think deeply, and build solutions that matter today.</p>
-      </div>
-    </div>
-    <div class="cr-gallery__slide">
-      <img class="cr-gallery__img" src="https://framerusercontent.com/images/pcJTWLgbUJFWznRgNdYZ0aYHRJM.jpg" alt="ecozen team at work">
-    </div>
-    <div class="cr-gallery__slide">
-      <img class="cr-gallery__img" src="https://framerusercontent.com/images/7OfLwTrvce5aUZqTUh5FN38I55I.jpg" alt="ecozen operations">
-    </div>
-    <div class="cr-gallery__slide">
-      <img class="cr-gallery__img" src="https://framerusercontent.com/images/QDmhlMxmsxqe7Kpemt8GNCxPMs.jpg" alt="ecozen field work">
-    </div>
-    <div class="cr-gallery__slide">
-      <img class="cr-gallery__img" src="https://framerusercontent.com/images/DEHzPKueXfeRpV1y6duhEvvwixY.jpg" alt="ecozen innovation">
-    </div>
-    <div class="cr-gallery__slide">
-      <img class="cr-gallery__img" src="https://framerusercontent.com/images/9r8bKiVS9Doj5phcVp5kxOIezLQ.jpeg" alt="ecozen campus">
-    </div>
-  </div>
-  <button class="cr-gallery__arrow cr-gallery__arrow--prev" id="galleryPrev" aria-label="Previous">&#8249;</button>
-  <button class="cr-gallery__arrow cr-gallery__arrow--next" id="galleryNext" aria-label="Next">&#8250;</button>
-  <div class="cr-gallery__dots" id="galleryDots">
-    <button class="cr-gallery__dot active" data-i="0"></button>
-    <button class="cr-gallery__dot" data-i="1"></button>
-    <button class="cr-gallery__dot" data-i="2"></button>
-    <button class="cr-gallery__dot" data-i="3"></button>
-    <button class="cr-gallery__dot" data-i="4"></button>
-    <button class="cr-gallery__dot" data-i="5"></button>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     SPLIT — TECHNICIAN IMAGE + COPY
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="cr-split">
-  <div class="cr-split__inner">
-    <img class="cr-split__img"
-         src="https://framerusercontent.com/images/nPp2XXcoV7eV0CHssrZZXCDg3g.jpg"
-         alt="ecozen team member at work">
-    <div class="cr-split__copy">
-      <span class="eyebrow">Why ecozen</span>
-      <h2 class="cr-split__heading">We're not waiting for the future to make an impact — we're already in it.</h2>
-      <p class="cr-split__body">Every role here connects to real problems, real people, and real outcomes. When you build at ecozen, you're not building a feature — you're building the infrastructure for India's energy future.</p>
-      <p class="cr-split__body">And while we're building for scale, we're also building teams that grow with us through challenges, changes, and everything in between.</p>
-      <a href="#cr-jobs" class="btn btn--primary" style="align-self:flex-start; margin-top:8px;">View Opportunities</a>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     VALUES
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="cr-values">
-  <div class="cr-values__inner">
-    <div class="cr-values__header">
-      <span class="eyebrow">How we work</span>
-      <h2 class="section-heading">Work which is <span class="accent-green">diverse and dynamic</span></h2>
-    </div>
-    <div class="cr-values__grid">
-      <div class="cr-value-card">
-        <span class="cr-value-card__icon">🎯</span>
-        <h3 class="cr-value-card__title">Ownership First</h3>
-        <p class="cr-value-card__desc">Every challenge is an opportunity to step up. You own your outcomes — not just your tasks.</p>
-      </div>
-      <div class="cr-value-card">
-        <span class="cr-value-card__icon">⚡</span>
-        <h3 class="cr-value-card__title">Move Fast</h3>
-        <p class="cr-value-card__desc">We think deeply and act decisively. Speed and quality aren't opposites — we treat them as partners.</p>
-      </div>
-      <div class="cr-value-card">
-        <span class="cr-value-card__icon">🌱</span>
-        <h3 class="cr-value-card__title">Real Impact</h3>
-        <p class="cr-value-card__desc">Millions of farmers. Hundreds of thousands of homes. Your work shows up in the real world, fast.</p>
-      </div>
-      <div class="cr-value-card">
-        <span class="cr-value-card__icon">🔬</span>
-        <h3 class="cr-value-card__title">Deep Tech Roots</h3>
-        <p class="cr-value-card__desc">IIT-founded. Patent-driven. We build proprietary technology — not integrations on top of others' work.</p>
-      </div>
-      <div class="cr-value-card">
-        <span class="cr-value-card__icon">🤝</span>
-        <h3 class="cr-value-card__title">Grow Together</h3>
-        <p class="cr-value-card__desc">Teams that evolve through every challenge. Growth here means yours and the company's — at the same time.</p>
-      </div>
-      <div class="cr-value-card">
-        <span class="cr-value-card__icon">🏆</span>
-        <h3 class="cr-value-card__title">Recognised Excellence</h3>
-        <p class="cr-value-card__desc">National Award for Agricultural Innovation 2024. We don't just build — we build things that get noticed.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     JOB LISTINGS — IFRAME SECTION (ISOLATED)
-     Replace src with actual ATS embed URL.
-     This section is intentionally standalone —
-     no shared CSS, no JS interference.
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="cr-jobs-section" id="cr-jobs">
-  <div class="cr-jobs-section__header">
-    <span class="eyebrow">Open Positions</span>
-    <h2 class="cr-jobs-section__title">Work which is <span class="accent-green">diverse and dynamic</span></h2>
-    <p class="cr-jobs-section__sub">We're not waiting for the future — we're building it. Every role drives real impact, for real people.</p>
-  </div>
-  <div class="cr-jobs-iframe-wrap">
-    <!-- REPLACE src="" with your ATS embed URL (e.g. Freshteam, Greenhouse, Lever, etc.) -->
-    <iframe
-      class="cr-jobs-iframe"
-      src=""
-      title="ecozen open positions"
-      loading="lazy"
-      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-    ></iframe>
-  </div>
-</section>
-
-<!-- TICKER CYAN -->
-<div class="ticker ticker--cyan" aria-hidden="true">
-  <div class="ticker__track">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
-  </div>
-</div>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     LIFE AT ECOZEN — PHOTO GRID
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="cr-life" id="cr-life">
-  <div class="cr-life__inner">
-    <div class="cr-life__header">
-      <span class="eyebrow">PeopleOurPower</span>
-      <h2 class="section-heading">Life <span class="accent-green">at ecozen</span></h2>
-    </div>
-    <div class="cr-life__photos">
-      <div class="cr-life__photo cr-life__photo--featured">
-        <img src="https://framerusercontent.com/images/Je4VkgWekQ1HGsJjZ6pgTbXCl5c.png" alt="ecozen team">
-      </div>
-      <div class="cr-life__photo">
-        <img src="https://framerusercontent.com/images/UFTLLTrpG5DEUmnCb5ICofqDlRg.png" alt="ecozen office">
-      </div>
-      <div class="cr-life__photo">
-        <img src="https://framerusercontent.com/images/iIcL0ZTnhMjMnwfS8sxKQjWOs.png" alt="ecozen workplace">
-      </div>
-      <div class="cr-life__photo">
-        <img src="https://framerusercontent.com/images/nPp2XXcoV7eV0CHssrZZXCDg3g.jpg" alt="ecozen culture">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     EMPLOYEE VOICES
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="cr-voices">
-  <div class="cr-voices__inner">
-    <div class="cr-voices__photo-wrap">
-      <img class="cr-voices__photo"
-           id="voicesPhoto"
-           src="https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
-           alt="ecozen team member">
-    </div>
-    <div class="cr-voices__quote-block">
-      <span class="cr-voices__label">From our people</span>
-      <h2 class="cr-voices__heading">The people who power the shift.</h2>
-      <div class="cr-voices__mark">"</div>
-      <p class="cr-voices__quote" id="voicesQuote">Our people are the centre of change. Our people believe in deeptech for a better today.</p>
-      <div class="cr-voices__person">
-        <img class="cr-voices__avatar" id="voicesAvatar" src="https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png" alt="">
-        <div>
-          <div class="cr-voices__name" id="voicesName">Yash</div>
-          <div class="cr-voices__role" id="voicesRole">Senior Analyst, ecozen</div>
-        </div>
-      </div>
-      <div class="cr-voices__nav">
-        <button class="cr-voices__nav-btn" id="voicesPrev" aria-label="Previous">&#8249;</button>
-        <button class="cr-voices__nav-btn" id="voicesNext" aria-label="Next">&#8250;</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FRAUD ALERT -->
-<div class="fraud-alert">
-  <div class="fraud-alert__inner">
-    <span class="fraud-alert__icon">⚠️</span>
-    <p class="fraud-alert__text">
-      <strong>Caution Notice:</strong> ecozen Solutions Private Limited does not ask job seekers or customers to pay any fees, deposit, or provide sensitive personal information during any process. Beware of scammers impersonating ecozen.
-      <a href="#" class="fraud-alert__link">Report fraud →</a>
-    </p>
+<!-- CAUTION -->
+<div class="caution-notice">
+  <div class="container">
+    <strong>Caution Notice:</strong> ecozen Solutions Private Limited does not ask job seekers or customers to pay any fees, deposit, or provide sensitive personal information during any process. Beware of scammers impersonating ecozen. All official communications come from <strong>@ecozensolutions.com</strong> email addresses only.
   </div>
 </div>
 
@@ -1402,12 +2013,71 @@ body {
     </div>
   </div>
   <div class="footer__copy">
-    <span class="footer__copy-text">©Copyright 2026 by Ecozen Solutions Private Limited</span>
+    <span class="footer__copy-text">&copy;Copyright 2026 by Ecozen Solutions Private Limited</span>
     <span class="footer__copy-brand accent-gradient">Innovation Never Ends</span>
   </div>
 </footer>
 
 <script>
+  // ── JOBS DATA + FILTER ──
+  var JOBS = [
+    { title: "Solar Application Engineer", loc: "Pune", type: "Full-time", cat: "engineering", team: "R&D" },
+    { title: "Embedded Firmware Engineer", loc: "Pune", type: "Full-time", cat: "engineering", team: "Engineering" },
+    { title: "Field Service Engineer — Solar Pumps", loc: "Rajasthan / Gujarat", type: "Full-time", cat: "engineering", team: "Field" },
+    { title: "Regional Sales Manager — AC", loc: "Mumbai", type: "Full-time", cat: "business", team: "Sales" },
+    { title: "Channel Partner Manager", loc: "Delhi NCR", type: "Full-time", cat: "business", team: "Sales" },
+    { title: "Brand Designer", loc: "Pune", type: "Full-time", cat: "design", team: "Design" },
+    { title: "UI/UX Designer — EcoSphere App", loc: "Pune", type: "Full-time", cat: "design", team: "Product" },
+    { title: "HR Business Partner", loc: "Pune", type: "Full-time", cat: "corporate", team: "People" },
+    { title: "Quality Assurance Engineer", loc: "Pune", type: "Full-time", cat: "quality", team: "Quality" },
+    { title: "Supply Chain Executive", loc: "Pune", type: "Full-time", cat: "engineering", team: "Operations" },
+  ];
+  function renderJobs(list) {
+    var el = document.getElementById("jobsList");
+    if (!el) return;
+    if (!list.length) { el.innerHTML = '<div class="cr-jobs__empty">No roles found. Try a different search.</div>'; return; }
+    el.innerHTML = list.map(function(j) {
+      return '<a href="#" class="cr-jobs__card"><div class="cr-jobs__card-left"><div class="cr-jobs__card-title">' + j.title + '</div><div class="cr-jobs__card-meta"><span class="cr-jobs__card-loc">📍 ' + j.loc + '</span><span class="cr-jobs__card-type">⏱ ' + j.type + '</span></div></div><span class="cr-jobs__card-badge">' + j.team + '</span><span class="cr-jobs__card-arrow">→</span></a>';
+    }).join("");
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    var curCat = "all";
+    var curQ = "";
+    function filter() {
+      var res = JOBS.filter(function(j) {
+        var catOk = curCat === "all" || j.cat === curCat;
+        var qOk = !curQ || j.title.toLowerCase().includes(curQ) || j.loc.toLowerCase().includes(curQ) || j.team.toLowerCase().includes(curQ);
+        return catOk && qOk;
+      });
+      renderJobs(res);
+    }
+    renderJobs(JOBS);
+    document.querySelectorAll(".cr-jobs__cat").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        document.querySelectorAll(".cr-jobs__cat").forEach(function(b){ b.classList.remove("active"); });
+        btn.classList.add("active");
+        curCat = btn.dataset.cat;
+        filter();
+      });
+    });
+    var searchEl = document.getElementById("jobSearch");
+    if (searchEl) searchEl.addEventListener("input", function() { curQ = this.value.toLowerCase().trim(); filter(); });
+    // Gallery
+    var track = document.getElementById("galleryTrack");
+    var dots = document.querySelectorAll(".cr-gallery__dot");
+    if (track) {
+      var cur = 0; var slides = track.querySelectorAll(".cr-gallery__slide"); var total = slides.length;
+      var sw = slides[0] ? slides[0].offsetWidth + 16 : 416;
+      function go(i) { cur = Math.max(0, Math.min(i, total-1)); track.style.transform = "translateX(-" + (cur * sw) + "px)"; dots.forEach(function(d,idx){ d.classList.toggle("active", idx===cur); }); }
+      document.getElementById("galleryNext") && document.getElementById("galleryNext").addEventListener("click", function(){ go(cur+1 >= total ? 0 : cur+1); });
+      document.getElementById("galleryPrev") && document.getElementById("galleryPrev").addEventListener("click", function(){ go(cur-1 < 0 ? total-1 : cur-1); });
+      dots.forEach(function(d){ d.addEventListener("click", function(){ go(parseInt(d.dataset.idx)||0); }); });
+    }
+    // Hero parallax
+    var heroBg = document.getElementById("heroBg");
+    if (heroBg) { heroBg.style.transform = "scale(1)"; window.addEventListener("scroll", function(){ heroBg.style.transform = "scale(1.03) translateY(" + (window.scrollY * 0.15) + "px)"; }, {passive:true}); }
+  });
+
   // ── MEGA MENU ──
   (function() {
     function setup() {
