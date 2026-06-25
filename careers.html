@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers at ecozen — Power Your Purpose</title>
+<meta property="og:title" content="Careers at ecozen — Power Your Purpose">
+<meta property="og:description" content="Join a team that's building a smarter, sustainable future. Real problems, real impact, real ownership.">
+<meta property="og:image" content="https://framerusercontent.com/images/S1nwNXX2QC7XTpkBF2spKfZFSk.jpg?scale-down-to=1024">
+<meta property="og:url" content="https://neerajkataria.github.io/ecozen-website/careers.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ecozen">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS — single source of truth
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --clr-green:      #6BA546;
+  --clr-green-dark: #006037;
+  --clr-cyan:       #16CDFF;
+  --clr-yellow:     #FDBA17;
+  --clr-black:      #0D1117;
+  --clr-white:      #FFFFFF;
+  --clr-gray-100:   #F5F7F2;
+  --clr-gray-200:   #E8EDE3;
+  --clr-gray-400:   #999999;
+  --clr-muted:      #6B7A5E;
+  --type-display: clamp(48px, 6vw, 80px);
+  --type-h1:      clamp(36px, 5vw, 56px);
+  --type-h2:      clamp(22px, 3vw, 36px);
+  --type-h3:      clamp(18px, 2vw, 24px);
+  --type-body-lg: 18px;
+  --type-body:    16px;
+  --type-body-sm: 14px;
+  --type-label:   12px;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+  --sp-1:  8px;
+  --sp-2:  16px;
+  --sp-3:  24px;
+  --sp-4:  32px;
+  --sp-5:  40px;
+  --sp-6:  48px;
+  --sp-8:  64px;
+  --sp-10: 80px;
+  --sp-12: 96px;
+  --section-pad: var(--sp-10);
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   20px;
+  --r-xl:   28px;
+  --r-pill: 980px;
+  --max-w: 1200px;
+}
+
+body {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  color: var(--clr-black);
+  background: var(--clr-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  color: var(--clr-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+.section-heading {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.accent-green { color: var(--clr-green); }
+.accent-gradient {
+  background: linear-gradient(90deg, var(--clr-green), var(--clr-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BUTTONS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-semi);
+  border-radius: var(--r-pill);
+  padding: 10px var(--sp-3);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn--primary {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  box-shadow: 0 2px 12px rgba(107,165,70,0.25);
+}
+.btn--primary:hover { background: var(--clr-green-dark); box-shadow: 0 4px 20px rgba(107,165,70,0.35); }
+.btn--ghost {
+  background: transparent;
+  color: var(--clr-white);
+  border: 1.5px solid rgba(255,255,255,0.5);
+}
+.btn--ghost:hover { background: rgba(255,255,255,0.12); border-color: white; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ANNOUNCEMENT BAR
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.announcement {
+  background: var(--clr-green);
+  color: var(--clr-white);
+  text-align: center;
+  padding: 9px var(--sp-2);
+  font-size: var(--type-body-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 102;
+}
+.announcement a {
+  color: var(--clr-yellow);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  margin-left: 4px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAV
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.nav-wrapper {
+  position: fixed;
+  left: 0; right: 0;
+  z-index: 100;
+  transition: top 0.1s linear;
+  padding: 0;
+}
+.nav {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: var(--r-md);
+  padding: 12px var(--sp-4);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: background 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 2;
+}
+.nav-wrapper.scrolled .nav {
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+.nav__logo { display: flex; text-decoration: none; }
+.nav__logo-img { height: 64px; width: auto; display: block; }
+.nav__links { display: flex; align-items: center; gap: var(--sp-4); list-style: none; }
+.nav__item { position: static; list-style: none; }
+.nav__trigger {
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body);
+  font-weight: var(--fw-medium);
+  color: var(--clr-black);
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer; background: none; border: none; padding: 0;
+  transition: color 0.2s;
+}
+.nav__trigger:hover,
+.nav__item:hover .nav__trigger { color: var(--clr-green); }
+.nav__chevron {
+  font-size: 10px; color: var(--clr-muted);
+  transition: transform 0.2s; display: inline-block;
+}
+.nav__item:hover .nav__chevron { transform: rotate(180deg); }
+.nav__phone-btn {
+  display: flex; align-items: center; gap: var(--sp-1);
+  background: var(--clr-yellow); color: var(--clr-black);
+  font-family: 'Mukta', sans-serif;
+  font-size: var(--type-body); font-weight: var(--fw-bold);
+  padding: 10px 20px; border-radius: var(--r-pill);
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: -0.01em; white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(253,186,23,0.3);
+}
+.nav__phone-btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+/* MEGA MENU */
+.mega {
+  display: none;
+  position: fixed;
+  left: 0; right: 0;
+  top: 80px;
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+  border: 1px solid #E8EDE3;
+  border-top: none;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  padding: 32px 48px 32px;
+  z-index: 99999;
+}
+.mega.is-open { display: block; }
+.mega__inner { max-width: 1200px; margin: 0 auto; }
+.mega__section-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.mega__grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 12px; }
+.mega__grid--3 { grid-template-columns: repeat(3,1fr); gap: 32px; }
+.mega__card { display: flex; flex-direction: column; gap: 6px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__card:hover { background: #F5F7F2; }
+.mega__card:hover .mega__name { color: #6BA546; }
+.mega__img-wrap { width: 100%; aspect-ratio: 1; background: #F5F7F2; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 8px; }
+.mega__card:hover .mega__img-wrap { background: #E8EDE3; }
+.mega__img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+.mega__name { font-size: 13px; font-weight: 600; color: #0D1117; letter-spacing: -0.01em; transition: color 0.18s; }
+.mega__sub { font-size: 11px; color: #6B7A5E; }
+.mega__tech-card { display: flex; flex-direction: column; gap: 12px; text-decoration: none; padding: 8px; border-radius: 16px; transition: background 0.18s; }
+.mega__tech-card:hover { background: #F5F7F2; }
+.mega__tech-card:hover .mega__tech-name { color: #6BA546; }
+.mega__tech-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
+.mega__tech-name { font-size: 15px; font-weight: 600; color: #0D1117; transition: color 0.18s; }
+.mega__tech-desc { font-size: 13px; color: #6B7A5E; line-height: 1.5; }
+.mega__cols { display: flex; gap: 48px; }
+.mega__col-group { display: flex; flex-direction: column; gap: 2px; }
+.mega__col-label { font-size: 12px; font-weight: 600; color: #6B7A5E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.mega__link { font-size: 15px; font-weight: 500; color: #0D1117; text-decoration: none; padding: 8px; border-radius: 6px; display: block; transition: background 0.18s, color 0.18s; }
+.mega__link:hover { background: #F5F7F2; color: #6BA546; }
+.nav-wrapper.menu-open .nav { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COOKIE BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cookie-banner {
+  position: fixed; bottom: 24px; left: 24px;
+  max-width: 420px; background: var(--clr-black);
+  border-radius: var(--r-lg); padding: var(--sp-3) var(--sp-3);
+  display: flex; align-items: flex-start; gap: var(--sp-2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25); z-index: 200;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.cookie-banner__emoji { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.cookie-banner__text { font-size: var(--type-body-sm); color: rgba(255,255,255,0.6); line-height: 1.5; }
+.cookie-banner__text a { color: var(--clr-cyan); }
+.cookie-banner__actions { display: flex; gap: var(--sp-1); margin-top: var(--sp-2); }
+.cookie-btn { font-family: 'Mukta', sans-serif; font-size: var(--type-label); font-weight: var(--fw-bold); padding: 7px 14px; border-radius: var(--r-pill); border: none; cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase; }
+.cookie-btn--reject { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+.cookie-btn--accept { background: var(--clr-green); color: white; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CAREERS HERO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cr-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--sp-12);
+  overflow: hidden;
+  background: #0a1a0f;
+}
+.cr-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  z-index: 0;
+}
+.cr-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25) 0%,
+    rgba(0,0,0,0.45) 50%,
+    rgba(0,0,0,0.78) 100%
+  );
+  z-index: 1;
+}
+.cr-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 860px;
+  padding: 0 var(--sp-6);
+}
+.cr-hero__eyebrow {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-green);
+  display: block;
+  margin-bottom: var(--sp-3);
+  opacity: 0;
+  animation: fadeUp 0.5s ease 0.1s forwards;
+}
+.cr-hero__title {
+  font-size: var(--type-display);
+  font-weight: var(--fw-black);
+  color: var(--clr-white);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--sp-3);
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.25s forwards;
+}
+.cr-hero__sub {
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: var(--fw-medium);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: var(--sp-6);
+  line-height: 1.5;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.4s forwards;
+}
+.cr-hero__ctas {
+  display: flex;
+  gap: var(--sp-2);
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.55s forwards;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Stats strip inside hero bottom */
+.cr-hero__stats {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  z-index: 3;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: var(--sp-3) 0;
+}
+.cr-hero__stats-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-10);
+}
+.cr-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.cr-stat__num {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: var(--fw-black);
+  color: var(--clr-white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.cr-stat__label {
+  font-size: var(--type-body-sm);
+  color: rgba(255,255,255,0.5);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.03em;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TICKER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ticker {
+  width: 100%; overflow: hidden;
+  background: linear-gradient(90deg, var(--clr-green), var(--clr-cyan));
+  padding: 12px 0;
+}
+.ticker--cyan { background: linear-gradient(90deg, var(--clr-cyan), var(--clr-green-dark)); }
+.ticker__track {
+  display: flex; width: max-content;
+  animation: ticker 28s linear infinite;
+  will-change: transform;
+}
+.ticker__img { height: 22px; width: auto; margin-right: var(--sp-6); display: block; flex-shrink: 0; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MISSION STATEMENT BAND
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cr-mission {
+  background: linear-gradient(160deg, #eaf5e2 0%, #f0f8ec 40%, var(--clr-white) 100%);
+  padding: var(--sp-12) 0;
+  position: relative;
+  overflow: hidden;
+}
+/* ecozen >> watermark */
+.cr-mission::before {
+  content: '>>';
+  position: absolute;
+  right: -40px; top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(180px, 20vw, 280px);
+  font-weight: var(--fw-black);
+  color: rgba(107,165,70,0.06);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+}
+.cr-mission__inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.cr-mission__line1 {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--sp-1);
+}
+.cr-mission__line2 {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-green);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PHOTO CAROUSEL (factory/office)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cr-gallery {
+  position: relative;
+  overflow: hidden;
+  background: #0a1a0f;
+}
+.cr-gallery__track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+.cr-gallery__slide {
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+}
+.cr-gallery__img {
+  width: 100%;
+  height: clamp(380px, 55vw, 640px);
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.cr-gallery__caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: var(--sp-8) var(--sp-8) var(--sp-5);
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+}
+.cr-gallery__caption-text {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: var(--fw-medium);
+  color: rgba(255,255,255,0.88);
+  line-height: 1.5;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cr-gallery__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.35); color: white;
+  border: none; width: 52px; height: 52px;
+  border-radius: 50%; font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 5; transition: background 0.2s;
+  backdrop-filter: blur(6px);
+}
+.cr-gallery__arrow:hover { background: rgba(0,0,0,0.65); }
+.cr-gallery__arrow--prev { left: 24px; }
+.cr-gallery__arrow--next { right: 24px; }
+.cr-gallery__dots {
+  position: absolute; bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 5;
+}
+.cr-gallery__dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: none; cursor: pointer; padding: 0;
+  transition: all 0.2s ease;
+}
+.cr-gallery__dot.active {
+  background: white;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SPLIT — IMAGE + COPY
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cr-split {
+  padding: var(--sp-12) 0;
+  background: var(--clr-white);
+}
+.cr-split__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+}
+.cr-split__img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--r-xl);
+  display: block;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.1);
+}
+.cr-split__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.cr-split__heading {
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.cr-split__body {
+  font-size: var(--type-body-lg);
+  color: var(--clr-muted);
+  line-height: 1.65;
+  font-weight: var(--fw-regular);
+}
+.cr-split__body + .cr-split__body {
+  margin-top: calc(-1 * var(--sp-2));
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VALUES
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cr-values {
+  background: var(--clr-gray-100);
+  padding: var(--sp-12) 0;
+}
+.cr-values__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+.cr-values__header {
+  text-align: center;
+  margin-bottom: var(--sp-8);
+}
+.cr-values__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+.cr-value-card {
+  background: var(--clr-white);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  border: 1px solid var(--clr-gray-200);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cr-value-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+}
+.cr-value-card__icon {
+  font-size: 32px;
+  margin-bottom: var(--sp-3);
+  display: block;
+}
+.cr-value-card__title {
+  font-size: var(--type-h3);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  margin-bottom: var(--sp-2);
+  letter-spacing: -0.01em;
+}
+.cr-value-card__desc {
+  font-size: var(--type-body-sm);
+  color: var(--clr-muted);
+  line-height: 1.6;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   JOB LISTINGS — ISOLATED IFRAME SECTION
+   This section intentionally uses no shared styles.
+   The iframe src will be set to the third-party ATS embed.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cr-jobs-section {
+  padding: var(--sp-12) 0 var(--sp-8);
+  background: var(--clr-white);
+}
+.cr-jobs-section__header {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  text-align: center;
+  margin-bottom: var(--sp-8);
+}
+.cr-jobs-section__title {
+  font-size: var(--type-h2);
+  font-weight: var(--fw-bold);
+  color: var(--clr-black);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: var(--sp-2);
+}
+.cr-jobs-section__sub {
+  font-size: var(--type-body-lg);
+  color: var(--clr-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+/* The iframe wrapper — completely isolated, no CSS leakage in or out */
+.cr-jobs-iframe-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+.cr-jobs-iframe {
+  width: 100%;
+  min-height: 700px;
+  border: none;
+  display: block;
+  border-radius: var(--r-lg);
+  background: var(--clr-gray-100);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LIFE AT ECOZEN — PHOTO GALLERY
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cr-life {
+  padding: var(--sp-12) 0;
+  background: var(--clr-white);
+}
+.cr-life__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+.cr-life__header {
+  margin-bottom: var(--sp-6);
+}
+.cr-life__photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--sp-2);
+}
+.cr-life__photo {
+  overflow: hidden;
+  border-radius: var(--r-lg);
+}
+.cr-life__photo--featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.cr-life__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.cr-life__photo:hover img { transform: scale(1.03); }
+.cr-life__photo--featured img {
+  height: clamp(320px, 40vw, 520px);
+}
+.cr-life__photo:not(.cr-life__photo--featured) img {
+  height: clamp(160px, 20vw, 260px);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VOICES — EMPLOYEE QUOTES
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cr-voices {
+  background: #0a1a0f;
+  padding: var(--sp-12) 0;
+}
+.cr-voices__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--sp-10);
+  align-items: center;
+}
+.cr-voices__label {
+  font-size: var(--type-label);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-green);
+  display: block;
+  margin-bottom: var(--sp-3);
+}
+.cr-voices__heading {
+  font-size: clamp(22px, 2.5vw, 34px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-5);
+}
+.cr-voices__photo-wrap {
+  position: relative;
+}
+.cr-voices__photo {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--r-xl);
+  display: block;
+  filter: grayscale(15%);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+.cr-voices__quote-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.cr-voices__mark {
+  font-size: 56px;
+  line-height: 0.8;
+  font-weight: var(--fw-black);
+  color: var(--clr-green);
+  opacity: 0.5;
+  font-family: Georgia, serif;
+}
+.cr-voices__quote {
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: var(--fw-medium);
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+.cr-voices__person {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.cr-voices__avatar {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+.cr-voices__name {
+  font-size: var(--type-body);
+  font-weight: var(--fw-semi);
+  color: var(--clr-white);
+  line-height: 1.2;
+  transition: opacity 0.2s ease;
+}
+.cr-voices__role {
+  font-size: var(--type-body-sm);
+  color: rgba(255,255,255,0.4);
+}
+.cr-voices__nav {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+}
+.cr-voices__nav-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 18px; color: rgba(255,255,255,0.6);
+  transition: all 0.2s ease;
+}
+.cr-voices__nav-btn:hover {
+  background: var(--clr-green);
+  color: white;
+  border-color: var(--clr-green);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FRAUD ALERT
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.fraud-alert {
+  background: #fff8e6;
+  border-top: 1px solid #fde8a0;
+  border-bottom: 1px solid #fde8a0;
+  padding: var(--sp-3) 0;
+}
+.fraud-alert__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+}
+.fraud-alert__icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.fraud-alert__text { font-size: var(--type-body-sm); color: #7a5a00; line-height: 1.5; }
+.fraud-alert__link { color: #b07800; font-weight: var(--fw-semi); text-decoration: none; margin-left: 4px; }
+.fraud-alert__link:hover { text-decoration: underline; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.footer { background: #0a0f0a; color: rgba(255,255,255,0.65); }
+.footer__top {
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer__logo { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; }
+.footer__tagline { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+.footer__main {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: var(--sp-6);
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  gap: var(--sp-6);
+}
+.footer__col-head {
+  font-size: var(--type-label); font-weight: var(--fw-bold);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); margin-bottom: 20px;
+}
+.footer__col-head--green { color: var(--clr-green); }
+.footer__col-head--cyan  { color: var(--clr-cyan); }
+.footer__links { display: flex; flex-direction: column; gap: 2px; }
+.footer__link {
+  font-size: 15px; font-weight: var(--fw-regular);
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  padding: 5px 0; transition: color 0.18s;
+}
+.footer__link:hover { color: var(--clr-white); }
+.footer__toll-label {
+  font-size: var(--type-label); font-weight: var(--fw-medium);
+  color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: var(--sp-1);
+}
+.footer__toll-number { font-size: 22px; font-weight: var(--fw-bold); color: var(--clr-white); letter-spacing: -0.02em; }
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--sp-3) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+}
+.footer__newsletter-label { font-size: var(--type-body-sm); font-weight: var(--fw-semi); color: rgba(255,255,255,0.6); margin-bottom: var(--sp-2); }
+.footer__newsletter-form { display: flex; gap: var(--sp-1); }
+.footer__newsletter-input {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-body-sm);
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-pill); color: var(--clr-white);
+  padding: 9px var(--sp-2); outline: none; width: 200px;
+  transition: border-color 0.2s;
+}
+.footer__newsletter-input::placeholder { color: rgba(255,255,255,0.25); }
+.footer__newsletter-input:focus { border-color: var(--clr-green); }
+.footer__newsletter-btn {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-label);
+  font-weight: var(--fw-bold); background: var(--clr-green); color: var(--clr-white);
+  border: none; border-radius: var(--r-pill); padding: 9px var(--sp-2);
+  cursor: pointer; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s;
+}
+.footer__newsletter-btn:hover { background: var(--clr-green-dark); }
+.footer__socials { display: flex; gap: var(--sp-2); }
+.footer__social {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; font-weight: var(--fw-semi);
+  transition: border-color 0.2s, color 0.2s;
+}
+.footer__social:hover { border-color: var(--clr-green); color: var(--clr-green); }
+.footer__scroll-top {
+  font-family: 'Mukta', sans-serif; font-size: var(--type-label);
+  font-weight: var(--fw-semi); letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); cursor: pointer; background: none; border: none;
+  display: flex; align-items: center; gap: var(--sp-1); transition: color 0.2s;
+}
+.footer__scroll-top:hover { color: var(--clr-white); }
+.footer__legal {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: var(--sp-3) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+}
+.footer__legal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); }
+.footer__legal-name { font-size: var(--type-body-sm); font-weight: var(--fw-semi); color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+.footer__legal-detail { font-size: var(--type-label); color: rgba(255,255,255,0.18); line-height: 1.5; }
+.footer__copy {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: var(--sp-2) var(--sp-6);
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer__copy-text { font-size: var(--type-label); color: rgba(255,255,255,0.2); }
+.footer__copy-brand { font-size: var(--type-body-sm); font-weight: var(--fw-bold); }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  Join India's fastest-growing solar innovation company.
+  <a href="#cr-jobs">View Open Roles &rsaquo;</a>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">
+      <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="nav__logo-img">
+    </a>
+    <ul class="nav__links">
+      <li class="nav__item">
+        <button class="nav__trigger">Products <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Products</div>
+            <div class="mega__grid">
+              <a href="ecotron.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/ho1yoHUhEznXalDBkGUGEcn3w.png?scale-down-to=512" alt="Ecotron"></div><div class="mega__name">Ecotron</div><div class="mega__sub">Solar Pump Controller Set</div></a>
+              <a href="solar-rooftop.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UpCjHunNdpYxz5EHMBB63oRNq6w.png?scale-down-to=512" alt="Smart Rooftop"></div><div class="mega__name">Smart Rooftop</div><div class="mega__sub">Solar Rooftop System</div></a>
+              <a href="solar-ac.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/UI5C0avLzgcVcBtQARfb0413SM.png?scale-down-to=512" alt="Solar AC"></div><div class="mega__name">Solar AC</div><div class="mega__sub">True Solar AC</div></a>
+              <a href="smart-ac.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HQo0shYCaFQr4ftH355yY4MzHQ.png?scale-down-to=512" alt="Smart AC"></div><div class="mega__name">Smart AC</div><div class="mega__sub">Solar Compatible AC</div></a>
+              <a href="ecofrost.html" class="mega__card"><div class="mega__img-wrap"><img src="https://framerusercontent.com/images/HhdZoSO9Ks6NhkyIJgvRO4FNCc.png?scale-down-to=512" alt="Ecofrost"></div><div class="mega__name">Ecofrost</div><div class="mega__sub">Solar Cold Room</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Technology <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__section-label">Our Technology</div>
+            <div class="mega__grid mega__grid--3">
+              <a href="motor-control.html" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jVGWDfpkNuQuf0CGzeykQbt48.png" alt="Motor"><div class="mega__tech-name">Motor Control</div><div class="mega__tech-desc">Efficiently Controls BLDC, PMSM, SYNRM &amp; Other Motors</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/SlgjaFXiZTm2VLRSN0f3PeJbU.png" alt="AI"><div class="mega__tech-name">AI Solutions</div><div class="mega__tech-desc">Open a world of possibilities with our AI Solutions</div></a>
+              <a href="#" class="mega__tech-card"><img class="mega__tech-img" src="https://framerusercontent.com/images/jXWGMjOBo5Ew7idmSO5F2hTMXCA.png" alt="Thermal"><div class="mega__tech-name">Thermal Energy Storage</div><div class="mega__tech-desc">ecozen's Patented Ice-core Technology</div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">Resources <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Learn</div>
+                <a href="#" class="mega__link">Ecozen Blogs</a>
+                <a href="#" class="mega__link">News</a>
+                <a href="#" class="mega__link">Case Studies</a>
+                <a href="#" class="mega__link">Documents</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav__item">
+        <button class="nav__trigger">More <span class="nav__chevron">▾</span></button>
+        <div class="mega">
+          <div class="mega__inner">
+            <div class="mega__cols">
+              <div class="mega__col-group">
+                <div class="mega__col-label">Company</div>
+                <a href="#" class="mega__link">About Us</a>
+                <a href="careers.html" class="mega__link">Careers</a>
+              </div>
+              <div class="mega__col-group">
+                <div class="mega__col-label">Contact</div>
+                <a href="#" class="mega__link">Find Certified Dealer</a>
+                <a href="#" class="mega__link">Find Experience Centre</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <a href="tel:18001217515" class="nav__phone-btn">📞 1800 121 7515</a>
+  </nav>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <span class="cookie-banner__emoji">🍪</span>
+  <div>
+    <p class="cookie-banner__text">
+      <strong style="color:rgba(255,255,255,0.9)">We use cookies</strong> to improve your experience and analyse site traffic.
+      By continuing, you agree to our <a href="#">Privacy Policy</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button class="cookie-btn cookie-btn--reject" id="cookieReject">Reject All</button>
+      <button class="cookie-btn cookie-btn--accept" id="cookieAccept">Accept All</button>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     HERO
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="cr-hero">
+  <img class="cr-hero__img"
+       src="https://framerusercontent.com/images/S1nwNXX2QC7XTpkBF2spKfZFSk.jpg"
+       alt="Life at ecozen">
+  <div class="cr-hero__overlay"></div>
+  <div class="cr-hero__content">
+    <span class="cr-hero__eyebrow">Careers at ecozen</span>
+    <h1 class="cr-hero__title">Power Your Purpose</h1>
+    <p class="cr-hero__sub">Join a team that's building a smarter, sustainable future. Together.</p>
+    <div class="cr-hero__ctas">
+      <a href="#cr-jobs" class="btn btn--primary">View Open Roles</a>
+      <a href="#cr-life" class="btn btn--ghost">Life at ecozen</a>
+    </div>
+  </div>
+  <!-- Stats strip -->
+  <div class="cr-hero__stats">
+    <div class="cr-hero__stats-inner">
+      <div class="cr-stat">
+        <span class="cr-stat__num">150+</span>
+        <span class="cr-stat__label">People</span>
+      </div>
+      <div class="cr-stat">
+        <span class="cr-stat__num">4 Lakh+</span>
+        <span class="cr-stat__label">Installations</span>
+      </div>
+      <div class="cr-stat">
+        <span class="cr-stat__num">1</span>
+        <span class="cr-stat__label">Mission</span>
+      </div>
+      <div class="cr-stat">
+        <span class="cr-stat__num">14+</span>
+        <span class="cr-stat__label">Years of Innovation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     MISSION STATEMENT
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="cr-mission">
+  <div class="cr-mission__inner">
+    <p class="cr-mission__line1">Build the future of energy.</p>
+    <p class="cr-mission__line2">Build yourself while you're at it.</p>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     PHOTO CAROUSEL
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="cr-gallery" aria-label="Life at ecozen photos">
+  <div class="cr-gallery__track" id="galleryTrack">
+    <div class="cr-gallery__slide">
+      <img class="cr-gallery__img" src="https://framerusercontent.com/images/S1nwNXX2QC7XTpkBF2spKfZFSk.jpg" alt="ecozen factory floor">
+      <div class="cr-gallery__caption">
+        <p class="cr-gallery__caption-text">At Ecozen, growth comes with responsibility, impact comes with ownership, and every challenge is an opportunity to step up. We move fast, think deeply, and build solutions that matter today.</p>
+      </div>
+    </div>
+    <div class="cr-gallery__slide">
+      <img class="cr-gallery__img" src="https://framerusercontent.com/images/pcJTWLgbUJFWznRgNdYZ0aYHRJM.jpg" alt="ecozen team at work">
+    </div>
+    <div class="cr-gallery__slide">
+      <img class="cr-gallery__img" src="https://framerusercontent.com/images/7OfLwTrvce5aUZqTUh5FN38I55I.jpg" alt="ecozen operations">
+    </div>
+    <div class="cr-gallery__slide">
+      <img class="cr-gallery__img" src="https://framerusercontent.com/images/QDmhlMxmsxqe7Kpemt8GNCxPMs.jpg" alt="ecozen field work">
+    </div>
+    <div class="cr-gallery__slide">
+      <img class="cr-gallery__img" src="https://framerusercontent.com/images/DEHzPKueXfeRpV1y6duhEvvwixY.jpg" alt="ecozen innovation">
+    </div>
+    <div class="cr-gallery__slide">
+      <img class="cr-gallery__img" src="https://framerusercontent.com/images/9r8bKiVS9Doj5phcVp5kxOIezLQ.jpeg" alt="ecozen campus">
+    </div>
+  </div>
+  <button class="cr-gallery__arrow cr-gallery__arrow--prev" id="galleryPrev" aria-label="Previous">&#8249;</button>
+  <button class="cr-gallery__arrow cr-gallery__arrow--next" id="galleryNext" aria-label="Next">&#8250;</button>
+  <div class="cr-gallery__dots" id="galleryDots">
+    <button class="cr-gallery__dot active" data-i="0"></button>
+    <button class="cr-gallery__dot" data-i="1"></button>
+    <button class="cr-gallery__dot" data-i="2"></button>
+    <button class="cr-gallery__dot" data-i="3"></button>
+    <button class="cr-gallery__dot" data-i="4"></button>
+    <button class="cr-gallery__dot" data-i="5"></button>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SPLIT — TECHNICIAN IMAGE + COPY
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="cr-split">
+  <div class="cr-split__inner">
+    <img class="cr-split__img"
+         src="https://framerusercontent.com/images/nPp2XXcoV7eV0CHssrZZXCDg3g.jpg"
+         alt="ecozen team member at work">
+    <div class="cr-split__copy">
+      <span class="eyebrow">Why ecozen</span>
+      <h2 class="cr-split__heading">We're not waiting for the future to make an impact — we're already in it.</h2>
+      <p class="cr-split__body">Every role here connects to real problems, real people, and real outcomes. When you build at ecozen, you're not building a feature — you're building the infrastructure for India's energy future.</p>
+      <p class="cr-split__body">And while we're building for scale, we're also building teams that grow with us through challenges, changes, and everything in between.</p>
+      <a href="#cr-jobs" class="btn btn--primary" style="align-self:flex-start; margin-top:8px;">View Opportunities</a>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     VALUES
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="cr-values">
+  <div class="cr-values__inner">
+    <div class="cr-values__header">
+      <span class="eyebrow">How we work</span>
+      <h2 class="section-heading">Work which is <span class="accent-green">diverse and dynamic</span></h2>
+    </div>
+    <div class="cr-values__grid">
+      <div class="cr-value-card">
+        <span class="cr-value-card__icon">🎯</span>
+        <h3 class="cr-value-card__title">Ownership First</h3>
+        <p class="cr-value-card__desc">Every challenge is an opportunity to step up. You own your outcomes — not just your tasks.</p>
+      </div>
+      <div class="cr-value-card">
+        <span class="cr-value-card__icon">⚡</span>
+        <h3 class="cr-value-card__title">Move Fast</h3>
+        <p class="cr-value-card__desc">We think deeply and act decisively. Speed and quality aren't opposites — we treat them as partners.</p>
+      </div>
+      <div class="cr-value-card">
+        <span class="cr-value-card__icon">🌱</span>
+        <h3 class="cr-value-card__title">Real Impact</h3>
+        <p class="cr-value-card__desc">Millions of farmers. Hundreds of thousands of homes. Your work shows up in the real world, fast.</p>
+      </div>
+      <div class="cr-value-card">
+        <span class="cr-value-card__icon">🔬</span>
+        <h3 class="cr-value-card__title">Deep Tech Roots</h3>
+        <p class="cr-value-card__desc">IIT-founded. Patent-driven. We build proprietary technology — not integrations on top of others' work.</p>
+      </div>
+      <div class="cr-value-card">
+        <span class="cr-value-card__icon">🤝</span>
+        <h3 class="cr-value-card__title">Grow Together</h3>
+        <p class="cr-value-card__desc">Teams that evolve through every challenge. Growth here means yours and the company's — at the same time.</p>
+      </div>
+      <div class="cr-value-card">
+        <span class="cr-value-card__icon">🏆</span>
+        <h3 class="cr-value-card__title">Recognised Excellence</h3>
+        <p class="cr-value-card__desc">National Award for Agricultural Innovation 2024. We don't just build — we build things that get noticed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     JOB LISTINGS — IFRAME SECTION (ISOLATED)
+     Replace src with actual ATS embed URL.
+     This section is intentionally standalone —
+     no shared CSS, no JS interference.
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="cr-jobs-section" id="cr-jobs">
+  <div class="cr-jobs-section__header">
+    <span class="eyebrow">Open Positions</span>
+    <h2 class="cr-jobs-section__title">Work which is <span class="accent-green">diverse and dynamic</span></h2>
+    <p class="cr-jobs-section__sub">We're not waiting for the future — we're building it. Every role drives real impact, for real people.</p>
+  </div>
+  <div class="cr-jobs-iframe-wrap">
+    <!-- REPLACE src="" with your ATS embed URL (e.g. Freshteam, Greenhouse, Lever, etc.) -->
+    <iframe
+      class="cr-jobs-iframe"
+      src=""
+      title="ecozen open positions"
+      loading="lazy"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+    ></iframe>
+  </div>
+</section>
+
+<!-- TICKER CYAN -->
+<div class="ticker ticker--cyan" aria-hidden="true">
+  <div class="ticker__track">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+    <img class="ticker__img" src="https://framerusercontent.com/images/VgT2sdQI1xEu6MQAd8gWU5y9E.svg" alt="">
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     LIFE AT ECOZEN — PHOTO GRID
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="cr-life" id="cr-life">
+  <div class="cr-life__inner">
+    <div class="cr-life__header">
+      <span class="eyebrow">PeopleOurPower</span>
+      <h2 class="section-heading">Life <span class="accent-green">at ecozen</span></h2>
+    </div>
+    <div class="cr-life__photos">
+      <div class="cr-life__photo cr-life__photo--featured">
+        <img src="https://framerusercontent.com/images/Je4VkgWekQ1HGsJjZ6pgTbXCl5c.png" alt="ecozen team">
+      </div>
+      <div class="cr-life__photo">
+        <img src="https://framerusercontent.com/images/UFTLLTrpG5DEUmnCb5ICofqDlRg.png" alt="ecozen office">
+      </div>
+      <div class="cr-life__photo">
+        <img src="https://framerusercontent.com/images/iIcL0ZTnhMjMnwfS8sxKQjWOs.png" alt="ecozen workplace">
+      </div>
+      <div class="cr-life__photo">
+        <img src="https://framerusercontent.com/images/nPp2XXcoV7eV0CHssrZZXCDg3g.jpg" alt="ecozen culture">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     EMPLOYEE VOICES
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="cr-voices">
+  <div class="cr-voices__inner">
+    <div class="cr-voices__photo-wrap">
+      <img class="cr-voices__photo"
+           id="voicesPhoto"
+           src="https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+           alt="ecozen team member">
+    </div>
+    <div class="cr-voices__quote-block">
+      <span class="cr-voices__label">From our people</span>
+      <h2 class="cr-voices__heading">The people who power the shift.</h2>
+      <div class="cr-voices__mark">"</div>
+      <p class="cr-voices__quote" id="voicesQuote">Our people are the centre of change. Our people believe in deeptech for a better today.</p>
+      <div class="cr-voices__person">
+        <img class="cr-voices__avatar" id="voicesAvatar" src="https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png" alt="">
+        <div>
+          <div class="cr-voices__name" id="voicesName">Yash</div>
+          <div class="cr-voices__role" id="voicesRole">Senior Analyst, ecozen</div>
+        </div>
+      </div>
+      <div class="cr-voices__nav">
+        <button class="cr-voices__nav-btn" id="voicesPrev" aria-label="Previous">&#8249;</button>
+        <button class="cr-voices__nav-btn" id="voicesNext" aria-label="Next">&#8250;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAUD ALERT -->
+<div class="fraud-alert">
+  <div class="fraud-alert__inner">
+    <span class="fraud-alert__icon">⚠️</span>
+    <p class="fraud-alert__text">
+      <strong>Caution Notice:</strong> ecozen Solutions Private Limited does not ask job seekers or customers to pay any fees, deposit, or provide sensitive personal information during any process. Beware of scammers impersonating ecozen.
+      <a href="#" class="fraud-alert__link">Report fraud →</a>
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__top">
+    <img src="https://framerusercontent.com/images/95m9kNCcvAPEYa4v8LhnCZCiYmQ.svg" alt="Ecozen" class="footer__logo">
+    <div class="footer__tagline"><span class="accent-gradient">Innovation Never Ends</span></div>
+  </div>
+  <div class="footer__main">
+    <div>
+      <div class="footer__col-head footer__col-head--green">Products</div>
+      <div class="footer__links">
+        <a href="ecotron.html" class="footer__link">Ecotron</a>
+        <a href="ecofrost.html" class="footer__link">Ecofrost</a>
+        <a href="solar-ac.html" class="footer__link">Solar AC</a>
+        <a href="smart-ac.html" class="footer__link">Smart AC</a>
+        <a href="solar-rooftop.html" class="footer__link">Smart Rooftop</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head footer__col-head--cyan">Technology</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">Ecozen AI</a>
+        <a href="#" class="footer__link">Ice Core</a>
+        <a href="motor-control.html" class="footer__link">Motor Controls</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">Ecozen</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">About Us</a>
+        <a href="careers.html" class="footer__link">Careers</a>
+        <a href="#" class="footer__link">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">Others</div>
+      <div class="footer__links">
+        <a href="#" class="footer__link">User Portal</a>
+        <a href="#" class="footer__link">Legal Policy</a>
+        <a href="#" class="footer__link">Corporate</a>
+        <a href="#" class="footer__link">Press Kit</a>
+        <a href="#" class="footer__link">CSR</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-head">India 🇮🇳</div>
+      <div class="footer__toll-label">Toll Free</div>
+      <div class="footer__toll-number">1800 121 7515</div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div>
+      <div class="footer__newsletter-label">Subscribe to Newsletter</div>
+      <div class="footer__newsletter-form">
+        <input type="email" class="footer__newsletter-input" placeholder="Your email address">
+        <button class="footer__newsletter-btn">Subscribe</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:32px;">
+      <div class="footer__socials">
+        <a href="#" class="footer__social">ig</a>
+        <a href="#" class="footer__social">tw</a>
+        <a href="#" class="footer__social">fb</a>
+        <a href="#" class="footer__social">🌐</a>
+      </div>
+      <button class="footer__scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Scroll to top ↑</button>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <div class="footer__legal-grid">
+      <div class="footer__legal-entity">
+        <div class="footer__legal-name">Ecozen Solutions Private Limited</div>
+        <div class="footer__legal-detail"><strong>CIN:</strong> U93090PN2010PTC237833</div>
+        <div class="footer__legal-detail"><strong>Registered Office:</strong> 901, Amar Tech Park, Next to Mitcon College, Balewadi, Baner Gaon, Haveli, Pune – 411045, Maharashtra</div>
+      </div>
+      <div class="footer__legal-entity">
+        <div class="footer__legal-name">Ecofrost Technologies Private Limited</div>
+        <div class="footer__legal-detail"><strong>CIN:</strong> U73100PN2012PTC242344</div>
+        <div class="footer__legal-detail"><strong>Registered Office:</strong> 901, Amar Tech Park, Next to Mitcon College, Balewadi, Baner Gaon, Haveli, Pune – 411045, Maharashtra</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__copy">
+    <span class="footer__copy-text">©Copyright 2026 by Ecozen Solutions Private Limited</span>
+    <span class="footer__copy-brand accent-gradient">Innovation Never Ends</span>
+  </div>
+</footer>
+
+<script>
+  // ── MEGA MENU ──
+  (function() {
+    function setup() {
+      var items = document.querySelectorAll('.nav__item');
+      if (!items.length) { setTimeout(setup, 50); return; }
+      var t = null;
+      function show(item) {
+        clearTimeout(t);
+        document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+        document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        var mega = item.querySelector('.mega');
+        if (!mega) return;
+        var nav = document.querySelector('.nav');
+        if (nav) mega.style.top = nav.getBoundingClientRect().bottom + 'px';
+        mega.classList.add('is-open');
+        item.classList.add('active');
+      }
+      function hide() {
+        t = setTimeout(function() {
+          document.querySelectorAll('.mega').forEach(function(m) { m.classList.remove('is-open'); });
+          document.querySelectorAll('.nav__item').forEach(function(i) { i.classList.remove('active'); });
+        }, 150);
+      }
+      items.forEach(function(item) {
+        var mega = item.querySelector('.mega');
+        item.addEventListener('mouseenter', function() { show(item); });
+        item.addEventListener('mouseleave', hide);
+        if (mega) {
+          mega.addEventListener('mouseenter', function() { clearTimeout(t); });
+          mega.addEventListener('mouseleave', hide);
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else { setup(); }
+  })();
+
+  // ── NAV SCROLL ──
+  var navEl = document.querySelector('.nav-wrapper');
+  var annEl = document.querySelector('.announcement');
+  function syncNav() {
+    if (!annEl) return;
+    var annBottom = annEl.getBoundingClientRect().bottom;
+    if (annBottom <= 0) {
+      navEl.style.top = '0';
+      navEl.classList.add('scrolled');
+    } else {
+      navEl.style.top = annBottom + 'px';
+      navEl.classList.remove('scrolled');
+    }
+  }
+  syncNav();
+  window.addEventListener('scroll', syncNav, { passive: true });
+
+  // ── COOKIE ──
+  (function() {
+    var banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    if (localStorage.getItem('ez_cookie_v4')) { banner.style.display = 'none'; return; }
+    document.getElementById('cookieAccept').addEventListener('click', function() { localStorage.setItem('ez_cookie_v4','y'); banner.style.display='none'; });
+    document.getElementById('cookieReject').addEventListener('click', function() { localStorage.setItem('ez_cookie_v4','n'); banner.style.display='none'; });
+  })();
+
+  // ── PHOTO CAROUSEL ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var track = document.getElementById('galleryTrack');
+    var dots = document.querySelectorAll('.cr-gallery__dot');
+    var slides = document.querySelectorAll('.cr-gallery__slide');
+    if (!track || !slides.length) return;
+    var cur = 0;
+    var auto;
+    function go(i) {
+      cur = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, j) { d.classList.toggle('active', j === cur); });
+    }
+    document.getElementById('galleryPrev').addEventListener('click', function() { clearInterval(auto); go(cur-1); startAuto(); });
+    document.getElementById('galleryNext').addEventListener('click', function() { clearInterval(auto); go(cur+1); startAuto(); });
+    dots.forEach(function(d) {
+      d.addEventListener('click', function() { clearInterval(auto); go(+d.dataset.i); startAuto(); });
+    });
+    function startAuto() { auto = setInterval(function() { go(cur+1); }, 5000); }
+    startAuto();
+  });
+
+  // ── EMPLOYEE VOICES ──
+  (function() {
+    var people = [
+      {
+        quote: "Our people are the centre of change. Our people believe in deeptech for a better today.",
+        name: "Yash",
+        role: "Senior Analyst, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "Working on real problems that impact millions of farmers — that makes every day here truly meaningful.",
+        name: "Riddhi",
+        role: "Recruitment Specialist, ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      },
+      {
+        quote: "ecozen gives you the rare opportunity to build deep tech that truly shifts how India consumes energy.",
+        name: "[ Name ]",
+        role: "[ Role ], ecozen",
+        photo: "https://framerusercontent.com/images/BKkNJpob0ZJr9QMrhwrJ1RBcNNs.png"
+      }
+    ];
+    var idx = 0;
+    var qEl = document.getElementById('voicesQuote');
+    var nEl = document.getElementById('voicesName');
+    var rEl = document.getElementById('voicesRole');
+    var aEl = document.getElementById('voicesAvatar');
+    var pEl = document.getElementById('voicesPhoto');
+    var els = [qEl, nEl, aEl, pEl].filter(Boolean);
+    els.forEach(function(el) { el.style.transition = 'opacity 0.2s ease'; });
+    function update(i) {
+      idx = (i + people.length) % people.length;
+      var p = people[idx];
+      els.forEach(function(el) { el.style.opacity = '0'; });
+      setTimeout(function() {
+        if (qEl) qEl.textContent = p.quote;
+        if (nEl) nEl.textContent = p.name;
+        if (rEl) rEl.textContent = p.role;
+        if (aEl) aEl.src = p.photo;
+        if (pEl) pEl.src = p.photo;
+        els.forEach(function(el) { el.style.opacity = '1'; });
+      }, 200);
+    }
+    document.getElementById('voicesPrev').addEventListener('click', function() { update(idx - 1); });
+    document.getElementById('voicesNext').addEventListener('click', function() { update(idx + 1); });
+  })();
+</script>
+</body>
+</html>
